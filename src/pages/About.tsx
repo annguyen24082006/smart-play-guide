@@ -1,0 +1,177 @@
+import { Heart, Users, Target, Monitor, Gamepad2, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export default function About() {
+  return (
+    <div>
+      {/* Hero */}
+      <section className="relative py-24 bg-gradient-to-br from-rose-50 via-stone-50 to-amber-50 overflow-hidden">
+        <div className="absolute top-0 right-0 w-72 h-72 bg-rose-200/30 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-rose-600 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
+              <Heart className="w-4 h-4" />
+              Về chúng tôi
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-6">
+              Câu chuyện đằng sau chiến dịch
+            </h1>
+            <p className="text-lg text-neutral-600 leading-relaxed">
+              Chúng tôi là một nhóm nhỏ những người tin rằng mỗi phút bên con đều quý giá.
+              Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự,
+              không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Team intro */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <img
+                src="https://images.pexels.com/photos/39190489/pexels-photo-39190489.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                alt="Nhóm thực hiện chiến dịch"
+                className="rounded-3xl shadow-xl w-full object-cover"
+              />
+              <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-xl p-5 hidden sm:block">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-rose-100 flex items-center justify-center">
+                    <Users className="w-6 h-6 text-rose-500" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-neutral-800">Đội ngũ</p>
+                    <p className="text-sm text-neutral-500">Tâm huyết & sáng tạo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-3xl font-bold text-neutral-800 mb-6">
+                Chúng tôi là ai?
+              </h2>
+              <div className="space-y-4 text-neutral-600 leading-relaxed">
+                <p>
+                  Chúng tôi là nhóm những người trẻ đam mê xây dựng nội dung giáo dục và kết nối gia đình.
+                  Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông —
+                  để tạo nên một chiến dịch gần gũi và thực tế.
+                </p>
+                <p>
+                  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình.
+                  Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
+                </p>
+                <p>
+                  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> —
+                  một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
+                </p>
+              </div>
+
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <div className="flex items-start gap-3 p-4 bg-rose-50 rounded-xl">
+                  <Target className="w-5 h-5 text-rose-500 mt-0.5 shrink-0" />
+                  <div>
+                    <p className="font-semibold text-neutral-800 text-sm">Sứ mệnh</p>
+                    <p className="text-neutral-500 text-xs mt-1">Kết nối gia đình qua sáng tạo</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-teal-50 rounded-xl">
+                  <Heart className="w-5 h-5 text-teal-500 mt-0.5 shrink-0" />
+                  <div>
+                    <p className="font-semibold text-neutral-800 text-sm">Giá trị</p>
+                    <p className="text-neutral-500 text-xs mt-1">Chân thành, gần gũi, thực tế</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Content categories */}
+      <section className="py-20 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-neutral-800 mb-4">
+              Nội dung chiến dịch gồm 2 phần
+            </h2>
+            <p className="text-neutral-500 text-lg max-w-2xl mx-auto">
+              Chúng tôi chia nội dung thành hai phần rõ ràng, phù hợp với từng hoàn cảnh và nhu cầu của mỗi gia đình.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all border border-neutral-100 group">
+              <div className="w-14 h-14 rounded-2xl bg-cyan-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Monitor className="w-7 h-7 text-cyan-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-neutral-800 mb-3">
+                Hướng dẫn cho trực tuyến
+              </h3>
+              <p className="text-neutral-600 leading-relaxed mb-6">
+                Những nội dung hướng dẫn ba mẹ thiết lập giới hạn ứng dụng, quản lý thời gian sử dụng thiết bị,
+                và hướng dẫn con sử dụng các ứng dụng trực tuyến một cách an toàn, có chủ đích.
+                Giúp con tận dụng công nghệ mà không bị phụ thuộc.
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2 text-sm text-neutral-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 shrink-0" />
+                  Cài đặt giới hạn thời gian sử dụng
+                </li>
+                <li className="flex items-start gap-2 text-sm text-neutral-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 shrink-0" />
+                  Quản lý ứng dụng và nội dung phù hợp
+                </li>
+                <li className="flex items-start gap-2 text-sm text-neutral-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mt-2 shrink-0" />
+                  Hướng dẫn sử dụng an toàn, có chủ đích
+                </li>
+              </ul>
+              <Link
+                to="/huong-dan-cai-dat"
+                className="inline-flex items-center gap-1 text-cyan-600 font-semibold text-sm group-hover:gap-2 transition-all"
+              >
+                Xem hướng dẫn <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all border border-neutral-100 group">
+              <div className="w-14 h-14 rounded-2xl bg-teal-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <Gamepad2 className="w-7 h-7 text-teal-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-neutral-800 mb-3">
+                Trò chơi trực tiếp thôi
+              </h3>
+              <p className="text-neutral-600 leading-relaxed mb-6">
+                Những hoạt động chơi và sáng tạo không cần màn hình — DIY, vẽ, làm đồ thủ công,
+                trò chơi vận động và tương tác trực tiếp giữa ba mẹ và con.
+                Mỗi hoạt động đều được thiết kế để khơi gợi trí tưởng tượng và tình cảm gia đình.
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2 text-sm text-neutral-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 shrink-0" />
+                  Hoạt động DIY với vật liệu dễ tìm
+                </li>
+                <li className="flex items-start gap-2 text-sm text-neutral-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 shrink-0" />
+                  Trò chơi vận động và tương tác
+                </li>
+                <li className="flex items-start gap-2 text-sm text-neutral-600">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 shrink-0" />
+                  Sáng tạo nghệ thuật và thủ công
+                </li>
+              </ul>
+              <Link
+                to="/hoat-dong-cung-con"
+                className="inline-flex items-center gap-1 text-teal-600 font-semibold text-sm group-hover:gap-2 transition-all"
+              >
+                Khám phá hoạt động <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

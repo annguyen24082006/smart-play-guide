@@ -1,0 +1,12 @@
+SMART PLAY GUIDE - HUONG DAN 3 BUOC
+
+1. Cai Node.js ban LTS tai nodejs.org (chi lam 1 lan).
+2. Giai nen file zip nay. Bam dup vao:
+   - Windows: build-for-netlify.bat
+   - Mac:     build-for-netlify.command
+   Doi vai phut, se tao ra file netlify-upload.zip.
+3. Vao app.netlify.com/drop, keo file netlify-upload.zip vao. Xong!
+   Sau do: Domain management -> Add a domain de gan ten mien .com.
+
+LUU Y: Chay file SQL trong thu muc supabase/migrations/20260930090000_create_challenge_signups.sql
+tai Supabase (SQL Editor) mot lan de form dang ky nhan thong bao hoat dong.
