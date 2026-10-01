@@ -1,6 +1,6 @@
 name: Deploy Vite React Site to Pages
 
-on:
+ on:
   push:
     branches: ["main"]
   workflow_dispatch:
