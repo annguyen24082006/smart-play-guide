@@ -142,7 +142,7 @@ export default function About() {
                 <Gamepad2 className="w-7 h-7 text-teal-600" />
               </div>
               <h3 className="text-2xl font-bold text-neutral-800 mb-3">
-                Trò chơi trực tiếp thôi
+                Hoạt động sáng tạo 
               </h3>
               <p className="text-neutral-600 leading-relaxed mb-6">
                 Những hoạt động chơi và sáng tạo không cần màn hình — DIY, vẽ, làm đồ thủ công,
