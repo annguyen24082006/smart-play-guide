@@ -17,9 +17,9 @@ export default function About() {
               Câu chuyện đằng sau chiến dịch
             </h1>
             <p className="text-lg text-neutral-600 leading-relaxed">
-              Chúng tôi là một nhóm nhỏ những người tin rằng mỗi phút bên con đều quý giá.
-              Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự,
-              không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
+              Website đóng vai trò như một bộ lọc nội dung thông minh và cẩm nang kết nối gia đình.
+  Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự,
+  không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
             </p>
           </div>
         </div>
@@ -53,19 +53,20 @@ export default function About() {
                 Chúng tôi là ai?
               </h2>
               <div className="space-y-4 text-neutral-600 leading-relaxed">
-                <p>
-                  Chúng tôi là nhóm những người trẻ đam mê xây dựng nội dung giáo dục và kết nối gia đình.
-                  Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông —
-                  để tạo nên một chiến dịch gần gũi và thực tế.
-                </p>
-                <p>
-                  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình.
-                  Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
-                </p>
-                <p>
-                  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> —
-                  một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
-                </p>
+              <p>
+  Chúng tôi là nhóm sinh viên Marketing của môn học Digital Marketing, Khoa Quản trị Kinh doanh
+  và Du lịch, Trường Đại học Hà Nội, xây dựng nội dung giáo dục và kết nối gia đình.
+  Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông —
+  để tạo nên một chiến dịch gần gũi và thực tế.
+</p>
+<p>
+  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình.
+  Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
+</p>
+<p>
+  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> —
+  một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
+</p>
               </div>
 
               <div className="mt-8 grid grid-cols-2 gap-4">
