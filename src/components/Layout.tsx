@@ -1,6 +1,6 @@
 import { Outlet, NavLink, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Menu, X, Heart, Sparkles } from 'lucide-react';
+import { Menu, X, Heart, Sparkles, MapPin, Phone, Mail, Facebook } from 'lucide-react';
 
 const navItems = [
   { to: '/', label: 'Trang chủ', end: true },
@@ -106,7 +106,8 @@ export default function Layout() {
 
       <footer className="bg-neutral-800 text-neutral-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-[1.2fr_0.8fr_1fr_1.4fr] gap-8">
+            {/* Cột 1: Thương hiệu */}
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center">
@@ -119,6 +120,7 @@ export default function Layout() {
               </p>
             </div>
 
+            {/* Cột 2: Điều hướng */}
             <div>
               <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Điều hướng</h4>
               <ul className="space-y-2">
@@ -135,12 +137,60 @@ export default function Layout() {
               </ul>
             </div>
 
+            {/* Cột 3: Tinh thần chiến dịch */}
             <div>
               <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Tinh thần chiến dịch</h4>
               <div className="flex items-start gap-2 text-sm text-neutral-400">
                 <Sparkles className="w-4 h-4 text-teal-400 mt-0.5 shrink-0" />
                 <span>Mỗi ngày bên con là một kỷ niệm mới. Không cần hoàn hảo, chỉ cần chân thành.</span>
               </div>
+            </div>
+
+            {/* Cột 4: Liên hệ */}
+            <div>
+              <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Liên hệ</h4>
+              <p className="text-sm font-semibold text-amber-300 mb-4">
+                Kết nối cùng chúng tôi để cùng lan toả giá trị cho cộng đồng
+              </p>
+              <ul className="space-y-3 text-sm text-neutral-400">
+                <li className="flex items-start gap-2">
+                  <MapPin className="w-4 h-4 text-teal-400 mt-0.5 shrink-0" />
+                  <span>Địa chỉ: Km 9, đường Nguyễn Trãi, phường Đại Mỗ, thành phố Hà Nội</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Phone className="w-4 h-4 text-teal-400 mt-0.5 shrink-0" />
+                  <span>
+                    Điện thoại:{' '}
+                    <a href="tel:+84862417415" className="hover:text-teal-400 transition-colors">
+                      (+84) 862 417 415
+                    </a>{' '}
+                    (Ms. Phương Thảo)
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Mail className="w-4 h-4 text-teal-400 mt-0.5 shrink-0" />
+                  <span>
+                    Email:{' '}
+                    <a href="mailto:smartplayguide67@gmail.com" className="hover:text-teal-400 transition-colors break-all">
+                      smartplayguide67@gmail.com
+                    </a>
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Facebook className="w-4 h-4 text-teal-400 mt-0.5 shrink-0" />
+                  <span>
+                    Facebook:{' '}
+                    <a
+                      href="https://www.facebook.com/share/1FA4NPGGtB/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-teal-400 transition-colors break-all"
+                    >
+                      facebook.com/share/1FA4NPGGtB
+                    </a>
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
 
