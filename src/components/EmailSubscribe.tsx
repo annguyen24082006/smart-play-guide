@@ -13,23 +13,42 @@ export default function EmailSubscribe() {
     setStatus('loading');
     setMessage('');
 
+    const targetEmail = email.trim();
+
+    // 1. Lưu email vào cơ sở dữ liệu Supabase
     const { error } = await supabase
       .from('email_subscriptions')
-      .insert({ email: email.trim() });
+      .insert({ email: targetEmail });
 
     if (error) {
       if (error.code === '23505') {
         setStatus('success');
         setMessage('Email này đã được đăng ký rồi! Chúng mình sẽ sớm gửi thông báo đến bạn.');
+        return;
       } else {
         setStatus('error');
-        setMessage('Có lỗi xảy ra. Vui lòng thử lại sau nhé.');
+        setMessage('Có lỗi xảy ra khi kết nối cơ sở dữ liệu. Vui lòng thử lại sau nhé.');
+        return;
       }
-    } else {
-      setStatus('success');
-      setMessage('Đăng ký thành công! Chúng mình sẽ gửi thông báo khi có bài đăng mới hoặc chuẩn bị thử thách mới.');
-      setEmail('');
     }
+
+    // 2. Gửi Email chào mừng tự động qua EmailJS
+    try {
+      if ((window as any).emailjs) {
+        await (window as any).emailjs.send(
+          'service_33ael3b',
+          'template_ketogqq',
+          { user_email: targetEmail }
+        );
+      }
+    } catch (emailError) {
+      console.error('Lỗi khi gửi email qua EmailJS:', emailError);
+    }
+
+    // 3. Đánh dấu hoàn tất
+    setStatus('success');
+    setMessage('Đăng ký thành công! Bạn hãy kiểm tra hộp thư email chào mừng từ Smart Play Guide nhé.');
+    setEmail('');
   };
 
   return (
