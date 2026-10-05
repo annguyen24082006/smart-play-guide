@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   X,
   PlayCircle,
@@ -112,6 +113,7 @@ const activities = [
 
 export default function DIY() {
   const [open, setOpen] = useState<(typeof activities)[number] | null>(null);
+
   return (
     <div>
       {/* Hero */}
@@ -178,6 +180,7 @@ export default function DIY() {
         </div>
       </section>
 
+      {/* Modal chi tiết */}
       {open && (
         <div className="fixed inset-0 z-50 bg-neutral-900/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setOpen(null)}>
           <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -242,12 +245,12 @@ export default function DIY() {
           <p className="text-neutral-600 mb-6">
             Kết hợp DIY với Challenge 14 ngày để tạo kỷ niệm đáng nhớ cùng con.
           </p>
-          <a
-            href="/challenge"
+          <Link
+            to="/challenge"
             className="inline-flex items-center gap-2 px-6 py-3 bg-teal-500 text-white font-semibold rounded-xl hover:bg-teal-600 transition-all shadow-lg shadow-teal-500/20 hover:-translate-y-0.5"
           >
             Tham gia Challenge 14 ngày
-          </a>
+          </Link>
         </div>
       </section>
     </div>
