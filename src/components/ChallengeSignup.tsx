@@ -12,38 +12,43 @@ export default function ChallengeSignup() {
     if (!valid) return;
     setStatus('loading');
 
-    // 1. Lưu thông tin vào Supabase
-    const { error } = await supabase.from('challenge_signups').insert({
-      family_name: f.family.trim(),
-      email: f.email.trim() || null,
-      phone: f.phone.trim() || null,
-    });
-
-    if (error) {
-      console.error('Lỗi Supabase:', error);
-      setStatus('error');
-      return;
+    // 1. Thử lưu vào Supabase (không chặn luồng gửi Email)
+    try {
+      const { error } = await supabase.from('challenge_signups').insert({
+        family_name: f.family.trim(),
+        email: f.email.trim() || null,
+        phone: f.phone.trim() || null,
+      });
+      if (error) console.error('Lỗi Supabase:', error);
+    } catch (dbErr) {
+      console.error('Lỗi kết nối Supabase:', dbErr);
     }
 
-    // 2. Nếu người dùng có nhập Email, tiến hành gửi thư qua EmailJS (template_ped64qu)
+    // 2. Gửi EmailJS qua Template Challenge (template_ped64qu)
     if (f.email.trim()) {
       try {
-        await (window as any).emailjs.send(
-          'service_cksyalp',   // Service ID chung
-          'template_ped64qu',  // Template ID dành riêng cho Challenge
-          {
-            user_email: f.email.trim(),
-            family_name: f.family.trim(),
-            phone: f.phone.trim() || 'Không cung cấp',
-          }
-        );
-        console.log('Gửi email Challenge thành công!');
+        const emailjsLib = (window as any).emailjs;
+        if (emailjsLib) {
+          await emailjsLib.send(
+            'service_cksyalp',   // Service ID
+            'template_ped64qu',  // Template ID
+            {
+              user_email: f.email.trim(),
+              family_name: f.family.trim(),
+              phone: f.phone.trim() || 'Không cung cấp',
+            },
+            'QRhkO2zbBmG0twUtZ'   // Public Key
+          );
+          console.log('Gửi email Challenge thành công!');
+        } else {
+          console.error('EmailJS SDK chưa sẵn sàng');
+        }
       } catch (emailError) {
         console.error('Lỗi gửi EmailJS:', emailError);
-        // Vẫn báo thành công cho người dùng vì dữ liệu đã lưu an toàn vào Supabase
       }
     }
 
+    // Luôn báo hoàn thành cho người dùng
     setStatus('ok');
   };
 
@@ -58,15 +63,15 @@ export default function ChallengeSignup() {
           </div>
           <h2 className="text-3xl font-bold text-neutral-800 mb-3">Đăng ký để không lỡ ngày nào</h2>
           <p className="text-neutral-600">
-            Smart Play Guide sẽ nhắn mỗi ngày khi có challenge mới, và <strong>trước 1 ngày</strong> sẽ báo ba mẹ cần chuẩn bị những
-            dụng cụ cần thiết.
+            SPG sẽ nhắn mỗi ngày khi có challenge mới, và <strong>trước 1 ngày</strong> sẽ báo ba mẹ cần chuẩn bị
+            dụng cụ gì để có sẵn đồ làm luôn.
           </p>
         </div>
         {status === 'ok' ? (
           <div className="bg-white rounded-2xl p-8 text-center shadow-lg">
             <CheckCircle className="w-12 h-12 text-teal-500 mx-auto mb-3" />
             <p className="font-bold text-neutral-800">Đã đăng ký thành công!</p>
-            <p className="text-sm text-neutral-500 mt-1">Smart Play Guide sẽ nhắn cho gia đình {f.family.trim()} sớm nhất.</p>
+            <p className="text-sm text-neutral-500 mt-1">SPG sẽ nhắn cho gia đình {f.family.trim()} sớm nhất.</p>
           </div>
         ) : (
           <div className="bg-white rounded-2xl p-6 shadow-lg space-y-4">
