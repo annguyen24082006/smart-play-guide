@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Bell, CheckCircle, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { supabase } from '@/lib/supabase';
 
 export default function ChallengeSignup() {
@@ -12,7 +13,7 @@ export default function ChallengeSignup() {
     if (!valid) return;
     setStatus('loading');
 
-    // 1. Thử lưu vào Supabase (không chặn luồng gửi Email)
+    // 1. Thử lưu thông tin vào Supabase
     try {
       const { error } = await supabase.from('challenge_signups').insert({
         family_name: f.family.trim(),
@@ -24,31 +25,25 @@ export default function ChallengeSignup() {
       console.error('Lỗi kết nối Supabase:', dbErr);
     }
 
-    // 2. Gửi EmailJS qua Template Challenge (template_ped64qu)
+    // 2. Gửi thư qua EmailJS bằng thư viện npm trực tiếp
     if (f.email.trim()) {
       try {
-        const emailjsLib = (window as any).emailjs;
-        if (emailjsLib) {
-          await emailjsLib.send(
-            'service_cksyalp',   // Service ID
-            'template_ped64qu',  // Template ID
-            {
-              user_email: f.email.trim(),
-              family_name: f.family.trim(),
-              phone: f.phone.trim() || 'Không cung cấp',
-            },
-            'QRhkO2zbBmG0twUtZ'   // Public Key
-          );
-          console.log('Gửi email Challenge thành công!');
-        } else {
-          console.error('EmailJS SDK chưa sẵn sàng');
-        }
+        const res = await emailjs.send(
+          'service_cksyalp',   // Service ID
+          'template_ped64qu',  // Template ID
+          {
+            user_email: f.email.trim(),
+            family_name: f.family.trim(),
+            phone: f.phone.trim() || 'Không cung cấp',
+          },
+          'QRhkO2zbBmG0twUtZ'   // Public Key
+        );
+        console.log('Gửi email Challenge thành công:', res.status, res.text);
       } catch (emailError) {
         console.error('Lỗi gửi EmailJS:', emailError);
       }
     }
 
-    // Luôn báo hoàn thành cho người dùng
     setStatus('ok');
   };
 
@@ -63,8 +58,7 @@ export default function ChallengeSignup() {
           </div>
           <h2 className="text-3xl font-bold text-neutral-800 mb-3">Đăng ký để không lỡ ngày nào</h2>
           <p className="text-neutral-600">
-            SPG sẽ nhắn mỗi ngày khi có challenge mới, và <strong>trước 1 ngày</strong> sẽ báo ba mẹ cần chuẩn bị
-            dụng cụ gì để có sẵn đồ làm luôn.
+            Smart Play Guide sẽ nhắn ba mẹ khi có challenge mới.
           </p>
         </div>
         {status === 'ok' ? (
