@@ -79,29 +79,33 @@ export default function Leaderboard() {
 
   return (
     <div>
-      {/* Hero Header - Kích thước mở rộng & cao chuẩn trang About Us */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-stone-100 py-24 sm:py-32">
+      {/* Hero Header - Đã tối ưu cho ảnh nền top.png to rộng & ấn tượng hơn */}
+      <section className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center overflow-hidden bg-stone-900">
+        {/* Background Image & Overlay */}
         <div className="absolute inset-0">
           <img
             src="/top.png"
             alt="Smart Play Guide - Bảng xếp hạng"
-            className="w-full h-full object-cover object-right sm:object-center"
+            className="w-full h-full object-cover object-center scale-105 transition-transform duration-700"
           />
-          {/* Lớp phủ dải màu mờ giúp hiển thị rõ chữ ở bên trái */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent" />
+          {/* Lớp phủ gradient mềm giúp tương phản chữ tốt và làm nổi bật ảnh */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/20 sm:to-transparent" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
-          <div className="max-w-xl animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-amber-600 border border-amber-200/80 rounded-full text-sm font-medium mb-6 shadow-sm backdrop-blur-md">
-              <Trophy className="w-4 h-4 text-amber-500" />
+        {/* Hero Content Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 w-full z-10">
+          <div className="max-w-2xl animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 text-amber-600 border border-amber-200 rounded-full text-sm font-semibold mb-6 shadow-md backdrop-blur-md">
+              <Trophy className="w-4 h-4 text-amber-500 fill-amber-500" />
               Smart Play Guide · Bảng xếp hạng
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-800 leading-[1.15] mb-6">
-              Gia đình bạn đang <span className="text-rose-500">ở đâu?</span>
+            
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-neutral-900 leading-[1.1] mb-6 tracking-tight">
+              Gia đình bạn đang <span className="text-rose-500 underline decoration-rose-200 decoration-wavy underline-offset-8">ở đâu?</span>
             </h1>
-            <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed font-medium">
-              Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-rose-500">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
+            
+            <p className="text-lg sm:text-2xl text-neutral-700 leading-relaxed font-medium drop-shadow-sm">
+              Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-rose-600 font-bold">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
             </p>
           </div>
         </div>
