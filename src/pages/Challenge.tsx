@@ -34,7 +34,7 @@ const week1 = [
   { day: 4, title: 'Đi dạo ngoài trời', desc: 'Đi dạo và cùng con quan sát thiên nhiên.' },
   { day: 5, title: 'Làm đồ thủ công', desc: 'Tạo một đồ vật từ vật liệu tái chế.' },
   { day: 6, title: 'Chơi trò chơi bàn', desc: 'Chơi một trò chơi cùng cả gia đình.' },
-  { day: 7, title: 'Tổng kết tuần 1', desc: 'Cùng con回顾 những kỷ niệm của tuần qua.' },
+  { day: 7, title: 'Tổng kết tuần 1', desc: 'Cùng con nhìn lại những kỷ niệm của tuần qua.' },
 ];
 
 const week2 = [
@@ -235,34 +235,50 @@ export default function Challenge() {
   };
 
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 overflow-hidden">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-amber-200/30 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-rose-200/30 rounded-full blur-3xl -translate-x-1/4 translate-y-1/3" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-amber-600 rounded-full text-sm font-bold mb-6 backdrop-blur-sm">
-              <Trophy className="w-4 h-4" />
-              Challenge 14 ngày
+    <div className="bg-[#FAF8F5] min-h-screen">
+      {/* Hero Banner với ảnh nền challenge */}
+      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/challenge.png"
+            alt="Smart Play Guide - Challenge 14 Ngày"
+            className="w-full h-full object-cover object-center"
+            onError={(e) => {
+              // Dự phòng trường hợp ảnh là file .jpg
+              const target = e.target as HTMLImageElement;
+              if (!target.src.endsWith('.jpg')) {
+                target.src = '/challenge.jpg';
+              }
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white/60 shadow-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-100/90 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+              <Trophy className="w-4 h-4 text-amber-600" />
+              Thử thách 14 ngày
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-4">
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-neutral-900 leading-[1.15] mb-4 tracking-tight">
               Tham gia thử thách,
               <br />
-              <span className="text-amber-500">nhận thưởng liền tay!</span>
+              <span className="text-amber-600">nhận thưởng liền tay!</span>
             </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed mb-6">
+
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
               Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
               Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-xl px-4 py-2.5">
+
+            <div className="flex flex-wrap gap-3">
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
                 <Calendar className="w-5 h-5 text-amber-500" />
-                <span className="text-sm font-medium text-neutral-700">2 tuần — 14 ngày</span>
+                <span className="text-sm font-semibold text-neutral-700">2 tuần — 14 ngày</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/70 backdrop-blur-sm rounded-xl px-4 py-2.5">
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
                 <Gift className="w-5 h-5 text-rose-500" />
-                <span className="text-sm font-medium text-neutral-700">Giải thưởng độc đáo</span>
+                <span className="text-sm font-semibold text-neutral-700">Giải thưởng độc đáo</span>
               </div>
             </div>
           </div>
@@ -270,7 +286,7 @@ export default function Challenge() {
       </section>
 
       {/* Progress bar */}
-      <section className="py-8 bg-white border-b border-neutral-100">
+      <section className="py-8 bg-white border-b border-neutral-100 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-sm font-semibold text-neutral-700">Tiến độ của gia đình bạn</h2>
@@ -512,7 +528,7 @@ export default function Challenge() {
                   {uploading ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      Đang tải lên...
+                      Đăng tải lên...
                     </>
                   ) : (
                     <>
