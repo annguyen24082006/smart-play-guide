@@ -235,46 +235,50 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Header thiết kế tươi sáng, dùng ảnh challenge.png chuẩn phong cách Blog/About */}
-      <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
-        {/* Ảnh nền phủ tự nhiên */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/challenge.png"
-            alt="Smart Play Guide - Challenge"
-            className="w-full h-full object-cover object-right-bottom"
-          />
-        </div>
-
-        {/* Nội dung chữ trên nền ảnh */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
-              <Trophy className="w-4 h-4 text-amber-500" />
-              Thử thách 14 ngày
-            </div>
-
-            <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Tham gia thử thách,
-              <br />
-              <span className="text-amber-600">nhận thưởng liền tay!</span>
-            </h1>
-
-            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
-              Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
-              Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
-                <Calendar className="w-4 h-4 text-amber-500" />
-                2 tuần — 14 ngày
+      {/* Hero Header thiết kế tươi sáng, thu nhỏ hình minh họa gọn gàng giống trang Blog */}
+      <section className="relative w-full overflow-hidden bg-[#FAF8F5] pt-8 pb-16 sm:pt-12 sm:pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            
+            {/* Cột chữ bên trái */}
+            <div className="w-full lg:w-3/5 z-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+                <Trophy className="w-4 h-4 text-amber-500" />
+                Thử thách 14 ngày
               </div>
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
-                <Gift className="w-4 h-4 text-rose-500" />
-                Giải thưởng độc đáo
+
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
+                Tham gia thử thách,
+                <br />
+                <span className="text-amber-600">nhận thưởng liền tay!</span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6 max-w-xl">
+                Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
+                Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
+                  <Calendar className="w-4 h-4 text-amber-500" />
+                  2 tuần — 14 ngày
+                </div>
+                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
+                  <Gift className="w-4 h-4 text-rose-500" />
+                  Giải thưởng độc đáo
+                </div>
               </div>
             </div>
+
+            {/* Cột hình ảnh bên phải */}
+            <div className="w-full lg:w-2/5 flex justify-center lg:justify-end">
+              <img
+                src="/challenge.png"
+                alt="Smart Play Guide - Challenge"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-full h-auto object-contain drop-shadow-sm"
+              />
+            </div>
+
           </div>
         </div>
       </section>
