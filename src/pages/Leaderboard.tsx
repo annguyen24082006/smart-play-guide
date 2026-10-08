@@ -30,7 +30,6 @@ export default function Leaderboard() {
     setLoading(false);
   }, []);
 
-  // Điểm cập nhật gần như tức thì: tải lại mỗi 15 giây và khi quay lại tab
   useEffect(() => {
     load();
     const t = setInterval(load, 15000);
@@ -40,7 +39,6 @@ export default function Leaderboard() {
 
   const rg = ranges.find((r) => r.id === range)!;
 
-  // Điểm = 10 x số trò (ngày) khác nhau mà gia đình đã gửi ảnh -> mỗi trò chỉ tính 1 lần
   const families: Family[] = useMemo(() => {
     const map = new Map<string, { name: string; days: Map<number, string> }>();
     for (const r of rows) {
@@ -78,40 +76,43 @@ export default function Leaderboard() {
   ];
 
   return (
-    <div>
-      {/* Hero Header - Đã tối ưu cho ảnh nền top.png to rộng & ấn tượng hơn */}
-      <section className="relative min-h-[75vh] sm:min-h-[85vh] flex items-center overflow-hidden bg-stone-900">
-        {/* Background Image & Overlay */}
-        <div className="absolute inset-0">
+    <div className="bg-[#FAF8F5] min-h-screen">
+      {/* Hero Header thiết kế chuẩn theo phong cách trang Về chúng tôi */}
+      <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
+        {/* Ảnh nền phủ hợp tự nhiên */}
+        <div className="absolute inset-0 z-0">
           <img
             src="/top.png"
-            alt="Smart Play Guide - Bảng xếp hạng"
-            className="w-full h-full object-cover object-center scale-105 transition-transform duration-700"
+            alt="Smart Play Guide Background"
+            className="w-full h-full object-cover object-right-bottom"
           />
-          {/* Lớp phủ gradient mềm giúp tương phản chữ tốt và làm nổi bật ảnh */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/20 sm:to-transparent" />
         </div>
 
-        {/* Hero Content Container */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 w-full z-10">
-          <div className="max-w-2xl animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 text-amber-600 border border-amber-200 rounded-full text-sm font-semibold mb-6 shadow-md backdrop-blur-md">
+        {/* Nội dung chữ trên nền ảnh */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl">
+            {/* Tag / Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
               <Trophy className="w-4 h-4 text-amber-500 fill-amber-500" />
               Smart Play Guide · Bảng xếp hạng
             </div>
             
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-neutral-900 leading-[1.1] mb-6 tracking-tight">
-              Gia đình bạn đang <span className="text-rose-500 underline decoration-rose-200 decoration-wavy underline-offset-8">ở đâu?</span>
+            {/* Tiêu đề chính - Đã sửa lỗi đè chữ "ở đâu?" */}
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
+              Gia đình bạn đang <br />
+              <span className="text-[#E07A5F] inline-block mt-1">ở đâu?</span>
             </h1>
             
-            <p className="text-lg sm:text-2xl text-neutral-700 leading-relaxed font-medium drop-shadow-sm">
-              Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-rose-600 font-bold">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
+            {/* Mô tả */}
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
+              Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-orange-600 font-bold">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-white">
+      {/* Phần Bảng Xếp Hạng Bên Dưới */}
+      <section className="py-12 bg-white relative z-10 border-t border-stone-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
           {/* Điểm cá nhân */}
           <div className="rounded-3xl border border-teal-200 bg-teal-50/60 p-6">
@@ -188,8 +189,8 @@ export default function Leaderboard() {
                 ))}
               </div>
 
-              {/* Bảng liệt kê bên dưới */}
-              <div className="rounded-3xl border border-neutral-100 overflow-hidden">
+              {/* Bảng danh sách */}
+              <div className="rounded-3xl border border-neutral-100 overflow-hidden shadow-sm">
                 <table className="w-full text-sm">
                   <thead className="bg-stone-100 text-neutral-500 text-xs uppercase">
                     <tr>
