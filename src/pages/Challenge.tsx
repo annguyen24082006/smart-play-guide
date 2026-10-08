@@ -68,7 +68,6 @@ export default function Challenge() {
   const [uploadError, setUploadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
-  // Lấy đường dẫn base động để khớp với cấu hình deploy trên Vite/GitHub Pages
   const baseUrl = import.meta.env.BASE_URL || '/';
   const heroBgImagePath = `${baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'}challenge.png`;
 
@@ -239,15 +238,14 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Banner với đường dẫn ảnh tối ưu */}
-      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32 bg-amber-900/10">
+      {/* Hero Banner trong suốt hoàn toàn */}
+      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32 min-h-[500px] flex items-center">
         <div className="absolute inset-0 z-0">
           <img
             src={heroBgImagePath}
             alt="Smart Play Guide - Challenge 14 Ngày"
             className="w-full h-full object-cover object-center"
             onError={(e) => {
-              // Xử lý fallback nếu định dạng là .jpg hoặc lỗi đường dẫn
               const target = e.target as HTMLImageElement;
               if (!target.src.endsWith('.jpg')) {
                 target.src = heroBgImagePath.replace('.png', '.jpg');
@@ -256,20 +254,20 @@ export default function Challenge() {
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white/80 shadow-xl">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-100/90 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
               <Trophy className="w-4 h-4 text-amber-600" />
               Thử thách 14 ngày
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-neutral-900 leading-[1.15] mb-4 tracking-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-neutral-900 leading-[1.15] mb-4 tracking-tight drop-shadow-sm">
               Tham gia thử thách,
               <br />
               <span className="text-amber-600">nhận thưởng liền tay!</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6 drop-shadow-sm">
               Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
               Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
             </p>
