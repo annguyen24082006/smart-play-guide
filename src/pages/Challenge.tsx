@@ -68,9 +68,6 @@ export default function Challenge() {
   const [uploadError, setUploadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
-  const baseUrl = import.meta.env.BASE_URL || '/';
-  const heroBgImagePath = `${baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'}challenge.png`;
-
   const fetchPhotos = useCallback(async () => {
     const { data, error } = await supabase
       .from('challenge_photos')
@@ -238,48 +235,44 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Banner trong suốt hoàn toàn */}
-      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32 min-h-[500px] flex items-center">
+      {/* Hero Header thiết kế tươi sáng, dùng ảnh challenge.png chuẩn phong cách Blog/About */}
+      <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
+        {/* Ảnh nền phủ tự nhiên */}
         <div className="absolute inset-0 z-0">
           <img
-            src={heroBgImagePath}
-            alt="Smart Play Guide - Challenge 14 Ngày"
-            className="w-full h-full object-cover object-center"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              if (!target.src.endsWith('.jpg')) {
-                target.src = heroBgImagePath.replace('.png', '.jpg');
-              }
-            }}
+            src="/challenge.png"
+            alt="Smart Play Guide - Challenge"
+            className="w-full h-full object-cover object-right-bottom"
           />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        {/* Nội dung chữ trên nền ảnh */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-100/90 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
-              <Trophy className="w-4 h-4 text-amber-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
+              <Trophy className="w-4 h-4 text-amber-500" />
               Thử thách 14 ngày
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-neutral-900 leading-[1.15] mb-4 tracking-tight drop-shadow-sm">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
               Tham gia thử thách,
               <br />
               <span className="text-amber-600">nhận thưởng liền tay!</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6 drop-shadow-sm">
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
               Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
               Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
-                <Calendar className="w-5 h-5 text-amber-500" />
-                <span className="text-sm font-semibold text-neutral-700">2 tuần — 14 ngày</span>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
+                <Calendar className="w-4 h-4 text-amber-500" />
+                2 tuần — 14 ngày
               </div>
-              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
-                <Gift className="w-5 h-5 text-rose-500" />
-                <span className="text-sm font-semibold text-neutral-700">Giải thưởng độc đáo</span>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
+                <Gift className="w-4 h-4 text-rose-500" />
+                Giải thưởng độc đáo
               </div>
             </div>
           </div>
