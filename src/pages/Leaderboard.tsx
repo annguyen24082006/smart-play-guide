@@ -79,20 +79,20 @@ export default function Leaderboard() {
 
   return (
     <div>
-      {/* Hero Header - Đồng bộ lớp phủ sáng với Home & About */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-stone-100">
+      {/* Hero Header - Kích thước mở rộng & cao chuẩn trang About Us */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-stone-100 py-24 sm:py-32">
         <div className="absolute inset-0">
           <img
             src="/top.png"
             alt="Smart Play Guide - Bảng xếp hạng"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-right sm:object-center"
           />
-          {/* Lớp phủ dải màu trắng mờ chuẩn trang Home & About */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent" />
+          {/* Lớp phủ dải màu mờ giúp hiển thị rõ chữ ở bên trái */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
-          <div className="max-w-2xl animate-fade-in">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
+          <div className="max-w-xl animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-amber-600 border border-amber-200/80 rounded-full text-sm font-medium mb-6 shadow-sm backdrop-blur-md">
               <Trophy className="w-4 h-4 text-amber-500" />
               Smart Play Guide · Bảng xếp hạng
@@ -100,7 +100,7 @@ export default function Leaderboard() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-800 leading-[1.15] mb-6">
               Gia đình bạn đang <span className="text-rose-500">ở đâu?</span>
             </h1>
-            <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-xl font-medium">
+            <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed font-medium">
               Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-rose-500">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
             </p>
           </div>
@@ -163,7 +163,7 @@ export default function Leaderboard() {
             </div>
           ) : (
             <>
-              {/* Bục vinh quang (dạng hình ảnh) */}
+              {/* Bục vinh quang */}
               <div className="flex items-end justify-center gap-3 sm:gap-6 pt-6">
                 {podium.map(({ f, place, h, bg, ring }) => (
                   <div key={place} className="flex-1 max-w-[180px] text-center">
