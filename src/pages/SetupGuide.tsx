@@ -36,7 +36,7 @@ const guides: Guide[] = [
     duration: '5 phút',
     title: 'Thiết lập Screen Time từng bước',
     description: 'Đặt trần thời gian, lọc nội dung theo độ tuổi và chặn mua hàng bí mật trên iPad và iPhone.',
-    image: 'https://images.pexels.com/photos/36698020/pexels-photo-36698020.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: '/screen_time.png',
     icon: Apple,
     iconColor: 'bg-neutral-800',
     steps: [
@@ -131,22 +131,33 @@ export default function SetupGuide() {
   ];
 
   return (
-    <div>
-      <section className="relative py-24 bg-gradient-to-br from-cyan-50 via-stone-50 to-blue-50 overflow-hidden">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-200/30 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/4" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-cyan-600 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-              <Smartphone className="w-4 h-4" />
+    <div className="bg-[#FAF8F5] min-h-screen">
+      {/* Hero Header với ảnh nền screen_time.png */}
+      <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/screen_time.png"
+            alt="Smart Play Guide - Hướng dẫn cài đặt"
+            className="w-full h-full object-cover object-right-bottom"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-teal-700 border border-teal-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
+              <Smartphone className="w-4 h-4 text-teal-600" />
               Hướng dẫn cài đặt
             </div>
-            <p className="text-xl sm:text-2xl font-semibold text-teal-600 mb-3">
+
+            <p className="text-xl sm:text-2xl font-semibold text-teal-700 mb-3">
               Bố mẹ cứ yên tâm, SPG chỉ từng bước 💚
             </p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-6">
+
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
               Hướng dẫn cài đặt ứng dụng trực tuyến
             </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed">
+
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
               Chọn từng chủ đề để xem hướng dẫn bằng lời và video chi tiết. Từ giới hạn thời gian trên điện thoại
               đến lọc nội dung trên các nền tảng mà con thường sử dụng.
             </p>
@@ -154,7 +165,8 @@ export default function SetupGuide() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      {/* Thư viện hướng dẫn */}
+      <section className="py-20 bg-white relative z-10 border-t border-stone-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div>
@@ -204,24 +216,34 @@ export default function SetupGuide() {
         </div>
       </section>
 
+      {/* Mẹo hữu ích */}
       <section className="py-20 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white text-cyan-600 rounded-full text-sm font-medium mb-4"><ListChecks className="w-4 h-4" />Mẹo hữu ích</div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white text-cyan-600 rounded-full text-sm font-medium mb-4">
+              <ListChecks className="w-4 h-4" />
+              Mẹo hữu ích
+            </div>
             <h2 className="text-3xl font-bold text-neutral-800 mb-3">Những điều nên nhớ</h2>
             <p className="text-neutral-500">Giúp việc thiết lập hiệu quả và bền vững hơn</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {tips.map((tip, i) => (
               <div key={i} className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center shrink-0"><tip.icon className="w-6 h-6 text-cyan-600" /></div>
-                <div><h3 className="font-bold text-neutral-800 mb-1">{tip.title}</h3><p className="text-sm text-neutral-600 leading-relaxed">{tip.desc}</p></div>
+                <div className="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center shrink-0">
+                  <tip.icon className="w-6 h-6 text-cyan-600" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-neutral-800 mb-1">{tip.title}</h3>
+                  <p className="text-sm text-neutral-600 leading-relaxed">{tip.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Modal xem hướng dẫn chi tiết */}
       {selectedGuide && (
         <div className="fixed inset-0 z-50 bg-neutral-900/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setSelectedGuide(null)}>
           <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(event) => event.stopPropagation()}>
@@ -230,7 +252,9 @@ export default function SetupGuide() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-cyan-600">{selectedGuide.category} · {selectedGuide.duration}</p>
                 <h2 className="text-2xl font-bold text-neutral-800 mt-1">{selectedGuide.title}</h2>
               </div>
-              <button onClick={() => setSelectedGuide(null)} className="p-2 rounded-xl hover:bg-neutral-100" aria-label="Đóng hướng dẫn"><X className="w-5 h-5 text-neutral-500" /></button>
+              <button onClick={() => setSelectedGuide(null)} className="p-2 rounded-xl hover:bg-neutral-100" aria-label="Đóng hướng dẫn">
+                <X className="w-5 h-5 text-neutral-500" />
+              </button>
             </div>
 
             <div className="p-6 sm:p-8">
