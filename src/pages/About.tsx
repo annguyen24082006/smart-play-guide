@@ -4,22 +4,27 @@ import { Link } from 'react-router-dom';
 export default function About() {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-rose-50 via-stone-50 to-amber-50 overflow-hidden">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-rose-200/30 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      {/* Hero section với ảnh nền mới */}
+      <section 
+        className="relative py-24 bg-cover bg-center bg-no-repeat overflow-hidden"
+        style={{ backgroundImage: "url('/about_us.png')" }}
+      >
+        {/* Lớp phủ mờ sáng nhẹ giúp chữ nổi bật và dễ đọc hơn trên nền ảnh */}
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-rose-600 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 text-rose-600 rounded-full text-sm font-medium mb-6 backdrop-blur-sm shadow-sm">
               <Heart className="w-4 h-4" />
               Về chúng tôi
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-6 drop-shadow-sm">
               Câu chuyện đằng sau chiến dịch
             </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed">
+            <p className="text-lg text-neutral-700 leading-relaxed font-medium">
               Website đóng vai trò như một bộ lọc nội dung thông minh và cẩm nang kết nối gia đình.
-  Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự,
-  không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
+              Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự,
+              không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
             </p>
           </div>
         </div>
@@ -53,20 +58,20 @@ export default function About() {
                 Chúng tôi là ai?
               </h2>
               <div className="space-y-4 text-neutral-600 leading-relaxed">
-              <p>
-  Chúng tôi là nhóm sinh viên Marketing của môn học Digital Marketing, Khoa Quản trị Kinh doanh
-  và Du lịch, Trường Đại học Hà Nội, xây dựng nội dung giáo dục và kết nối gia đình.
-  Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông —
-  để tạo nên một chiến dịch gần gũi và thực tế.
-</p>
-<p>
-  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình.
-  Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
-</p>
-<p>
-  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> —
-  một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
-</p>
+                <p>
+                  Chúng tôi là nhóm sinh viên Marketing của môn học Digital Marketing, Khoa Quản trị Kinh doanh
+                  và Du lịch, Trường Đại học Hà Nội, xây dựng nội dung giáo dục và kết nối gia đình.
+                  Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông —
+                  để tạo nên một chiến dịch gần gũi và thực tế.
+                </p>
+                <p>
+                  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình.
+                  Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
+                </p>
+                <p>
+                  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> —
+                  một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
+                </p>
               </div>
 
               <div className="mt-8 grid grid-cols-2 gap-4">
