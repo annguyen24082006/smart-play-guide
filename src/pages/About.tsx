@@ -6,7 +6,7 @@ const aboutImage = '/about_us.png';
 export default function About() {
   return (
     <div>
-      {/* Hero Header - Thiết kế lớp phủ sáng đồng bộ với Home */}
+      {/* Hero Header */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-stone-100">
         <div className="absolute inset-0">
           <img
@@ -14,7 +14,6 @@ export default function About() {
             alt="Smart Play Guide - Về chúng tôi"
             className="w-full h-full object-cover object-center"
           />
-          {/* Lớp phủ dải màu trắng mờ giống chuẩn trang Home */}
           <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent" />
         </div>
 
@@ -40,8 +39,8 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
-                src="https://images.pexels.com/photos/39190489/pexels-photo-39190489.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                alt="Nhóm thực hiện chiến dịch"
+                src="/team.jpg"
+                alt="Đội ngũ Smart Play Guide"
                 className="rounded-3xl shadow-xl w-full object-cover"
               />
               <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-xl p-5 hidden sm:block border border-neutral-100">
