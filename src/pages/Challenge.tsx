@@ -143,7 +143,6 @@ export default function Challenge() {
     }
 
     const familyName = participantName.trim();
-    // Mỗi trò chỉ tính điểm 1 lần / gia đình
     setEarned(!completedDays.has(activeDay));
     try {
       localStorage.setItem(FAMILY_KEY, familyName);
@@ -236,31 +235,26 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Banner với ảnh nền challenge */}
-      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32">
+      {/* Hero Header thiết kế tươi sáng, dùng ảnh challenge.png chuẩn phong cách Blog */}
+      <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
+        {/* Ảnh nền phủ tự nhiên */}
         <div className="absolute inset-0 z-0">
           <img
             src="/challenge.png"
-            alt="Smart Play Guide - Challenge 14 Ngày"
-            className="w-full h-full object-cover object-center"
-            onError={(e) => {
-              // Dự phòng trường hợp ảnh là file .jpg
-              const target = e.target as HTMLImageElement;
-              if (!target.src.endsWith('.jpg')) {
-                target.src = '/challenge.jpg';
-              }
-            }}
+            alt="Smart Play Guide - Challenge"
+            className="w-full h-full object-cover object-right-bottom"
           />
         </div>
 
+        {/* Nội dung chữ trên nền ảnh - Hoàn toàn trong suốt, không dùng thẻ card bao bên ngoài */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white/60 shadow-xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-100/90 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
-              <Trophy className="w-4 h-4 text-amber-600" />
+          <div className="max-w-xl bg-transparent p-0 shadow-none border-none">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
+              <Trophy className="w-4 h-4 text-amber-500" />
               Thử thách 14 ngày
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-neutral-900 leading-[1.15] mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
               Tham gia thử thách,
               <br />
               <span className="text-amber-600">nhận thưởng liền tay!</span>
@@ -272,13 +266,13 @@ export default function Challenge() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
-                <Calendar className="w-5 h-5 text-amber-500" />
-                <span className="text-sm font-semibold text-neutral-700">2 tuần — 14 ngày</span>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
+                <Calendar className="w-4 h-4 text-amber-500" />
+                2 tuần — 14 ngày
               </div>
-              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
-                <Gift className="w-5 h-5 text-rose-500" />
-                <span className="text-sm font-semibold text-neutral-700">Giải thưởng độc đáo</span>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
+                <Gift className="w-4 h-4 text-rose-500" />
+                Giải thưởng độc đáo
               </div>
             </div>
           </div>
