@@ -275,7 +275,7 @@ export default function Challenge() {
               <img
                 src="/challenge.png"
                 alt="Smart Play Guide - Challenge"
-                className="w-full max-w-xs sm:max-w-sm lg:max-w-md h-64 sm:h-72 lg:h-80 object-cover rounded-3xl shadow-sm"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-full h-auto object-contain drop-shadow-sm"
               />
             </div>
 
