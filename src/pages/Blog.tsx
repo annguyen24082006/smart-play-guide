@@ -67,19 +67,31 @@ export default function Blog() {
   };
 
   return (
-    <div>
-      <section className="relative py-24 bg-gradient-to-br from-stone-100 via-amber-50 to-teal-50 overflow-hidden">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-amber-200/30 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-amber-600 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-              <Newspaper className="w-4 h-4" />
-              Blog
+    <div className="bg-[#FAF8F5] min-h-screen">
+      {/* Hero Header thiết kế tươi sáng, dùng ảnh blog.png chuẩn phong cách About Us */}
+      <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
+        {/* Ảnh nền phủ tự nhiên */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/blog.png"
+            alt="Smart Play Guide - Blog"
+            className="w-full h-full object-cover object-right-bottom"
+          />
+        </div>
+
+        {/* Nội dung chữ trên nền ảnh */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
+              <Newspaper className="w-4 h-4 text-amber-500" />
+              Smart Play Guide · Blog
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-6">
+            
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
               Bài viết từ chiến dịch
             </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed">
+            
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
               Chia sẻ kiến thức, kinh nghiệm và câu chuyện về việc kết nối cùng con.
               Các bài viết được nhóm thực hiện nghiên cứu và biên soạn kỹ lưỡng.
             </p>
@@ -87,9 +99,10 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      {/* Danh sách bài viết */}
+      <section className="py-16 bg-white relative z-10 border-t border-stone-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Search + filter */}
+          {/* Tìm kiếm & Lọc category */}
           <div className="flex flex-col lg:flex-row gap-4 mb-12">
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
@@ -129,7 +142,7 @@ export default function Blog() {
             </div>
           ) : (
             <>
-              {/* Featured post */}
+              {/* Bài viết nổi bật (Featured Post) */}
               {featuredPost && (
                 <Link
                   to={`/blog/${featuredPost.slug}`}
@@ -174,7 +187,7 @@ export default function Blog() {
                 </Link>
               )}
 
-              {/* Rest posts */}
+              {/* Các bài viết khác */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {restPosts.map((post) => (
                   <Link
