@@ -68,6 +68,10 @@ export default function Challenge() {
   const [uploadError, setUploadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
+  // Lấy đường dẫn base động để khớp với cấu hình deploy trên Vite/GitHub Pages
+  const baseUrl = import.meta.env.BASE_URL || '/';
+  const heroBgImagePath = `${baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'}challenge.png`;
+
   const fetchPhotos = useCallback(async () => {
     const { data, error } = await supabase
       .from('challenge_photos')
@@ -143,7 +147,6 @@ export default function Challenge() {
     }
 
     const familyName = participantName.trim();
-    // Mỗi trò chỉ tính điểm 1 lần / gia đình
     setEarned(!completedDays.has(activeDay));
     try {
       localStorage.setItem(FAMILY_KEY, familyName);
@@ -236,25 +239,25 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Banner với ảnh nền challenge */}
-      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32">
+      {/* Hero Banner với đường dẫn ảnh tối ưu */}
+      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32 bg-amber-900/10">
         <div className="absolute inset-0 z-0">
           <img
-            src="/challenge.png"
+            src={heroBgImagePath}
             alt="Smart Play Guide - Challenge 14 Ngày"
             className="w-full h-full object-cover object-center"
             onError={(e) => {
-              // Dự phòng trường hợp ảnh là file .jpg
+              // Xử lý fallback nếu định dạng là .jpg hoặc lỗi đường dẫn
               const target = e.target as HTMLImageElement;
               if (!target.src.endsWith('.jpg')) {
-                target.src = '/challenge.jpg';
+                target.src = heroBgImagePath.replace('.png', '.jpg');
               }
             }}
           />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white/60 shadow-xl">
+          <div className="max-w-2xl bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white/80 shadow-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-100/90 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
               <Trophy className="w-4 h-4 text-amber-600" />
               Thử thách 14 ngày
