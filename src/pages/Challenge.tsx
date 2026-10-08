@@ -235,13 +235,13 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Header thiết kế tươi sáng, thu nhỏ hình minh họa gọn gàng giống trang Blog */}
-      <section className="relative w-full overflow-hidden bg-[#FAF8F5] pt-8 pb-16 sm:pt-12 sm:pb-20">
+      {/* Hero Header thiết kế tươi sáng, ảnh phóng to chuẩn phong cách trang Về chúng tôi */}
+      <section className="relative w-full overflow-hidden bg-[#FAF8F5] pt-8 pb-12 sm:pt-12 sm:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <div className="flex flex-col lg:flex-row items-end justify-between gap-8 lg:gap-12">
             
             {/* Cột chữ bên trái */}
-            <div className="w-full lg:w-3/5 z-10">
+            <div className="w-full lg:w-1/2 z-10 pb-4">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
                 <Trophy className="w-4 h-4 text-amber-500" />
                 Thử thách 14 ngày
@@ -270,12 +270,12 @@ export default function Challenge() {
               </div>
             </div>
 
-            {/* Cột hình ảnh bên phải */}
-            <div className="w-full lg:w-2/5 flex justify-center lg:justify-end">
+            {/* Cột hình ảnh bên phải - Phóng to hiển thị trực tiếp chuẩn trang Về chúng tôi */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-end self-end mt-4 lg:mt-0">
               <img
                 src="/challenge.png"
                 alt="Smart Play Guide - Challenge"
-                className="w-full max-w-sm sm:max-w-md lg:max-w-full h-auto object-contain drop-shadow-sm"
+                className="w-full max-w-md sm:max-w-lg lg:max-w-2xl h-auto object-contain object-bottom"
               />
             </div>
 
