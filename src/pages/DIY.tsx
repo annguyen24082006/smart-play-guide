@@ -115,20 +115,29 @@ export default function DIY() {
   const [open, setOpen] = useState<(typeof activities)[number] | null>(null);
 
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative py-24 bg-gradient-to-br from-teal-50 via-stone-50 to-emerald-50 overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-teal-200/30 rounded-full blur-3xl translate-x-1/3 translate-y-1/4" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-teal-600 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-              <Palette className="w-4 h-4" />
+    <div className="bg-[#FAF8F5] min-h-screen">
+      {/* Hero với ảnh nền DIY.png */}
+      <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/DIY.png"
+            alt="Smart Play Guide - DIY Hoạt động cùng con"
+            className="w-full h-full object-cover object-right-bottom"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-teal-700 border border-teal-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
+              <Palette className="w-4 h-4 text-teal-600" />
               Hoạt động cùng con
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-6">
+
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
               DIY — Sáng tạo cùng con mỗi ngày
             </h1>
-            <p className="text-lg text-neutral-600 leading-relaxed">
+
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
               Những hoạt động thủ công đơn giản, vui vẻ và đầy ý nghĩa.
               Không cần dụng cụ phức tạp, chỉ cần ba mẹ, con, và một chút tưởng tượng.
             </p>
@@ -137,7 +146,7 @@ export default function DIY() {
       </section>
 
       {/* Activities by level */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white relative z-10 border-t border-stone-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {levels.map((lv) => (
             <div key={lv.id}>
