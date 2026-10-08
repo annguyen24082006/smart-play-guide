@@ -1,30 +1,35 @@
 import { Heart, Users, Target, Monitor, Gamepad2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Đường dẫn trỏ tới file about_us.png trong thư mục public
+const aboutImage = '/about_us.png';
+
 export default function About() {
   return (
     <div>
-      {/* Hero section với ảnh nền mới */}
-      <section 
-        className="relative py-24 bg-cover bg-center bg-no-repeat overflow-hidden"
-        style={{ backgroundImage: "url('/about_us.png')" }}
-      >
-        {/* Lớp phủ mờ sáng nhẹ giúp chữ nổi bật và dễ đọc hơn trên nền ảnh */}
-        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
+      {/* Hero Header - Thiết kế tràn viền tối màu */}
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-neutral-900 text-white">
+        <div className="absolute inset-0">
+          <img
+            src={aboutImage}
+            alt="Smart Play Guide - Về chúng tôi"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Lớp phủ mờ giúp giữ độ rõ nét cho văn bản */}
+          <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/80 via-neutral-900/50 to-transparent" />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 text-rose-600 rounded-full text-sm font-medium mb-6 backdrop-blur-sm shadow-sm">
-              <Heart className="w-4 h-4" />
-              Về chúng tôi
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
+          <div className="max-w-2xl animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-full text-sm font-medium mb-6 backdrop-blur-md">
+              <Heart className="w-4 h-4 text-rose-400" />
+              Smart Play Guide · Về chúng tôi
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 leading-tight mb-6 drop-shadow-sm">
-              Câu chuyện đằng sau chiến dịch
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] mb-6 drop-shadow-sm">
+              Câu chuyện đằng sau <span className="text-rose-400">chiến dịch</span>
             </h1>
-            <p className="text-lg text-neutral-700 leading-relaxed font-medium">
-              Website đóng vai trò như một bộ lọc nội dung thông minh và cẩm nang kết nối gia đình.
-              Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự,
-              không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
+            <p className="text-lg sm:text-xl text-neutral-200 leading-relaxed max-w-xl">
+              Website đóng vai trò như một bộ lọc nội dung thông minh và cẩm nang kết nối gia đình. Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự, không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
             </p>
           </div>
         </div>
@@ -40,7 +45,7 @@ export default function About() {
                 alt="Nhóm thực hiện chiến dịch"
                 className="rounded-3xl shadow-xl w-full object-cover"
               />
-              <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-xl p-5 hidden sm:block">
+              <div className="absolute -bottom-5 -right-5 bg-white rounded-2xl shadow-xl p-5 hidden sm:block border border-neutral-100">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-xl bg-rose-100 flex items-center justify-center">
                     <Users className="w-6 h-6 text-rose-500" />
@@ -59,18 +64,13 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-neutral-600 leading-relaxed">
                 <p>
-                  Chúng tôi là nhóm sinh viên Marketing của môn học Digital Marketing, Khoa Quản trị Kinh doanh
-                  và Du lịch, Trường Đại học Hà Nội, xây dựng nội dung giáo dục và kết nối gia đình.
-                  Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông —
-                  để tạo nên một chiến dịch gần gũi và thực tế.
+                  Chúng tôi là nhóm sinh viên Marketing của môn học Digital Marketing, Khoa Quản trị Kinh doanh và Du lịch, Trường Đại học Hà Nội, xây dựng nội dung giáo dục và kết nối gia đình. Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông — để tạo nên một chiến dịch gần gũi và thực tế.
                 </p>
                 <p>
-                  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình.
-                  Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
+                  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình. Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
                 </p>
                 <p>
-                  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> —
-                  một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
+                  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> — một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
                 </p>
               </div>
 
@@ -116,9 +116,7 @@ export default function About() {
                 Hướng dẫn cho trực tuyến
               </h3>
               <p className="text-neutral-600 leading-relaxed mb-6">
-                Những nội dung hướng dẫn ba mẹ thiết lập giới hạn ứng dụng, quản lý thời gian sử dụng thiết bị,
-                và hướng dẫn con sử dụng các ứng dụng trực tuyến một cách an toàn, có chủ đích.
-                Giúp con tận dụng công nghệ mà không bị phụ thuộc.
+                Những nội dung hướng dẫn ba mẹ thiết lập giới hạn ứng dụng, quản lý thời gian sử dụng thiết bị, và hướng dẫn con sử dụng các ứng dụng trực tuyến một cách an toàn, có chủ đích. Giúp con tận dụng công nghệ mà không bị phụ thuộc.
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start gap-2 text-sm text-neutral-600">
@@ -147,12 +145,10 @@ export default function About() {
                 <Gamepad2 className="w-7 h-7 text-teal-600" />
               </div>
               <h3 className="text-2xl font-bold text-neutral-800 mb-3">
-                Hoạt động sáng tạo 
+                Hoạt động sáng tạo
               </h3>
               <p className="text-neutral-600 leading-relaxed mb-6">
-                Những hoạt động chơi và sáng tạo không cần màn hình — DIY, vẽ, làm đồ thủ công,
-                trò chơi vận động và tương tác trực tiếp giữa ba mẹ và con.
-                Mỗi hoạt động đều được thiết kế để khơi gợi trí tưởng tượng và tình cảm gia đình.
+                Những hoạt động chơi và sáng tạo không cần màn hình — DIY, vẽ, làm đồ thủ công, trò chơi vận động và tương tác trực tiếp giữa ba mẹ và con. Mỗi hoạt động đều được thiết kế để khơi gợi trí tưởng tượng và tình cảm gia đình.
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start gap-2 text-sm text-neutral-600">
