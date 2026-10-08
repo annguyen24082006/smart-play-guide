@@ -143,6 +143,7 @@ export default function Challenge() {
     }
 
     const familyName = participantName.trim();
+    // Mỗi trò chỉ tính điểm 1 lần / gia đình
     setEarned(!completedDays.has(activeDay));
     try {
       localStorage.setItem(FAMILY_KEY, familyName);
@@ -235,50 +236,51 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Header thiết kế tươi sáng, ảnh phóng to chuẩn phong cách trang Về chúng tôi */}
-      <section className="relative w-full overflow-hidden bg-[#FAF8F5] pt-8 pb-12 sm:pt-12 sm:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-end justify-between gap-8 lg:gap-12">
-            
-            {/* Cột chữ bên trái */}
-            <div className="w-full lg:w-1/2 z-10 pb-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
-                <Trophy className="w-4 h-4 text-amber-500" />
-                Thử thách 14 ngày
-              </div>
+      {/* Hero Banner với ảnh nền challenge */}
+      <section className="relative w-full overflow-hidden pt-16 pb-24 sm:pt-20 sm:pb-32">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/challenge.png"
+            alt="Smart Play Guide - Challenge 14 Ngày"
+            className="w-full h-full object-cover object-center"
+            onError={(e) => {
+              // Dự phòng trường hợp ảnh là file .jpg
+              const target = e.target as HTMLImageElement;
+              if (!target.src.endsWith('.jpg')) {
+                target.src = '/challenge.jpg';
+              }
+            }}
+          />
+        </div>
 
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-                Tham gia thử thách,
-                <br />
-                <span className="text-amber-600">nhận thưởng liền tay!</span>
-              </h1>
-
-              <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6 max-w-xl">
-                Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
-                Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
-                  <Calendar className="w-4 h-4 text-amber-500" />
-                  2 tuần — 14 ngày
-                </div>
-                <div className="flex items-center gap-2 bg-white rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
-                  <Gift className="w-4 h-4 text-rose-500" />
-                  Giải thưởng độc đáo
-                </div>
-              </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl bg-white/80 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white/60 shadow-xl">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-amber-100/90 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+              <Trophy className="w-4 h-4 text-amber-600" />
+              Thử thách 14 ngày
             </div>
 
-            {/* Cột hình ảnh bên phải - Phóng to hiển thị trực tiếp chuẩn trang Về chúng tôi */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-end self-end mt-4 lg:mt-0">
-              <img
-                src="/challenge.png"
-                alt="Smart Play Guide - Challenge"
-                className="w-full max-w-md sm:max-w-lg lg:max-w-2xl h-auto object-contain object-bottom"
-              />
-            </div>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-neutral-900 leading-[1.15] mb-4 tracking-tight">
+              Tham gia thử thách,
+              <br />
+              <span className="text-amber-600">nhận thưởng liền tay!</span>
+            </h1>
 
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
+              Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
+              Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
+                <Calendar className="w-5 h-5 text-amber-500" />
+                <span className="text-sm font-semibold text-neutral-700">2 tuần — 14 ngày</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 border border-neutral-100 shadow-sm">
+                <Gift className="w-5 h-5 text-rose-500" />
+                <span className="text-sm font-semibold text-neutral-700">Giải thưởng độc đáo</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
