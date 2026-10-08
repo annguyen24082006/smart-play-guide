@@ -9,8 +9,8 @@ type BlogPost = {
   slug: string;
   excerpt: string;
   cover_image: string | null;
-  author: string;
-  category: string;
+  author?: string | null;
+  category?: string | null;
   created_at: string;
 };
 
@@ -47,10 +47,15 @@ export default function Blog() {
     fetchPosts();
   }, [fetchPosts]);
 
-  const categories = ['Tất cả', ...Array.from(new Set(posts.map((p) => p.category)))];
+  // Lọc lấy danh sách category hợp lệ, tránh null/undefined
+  const categories = [
+    'Tất cả',
+    ...Array.from(new Set(posts.map((p) => p.category).filter((c): c is string => Boolean(c))))
+  ];
 
   const filteredPosts = posts.filter((post) => {
-    const matchesCategory = activeCategory === 'Tất cả' || post.category === activeCategory;
+    const postCategory = post.category || 'Chung';
+    const matchesCategory = activeCategory === 'Tất cả' || postCategory === activeCategory;
     const matchesSearch =
       !searchQuery.trim() ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -68,9 +73,8 @@ export default function Blog() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Header thiết kế tươi sáng, dùng ảnh blog.png chuẩn phong cách About Us */}
+      {/* Hero Header */}
       <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
-        {/* Ảnh nền phủ tự nhiên */}
         <div className="absolute inset-0 z-0">
           <img
             src="/blog.png"
@@ -79,7 +83,6 @@ export default function Blog() {
           />
         </div>
 
-        {/* Nội dung chữ trên nền ảnh */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
@@ -164,8 +167,8 @@ export default function Blog() {
                     </div>
                     <div className="p-8 lg:p-10 flex flex-col justify-center bg-white">
                       <div className="flex items-center gap-3 mb-4">
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${categoryColors[featuredPost.category] || 'bg-neutral-100 text-neutral-600'}`}>
-                          {featuredPost.category}
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${categoryColors[featuredPost.category || ''] || 'bg-neutral-100 text-neutral-600'}`}>
+                          {featuredPost.category || 'Chung'}
                         </span>
                         <span className="text-xs text-neutral-400 flex items-center gap-1">
                           <Calendar className="w-3.5 h-3.5" />
@@ -177,7 +180,9 @@ export default function Blog() {
                       </h2>
                       <p className="text-neutral-600 leading-relaxed mb-6">{featuredPost.excerpt}</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-neutral-500">Bởi {featuredPost.author}</span>
+                        <span className="text-sm text-neutral-500">
+                          Bởi {featuredPost.author || 'Nhóm Kết nối cùng con'}
+                        </span>
                         <span className="inline-flex items-center gap-1 text-amber-600 font-semibold text-sm group-hover:gap-2 transition-all">
                           Đọc tiếp <ArrowRight className="w-4 h-4" />
                         </span>
@@ -210,8 +215,8 @@ export default function Blog() {
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${categoryColors[post.category] || 'bg-neutral-100 text-neutral-600'}`}>
-                          {post.category}
+                        <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${categoryColors[post.category || ''] || 'bg-neutral-100 text-neutral-600'}`}>
+                          {post.category || 'Chung'}
                         </span>
                         <span className="text-xs text-neutral-400 flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
