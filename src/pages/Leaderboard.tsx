@@ -79,17 +79,31 @@ export default function Leaderboard() {
 
   return (
     <div>
-      <section className="relative py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-teal-50 overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 text-center relative">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-amber-700 rounded-full text-sm font-bold mb-5">
-            <Trophy className="w-4 h-4" /> Bảng xếp hạng
+      {/* Hero Header - Đồng bộ lớp phủ sáng với Home & About */}
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-stone-100">
+        <div className="absolute inset-0">
+          <img
+            src="/top.png"
+            alt="Smart Play Guide - Bảng xếp hạng"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Lớp phủ dải màu trắng mờ chuẩn trang Home & About */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
+          <div className="max-w-2xl animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-amber-600 border border-amber-200/80 rounded-full text-sm font-medium mb-6 shadow-sm backdrop-blur-md">
+              <Trophy className="w-4 h-4 text-amber-500" />
+              Smart Play Guide · Bảng xếp hạng
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-800 leading-[1.15] mb-6">
+              Gia đình bạn đang <span className="text-rose-500">ở đâu?</span>
+            </h1>
+            <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-xl font-medium">
+              Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-rose-500">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
+            </p>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-neutral-800 mb-3">
-            Gia đình bạn đang <span className="text-teal-500">ở đâu?</span>
-          </h1>
-          <p className="text-neutral-600 max-w-xl mx-auto">
-            Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-orange-600">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
-          </p>
         </div>
       </section>
 
