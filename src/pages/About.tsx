@@ -7,28 +7,26 @@ const aboutImage = '/about_us.png';
 export default function About() {
   return (
     <div>
-      {/* Hero Header - Thiết kế tràn viền tối màu */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-neutral-900 text-white">
+      {/* Hero Header - Thiết kế nền sáng tự nhiên theo ảnh gốc */}
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-emerald-50/30 text-neutral-800">
         <div className="absolute inset-0">
           <img
             src={aboutImage}
             alt="Smart Play Guide - Về chúng tôi"
             className="w-full h-full object-cover object-center"
           />
-          {/* Lớp phủ mờ giúp giữ độ rõ nét cho văn bản */}
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/80 via-neutral-900/50 to-transparent" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
           <div className="max-w-2xl animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-full text-sm font-medium mb-6 backdrop-blur-md">
-              <Heart className="w-4 h-4 text-rose-400" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 text-emerald-700 border border-emerald-200/60 rounded-full text-sm font-medium mb-6 shadow-sm backdrop-blur-md">
+              <Heart className="w-4 h-4 text-emerald-500" />
               Smart Play Guide · Về chúng tôi
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] mb-6 drop-shadow-sm">
-              Câu chuyện đằng sau <span className="text-rose-400">chiến dịch</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.15] mb-6 text-neutral-900">
+              Câu chuyện đằng sau <span className="text-orange-500">chiến dịch</span>
             </h1>
-            <p className="text-lg sm:text-xl text-neutral-200 leading-relaxed max-w-xl">
+            <p className="text-lg sm:text-xl text-neutral-700 leading-relaxed max-w-xl font-medium">
               Website đóng vai trò như một bộ lọc nội dung thông minh và cẩm nang kết nối gia đình. Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự, không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
             </p>
           </div>
