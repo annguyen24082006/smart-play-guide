@@ -27,7 +27,7 @@ export default function About() {
               Câu chuyện đằng sau <span className="text-rose-500">chiến dịch</span>
             </h1>
             <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed max-w-xl font-medium">
-              Website đóng vai trò như một bộ lọc nội dung thông minh và cẩm nang kết nối gia đình. Chiến dịch này ra đời từ mong muốn giúp các gia đình tìm lại sự kết nối thật sự, không qua màn hình mà qua những khoảnh khắc chung tay sáng tạo.
+              Đằng sau Smart Play Guide là 7 bạn trẻ cùng chung một mong muốn: mang đến thật nhiều niềm vui cho bé và những khoảnh khắc gắn kết cho cả gia đình. 💛 Cùng chúng mình khám phá câu chuyện và những con người đã tạo nên chiến dịch này nhé!
             </p>
           </div>
         </div>
@@ -58,17 +58,17 @@ export default function About() {
 
             <div>
               <h2 className="text-3xl font-bold text-neutral-800 mb-6">
-                Chúng tôi là ai?
+                Làm quen với chúng mình nhé!
               </h2>
               <div className="space-y-4 text-neutral-600 leading-relaxed">
                 <p>
-                  Chúng tôi là nhóm sinh viên Marketing của môn học Digital Marketing, Khoa Quản trị Kinh doanh và Du lịch, Trường Đại học Hà Nội, xây dựng nội dung giáo dục và kết nối gia đình. Mỗi thành viên đều mang đến góc nhìn riêng — từ thiết kế, tâm lý học trẻ em, đến truyền thông — để tạo nên một chiến dịch gần gũi và thực tế.
+                  Chúng mình là nhóm 7 sinh viên Marketing, Khoa Quản trị Kinh doanh và Du lịch, Trường Đại học Hà Nội. 💛 Với những góc nhìn và thế mạnh riêng, chúng mình cùng nhau tạo nên Smart Play Guide – một chiến dịch giúp bố mẹ và bé có thêm nhiều ý tưởng vui chơi, sáng tạo và gắn kết bên nhau.
                 </p>
                 <p>
-                  Chúng tôi không chỉ tạo ra hướng dẫn, mà còn đồng hành cùng các gia đình trong suốt hành trình. Mọi nội dung đều được nghiên cứu kỹ lưỡng và thử nghiệm thực tế trước khi chia sẻ.
+                  Chúng mình không chỉ chia sẻ những hướng dẫn hữu ích mà còn mong muốn trở thành người bạn đồng hành cùng gia đình. Mỗi nội dung đều được chúng mình tìm hiểu và chuẩn bị cẩn thận trước khi gửi đến bố mẹ và các bé.
                 </p>
                 <p>
-                  Niềm tin cốt lõi của chúng tôi: <strong className="text-neutral-800">kết nối thật sự bắt đầu từ những điều nhỏ nhất</strong> — một phút cùng vẽ, một giờ cùng làm đồ thủ công, một buổi tối không màn hình.
+                  7 người chúng mình tin rằng, những khoảnh khắc gắn kết tuyệt vời đôi khi bắt đầu từ những điều thật giản dị: cùng nhau vẽ một bức tranh, làm một món đồ thủ công hay dành một buổi tối để vui chơi bên nhau mà không cần đến màn hình. 
                 </p>
               </div>
 
