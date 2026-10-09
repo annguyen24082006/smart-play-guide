@@ -30,7 +30,7 @@ const posts: BlogPostData[] = [
   {
     id: 'bai-1',
     title: 'Hướng Dẫn Cách Quản Lý Thời Gian Sử Dụng Máy Tính Cho Con Chi Tiết Từ A Đến Z',
-    slug: 'huong-dan-quan-ly-thoi-gian-su-dung-may-tinh-cho-con',
+    slug: 'quan-ly-thoi-gian-dung-may-tinh',
     excerpt: 'Hướng dẫn cách quản lý thời gian sử dụng máy tính cho con một cách khoa học, an toàn thông qua tính năng Microsoft Family Safety trên Windows.',
     content: `
       Trong thời đại công nghệ số phát triển vượt bậc, máy tính và Internet đã trở thành những công cụ học tập, giải trí không thể thiếu đối với trẻ em. Việc tiếp cận sớm với thiết bị công nghệ giúp các con mở rộng tri thức, rèn luyện tư duy logic và tiếp cận với các phương pháp giáo dục hiện đại. Tuy nhiên, mặt trái của nó cũng mang lại vô vàn mối lo toan cho các bậc phụ huynh: con dễ sa đà vào các trò chơi điện tử, tiếp xúc với các nội dung độc hại hoặc ngồi trước màn hình quá nhiều giờ liền, gây ảnh hưởng nghiêm trọng đến sức khỏe thể chất lẫn tinh thần.
