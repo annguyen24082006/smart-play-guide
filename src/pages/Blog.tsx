@@ -71,12 +71,12 @@ export default function Blog() {
             </div>
             
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Bài viết từ chiến dịch
+              Góc nhỏ đồng hành cùng ba mẹ
             </h1>
             
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
-              Chia sẻ kiến thức, kinh nghiệm và câu chuyện về việc kết nối cùng con.
-              Các bài viết được nhóm thực hiện nghiên cứu và biên soạn kỹ lưỡng.
+              Những kiến thức hay, kinh nghiệm bổ ích và câu chuyện nhỏ về hành trình kết nối cùng con đều được chúng mình tìm hiểu thật kỹ, chọn lọc cẩn thận rồi chia sẻ đến ba mẹ bằng tất cả sự chăm chút.
+              Mong rằng mỗi bài viết sẽ mang đến cho ba mẹ những điều thật hữu ích trên hành trình đồng hành cùng con! 
             </p>
           </div>
         </div>
