@@ -90,7 +90,7 @@ export default function Leaderboard() {
 
         {/* Nội dung chữ trên nền ảnh */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-xl">
+          <div className="max-w-2x1">
             {/* Tag / Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
               <Trophy className="w-4 h-4 text-amber-500 fill-amber-500" />
@@ -99,8 +99,8 @@ export default function Leaderboard() {
             
             {/* Tiêu đề chính - Đã sửa lỗi đè chữ "ở đâu?" */}
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Cùng xem nhà mình đang <br />
-              <span className="text-[#E07A5F] inline-block mt-1">ở vị trí nào nhé!</span>
+              Cùng xem nhà mình <br />
+              <span className="text-[#E07A5F] inline-block mt-1"> đang ở vị trí nào nhé!</span>
             </h1>
             
             {/* Mô tả */}
