@@ -156,6 +156,17 @@ const posts: BlogPostData[] = [
       **Kết Luận**
 
       Việc quản lý thời gian sử dụng máy tính cho con không phải là rào cản ngăn con tiếp cận tri thức công nghệ, mà chính là chiếc "đai an toàn" giúp con trưởng thành một cách lành mạnh và vững vàng trên không gian mạng. Bằng việc kết hợp hài hòa giữa công cụ quản lý an toàn Microsoft Family Safety và sự đồng hành, chia sẻ từ cha mẹ, bạn hoàn toàn có thể giúp con hình thành thói quen sử dụng công nghệ văn minh, hiệu quả.
+
+      **Để Hiểu Rõ Hơn Các Bước, Mẹ Hãy Ấn Vào Video Hướng Dẫn Chi Tiết Dưới Đây:**
+
+      Xem Video Hướng Dẫn Quản Lý Thời Gian Dùng Máy Tính Cho Con Tại Đây: https://www.youtube.com/watch?v=X_4oqK5GEVo
+
+      **Khám Phá Thêm Các Nội Dung Hữu Ích Khác**
+
+      Đừng bỏ lỡ các bài viết và video hướng dẫn tiếp theo của chúng tôi để trang bị thêm nhiều kiến thức bổ ích trong việc chăm sóc và giáo dục con cái:
+
+      - Xem tiếp: Các giải pháp bảo vệ con an toàn trên không gian mạng (https://www.youtube.com/watch?v=X_4oqK5GEVo)
+      - Xem tiếp: Hướng dẫn thiết lập an toàn cho trẻ trên kênh YouTube (https://www.youtube.com/watch?v=En9pqC58ZcE)
     `,
     cover_image: null,
     author: 'Smart Play Guide',
