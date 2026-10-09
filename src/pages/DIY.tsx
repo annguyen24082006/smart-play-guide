@@ -31,32 +31,160 @@ const toEmbed = (url: string) => {
 };
 
 const activities = [
-  {
-    icon: Paintbrush,
-    title: 'Vẽ tranh cùng con',
-    level: 'easy' as Level,
-    steps: ["Trải giấy, đặt màu và cọ ra bàn; cho con mặc áo cũ.", "Cùng chọn chủ đề: ngôi nhà, bữa cơm, chuyến đi chơi của cả nhà.", "Con vẽ nhân vật chính, ba mẹ vẽ thêm bối cảnh (hoặc ngược lại).", "Tô màu, ký tên cả nhà rồi đặt tên cho bức tranh."],
-    videoUrl: '',
-    videoQuery: 'vẽ tranh cùng con cho bé màu nước',
-    desc: 'Dùng màu nước hoặc màu sáp để vẽ một bức tranh về chủ đề gia đình. Không cần vẽ đẹp, chỉ cần vẽ thật.',
-    materials: ['Giấy A4', 'Màu nước / màu sáp', 'Cọ vẽ', 'Bút chì'],
-    duration: '30-45 phút',
-    age: '3-12 tuổi',
-    image: 'https://images.pexels.com/photos/6966373/pexels-photo-6966373.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
-  },
-  {
+ {  id: 'ban-bi-lac-carton',
+    category: 'Thủ công & Trò chơi', // Hoặc 'Thủ công & Trò chơi' tùy trang
+    level: 'easy', // ← ĐÂY LÀ PHẦN PHÂN LOẠI: 'easy' (Dễ) | 'medium' (Trung bình/Trò Khá) | 'hard' (Khó/Thử thách)
+    duration: '30 - 45 phút',
+    age: '7-12 tuổi',
+    title: 'Tự làm bàn bi lắc từ hộp carton',
+    description: 'Biến chiếc hộp giấy cũ thành bàn bi lắc mini cực kỳ thú vị, giúp bé rèn luyện phản xạ và có những giờ phút giải trí sôi động cùng gia đình!',
+    image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800',
     icon: Scissors,
-    title: 'Làm thiệp thủ công',
-    level: 'easy' as Level,
-    steps: ["Gấp đôi tờ giấy màu để làm thân thiệp.", "Cắt hình trái tim, hoa hoặc ngôi sao từ giấy màu khác.", "Dán hình lên mặt thiệp và trang trí bằng bút lông.", "Viết lời chúc bên trong và tặng người thân."],
-    videoUrl: '',
-    videoQuery: 'làm thiệp thủ công handmade cho bé',
-    desc: 'Cùng con cắt dán và trang trí một tấm thiệp tặng người thân nhân dịp đặc biệt.',
-    materials: ['Giấy màu', 'Kéo', 'Keo dán', 'Bút lông'],
-    duration: '20-40 phút',
-    age: '4-12 tuổi',
-    image: 'https://images.pexels.com/photos/7869798/pexels-photo-7869798.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    iconColor: 'bg-amber-500',
+    steps: [],
+    sections: [
+      {
+        heading: 'Chuẩn bị dụng cụ trước khi bắt đầu',
+        intro: 'Để làm được chiếc bàn bi lắc thật đẹp và chắc chắn, ba mẹ và bé hãy chuẩn bị đầy đủ các vật liệu đơn giản dưới đây nhé:',
+        bullets: [
+          { text: 'Hộp giấy carton (kích thước khoảng 30cm x 20cm)' },
+          { text: '6 que gỗ tròn (dài khoảng 35cm)' },
+          { text: '12 kẹp gỗ treo quần áo (dùng làm các cầu thủ)' },
+          { text: 'Giấy gói quà & băng keo màu trang trí' },
+          { text: 'Keo sữa hoặc súng bắn keo' },
+          { text: 'Dao rọc giấy, kéo' },
+          { text: 'Thước kẻ, bút marker' },
+          { text: '1 viên bóng nhựa/xốp nhỏ hoặc viên bi' },
+          { label: 'Lưu ý an toàn', text: 'Vì có sử dụng dao rọc giấy và kéo sắc nhọn, ba mẹ nên trực tiếp thực hiện hoặc hỗ trợ bé ở các bước cắt rọc.' },
+        ],
+      },
+      {
+        heading: 'Các bước thực hiện chi tiết',
+        groups: [
+          {
+            title: '✂️ Quy trình 5 bước tạo bàn bi lắc độc đáo:',
+            steps: [
+              { label: 'Bước 1: Đo và đục lỗ', text: 'Đo và đánh dấu các điểm đối xứng trên 2 cạnh dài của hộp carton (mỗi bên 6 lỗ). Dùng dao rọc giấy cẩn thận khoét các lỗ tròn vừa vặn để xỏ que gỗ qua.' },
+              { label: 'Bước 2: Cắt khung thành', text: 'Vẽ hình chữ nhật làm gôn bóng (kích thước 12cm x 7cm) ở chính giữa 2 cạnh ngắn của hộp, sau đó dùng dao rọc giấy cắt trống khung.' },
+              { label: 'Bước 3: Trang trí khung bàn', text: 'Bôi keo sữa và dán giấy gói quà bọc xung quanh toàn bộ thành hộp để bàn bi lắc nhìn rực rỡ và bắt mắt hơn.' },
+              { label: 'Bước 4: Làm tay xoay', text: 'Quấn băng keo màu trang trí quanh 6 que gỗ tròn, sau đó xỏ xuyên qua các lỗ đã đục trên thành thùng carton.' },
+              { label: 'Bước 5: Gắn cầu thủ & Hoàn thiện', text: 'Kẹp các kẹp gỗ vào các que làm cầu thủ (có thể vẽ thêm mặt/áo đấu cho cầu thủ), sau đó thả bóng vào bàn bi lắc và bắt đầu trận đấu ngay thôi!' },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Độ tuổi & Mức độ phù hợp',
+        intro: ''Hoạt động thuộc Trò Dễ, khởi động nhẹ nhàng, hoàn toàn có thể làm xong nhanh chóng. Phù hợp cho trẻ từ 7–12 tuổi (cần người lớn hỗ trợ bước cắt rọc thùng bằng dao rọc giấy).',
+        bullets: [
+          { label: 'Gợi ý mở rộng', text: 'Ba mẹ và bé có thể chia kẹp gỗ thành 2 màu sơn khác nhau để phân biệt 2 đội bóng, giúp trận đấu thêm phần kịch tính!' },
+        ],
+      },
+    ],
+    note: 'Ba mẹ hãy luôn đồng hành và quan sát bé khi sử dụng dao rọc giấy hoặc kéo sắc nhé.',
+    videos: [
+      { id: 'ZxdbvNSNTr4', title: 'Hướng dẫn tự làm bàn bi lắc bằng hộp carton đơn giản tại nhà' },
+    ],
   },
+  {
+    id: 'lam-long-den-giay',
+    category: 'Thủ công & Trò chơi',
+    level: 'easy', // thuộc Trò Dễ
+    duration: '20 - 30 phút',
+    age: '6-10 tuổi',
+    title: 'Cách làm lồng đèn Trung thu bằng giấy A4',
+    description: 'Tự tay làm chiếc lồng đèn giấy xòe xinh xắn có đèn LED lung linh!',
+    image: 'https://img.youtube.com/vi/cLbi6_xFcic/maxresdefault.jpg', // Lấy ảnh thumbnail chính thức của video YouTube
+    icon: Sparkles,
+    iconColor: 'bg-rose-500',
+    steps: [],
+    sections: [
+      {
+        heading: 'Chuẩn bị dụng cụ trước khi bắt đầu',
+        intro: 'Để làm chiếc lồng đèn giấy rực rỡ, ba mẹ và bé hãy chuẩn bị các nguyên liệu đơn giản sau:',
+        bullets: [
+          { text: 'Giấy màu (1 tờ màu đỏ 16cm x 28cm, 1 tờ màu vàng 13cm x 29.7cm)' },
+          { text: 'Giấy trang trí (ngôi sao nhỏ, dải quai xách) & dây tua rua' },
+          { text: 'Ống hút nhựa' },
+          { text: 'Đèn LED nhỏ' },
+          { text: 'Băng keo 2 mặt, keo dán / súng bắn keo' },
+          { text: 'Kéo cắt, thước kẻ, bút chì' },
+          { label: 'Lưu ý an toàn', text: 'Cần người lớn hỗ trợ hoặc quan sát khi bé dùng kéo cắt và súng bắn keo.' },
+        ],
+      },
+      {
+        heading: 'Các bước thực hiện chi tiết',
+        groups: [
+          {
+            title: '🏮 Quy trình 4 bước tạo lồng đèn lung linh:',
+            steps: [
+              { label: 'Bước 1: Làm vỏ ngoài', text: 'Dán băng keo 2 mặt dọc hai mép chiều dài của tờ giấy đỏ, gấp đôi lại, kẻ các đường song song cách nhau 1cm rồi dùng kéo cắt dọc theo nét kẻ (không cắt đứt mép băng keo).' },
+              { label: 'Bước 2: Tạo hình lồng đèn', text: 'Mở tờ giấy đỏ, bẻ gập ngược nếp cắt để tạo độ xòe. Bóc lớp băng keo 2 mặt dán cố định vào hai mép trên/dưới của tờ giấy vàng rồi cuộn tròn thành hình trụ.' },
+              { label: 'Bước 3: Làm giá đỡ đèn', text: 'Cắt các đoạn ống hút nhựa bằng đường kính đáy lồng đèn, dùng keo dán xếp song song bên trong đáy để tạo giá đỡ.' },
+              { label: 'Bước 4: Trang trí & hoàn thiện', text: 'Dán viền vành trên/dưới, dán các ngôi sao nhỏ lên thân lồng đèn, gắn dây tua rua bên dưới, thêm quai xách và đặt đèn LED vào giá đỡ bên trong.' },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Độ tuổi & Mức độ phù hợp',
+        intro: 'Hoạt động thuộc Trò Dễ, khởi động nhẹ nhàng, hoàn toàn có thể làm xong nhanh chóng. Phù hợp cho trẻ từ 6–10 tuổi.',
+      },
+    ],
+    Note: 'Nên cẩn thận khi dùng keo nến/súng bắn keo nóng cùng trẻ.',
+    videos: [
+      { id: 'cLbi6_xFcic', title: 'Cách Làm Lồng Đèn Trung Thu Bằng Giấy A4 Đơn Giản' },
+    ],
+  },
+  {
+    id: 'nuoc-di-bo-bac-cau-mau-sac',
+    category: 'Khoa học & Trò chơi',
+    level: 'easy', // thuộc Trò Dễ
+    duration: '15 - 20 phút',
+    age: '3-10 tuổi',
+    title: 'Nước đi bộ bắc cầu màu sắc',
+    description: 'Thí nghiệm khoa học huyền bí giúp bé quan sát hiện tượng mao dẫn cực kỳ thú vị khi nước màu tự "bò" qua dải giấy!',
+    image: 'https://img.youtube.com/vi/hGwG--GZEfw/maxresdefault.jpg', // Thumbnail video YouTube
+    icon: FlaskConical,
+    iconColor: 'bg-teal-500',
+    steps: [],
+    sections: [
+      {
+        heading: 'Chuẩn bị dụng cụ trước khi bắt đầu',
+        intro: 'Dụng cụ thí nghiệm rất đơn giản và dễ tìm ngay trong căn bếp nhà mình:',
+        bullets: [
+          { text: '5 hoặc 7 chiếc ly nhựa/thủy tinh trong suốt' },
+          { text: 'Khăn giấy ăn loại dai' },
+          { text: 'Màu thực phẩm (đỏ, vàng, xanh dương...)' },
+          { text: 'Nước lọc' },
+        ],
+      },
+      {
+        heading: 'Các bước thực hiện chi tiết',
+        groups: [
+          {
+            title: '🧪 Quy trình 5 bước thực hiện thí nghiệm:',
+            steps: [
+              { label: 'Bước 1: Xếp hàng ly', text: 'Xếp 5 chiếc ly nhựa thành một hàng ngang sát nhau.' },
+              { label: 'Bước 2: Đổ nước xen kẽ', text: 'Rót nước vào ly số 1, ly số 3 và ly số 5 (khoảng 2/3 ly). Giữ ly số 2 và ly số 4 hoàn toàn trống.' },
+              { label: 'Bước 3: Pha màu sắc', text: 'Nhỏ vài giọt màu thực phẩm vào 3 ly có nước (ví dụ: ly 1 màu đỏ, ly 3 màu vàng, ly 5 màu xanh dương) rồi khuấy đều.' },
+              { label: 'Bước 4: Làm cầu dải giấy', text: 'Gấp khăn giấy thành dải dài, uốn hình chữ U ngược. Bắc một đầu dải giấy vào ly có nước, đầu kia thả vào ly trống bên cạnh.' },
+              { label: 'Bước 5: Quan sát phép màu', text: 'Nước màu sẽ tự động "bò" ngược lên dải khăn giấy nhờ hiện tượng mao dẫn, chảy dần sang ly trống và hòa trộn thành các màu mới rực rỡ!' },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'Độ tuổi & Mức độ phù hợp',
+        intro: 'Hoạt động thuộc Trò Dễ, cực kỳ nhẹ nhàng và an toàn, bé có thể tự làm dưới sự quan sát của ba mẹ. Phù hợp cho trẻ từ 3–10 tuổi.',
+      },
+    ],
+    note: 'Ba mẹ có thể cùng bé kiên nhẫn chờ từ 30-60 phút để xem màu sắc pha trộn hoàn toàn trong các ly trống.',
+    videos: [
+      { id: 'hGwG--GZEfw', title: 'Thí nghiệm khoa học Nước đi bộ bắc cầu màu sắc cho bé' },
+    ],
+  },
+  
   {
     icon: Box,
     title: 'Đồ chơi từ hộp giấy',
