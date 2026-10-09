@@ -15,6 +15,7 @@ import {
   Image as ImageIcon,
   Heart,
   Sparkles,
+  Trash2,
 } from 'lucide-react';
 
 type LocalPhoto = {
@@ -26,7 +27,7 @@ type LocalPhoto = {
   created_at: string;
 };
 
-// Cấu hình 10 thử thách mới chuẩn theo điểm số
+// Cấu hình 10 thử thách chuẩn theo điểm số
 const week1 = [
   { day: 1, title: 'Vương quốc côn trùng', desc: 'Cùng con khám phá thế giới côn trùng phong phú xung quanh.', points: 10 },
   { day: 2, title: 'Cá thổi bong bóng', desc: 'Sáng tạo chú cá vui nhộn biết thổi bóng bóng độc đáo.', points: 20 },
@@ -95,7 +96,13 @@ export default function Challenge() {
       return;
     }
     setSelectedFile(file);
-    setPreviewUrl(URL.createObjectURL(file));
+
+    // Đọc ảnh dạng Base64 để lưu vĩnh viễn vào localStorage không bị mất khi F5
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreviewUrl(reader.result as string);
+    };
+    reader.readAsDataURL(file);
     setUploadError('');
   };
 
@@ -132,7 +139,20 @@ export default function Challenge() {
         setUploadSuccess(false);
         closeModal();
       }, 1500);
-    }, 500);
+    }, 400);
+  };
+
+  // Hàm xóa bài đăng / xóa ảnh
+  const handleDeletePhoto = (photoId: string) => {
+    if (window.confirm('Bạn có chắc chắn muốn xóa bài đăng này?')) {
+      const updated = photos.filter((p) => p.id !== photoId);
+      setPhotos(updated);
+      try {
+        localStorage.setItem(LOCAL_PHOTOS_KEY, JSON.stringify(updated));
+      } catch {
+        /* ignore */
+      }
+    }
   };
 
   const closeModal = () => {
@@ -156,7 +176,7 @@ export default function Challenge() {
         }`}
       >
         {isCompleted && (
-          <div className="absolute -top-2 -right-2 w-7 h-7 bg-teal-500 rounded-full flex items-center justify-center shadow-md">
+          <div className="absolute -top-2 -right-2 w-7 h-7 bg-teal-500 rounded-full flex items-center justify-center shadow-md z-10">
             <CheckCircle className="w-4 h-4 text-white" />
           </div>
         )}
@@ -186,20 +206,24 @@ export default function Challenge() {
         )}
 
         {dayPhotos.length > 0 && (
-          <div className="flex gap-1.5 mb-3 overflow-x-auto">
-            {dayPhotos.slice(0, 3).map((photo) => (
-              <img
-                key={photo.id}
-                src={photo.photo_url}
-                alt={`Day ${dayInfo.day}`}
-                className="w-14 h-14 rounded-lg object-cover shrink-0"
-              />
-            ))}
-            {dayPhotos.length > 3 && (
-              <div className="w-14 h-14 rounded-lg bg-neutral-100 flex items-center justify-center text-xs text-neutral-400 shrink-0">
-                +{dayPhotos.length - 3}
+          <div className="flex gap-2 mb-3 overflow-x-auto py-1">
+            {dayPhotos.map((photo) => (
+              <div key={photo.id} className="relative group/item shrink-0">
+                <img
+                  src={photo.photo_url}
+                  alt={`Day ${dayInfo.day}`}
+                  className="w-14 h-14 rounded-lg object-cover border border-neutral-200"
+                />
+                {/* Nút Xóa ảnh góc trên ảnh */}
+                <button
+                  onClick={() => handleDeletePhoto(photo.id)}
+                  title="Xóa bài đăng này"
+                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-rose-500 text-white rounded-full flex items-center justify-center shadow hover:bg-rose-600 transition-all opacity-90 sm:opacity-0 sm:group-hover/item:opacity-100"
+                >
+                  <Trash2 className="w-3 h-3" />
+                </button>
               </div>
-            )}
+            ))}
           </div>
         )}
 
@@ -359,7 +383,7 @@ export default function Challenge() {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery - Bức ảnh từ các gia đình */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -385,6 +409,16 @@ export default function Challenge() {
                     alt={`Day ${photo.day_number}`}
                     className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
                   />
+
+                  {/* Nút xóa bài đăng ở góc trên ảnh thư viện */}
+                  <button
+                    onClick={() => handleDeletePhoto(photo.id)}
+                    title="Xóa bài đăng"
+                    className="absolute top-2 right-2 p-2 bg-rose-600/90 text-white rounded-xl shadow hover:bg-rose-700 transition-all z-20 opacity-90 sm:opacity-0 sm:group-hover:opacity-100"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="flex items-center gap-1.5 mb-1">
