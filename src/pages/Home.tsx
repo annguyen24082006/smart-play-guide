@@ -43,7 +43,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-teal-500 text-white font-semibold rounded-xl hover:bg-teal-600 transition-all shadow-lg shadow-teal-500/20 hover:shadow-teal-500/30 hover:-translate-y-0.5"
               >
                 <Settings className="w-5 h-5" />
-                Hướng dẫn cài đặt trực tuyến
+                Thời gian cùng bé
               </Link>
               <Link
                 to="/hoat-dong-cung-con"
