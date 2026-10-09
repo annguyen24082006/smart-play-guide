@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { supabase } from '@/lib/supabase';
+import { getPostBySlug, getRelatedPosts } from '@/data/blogPosts';
 import {
   Calendar,
   ArrowLeft,
@@ -64,49 +63,10 @@ function renderContent(content: string) {
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
-
-  useEffect(() => {
-    async function fetchPost() {
-      setLoading(true);
-      setNotFound(false);
-
-      const { data, error } = await supabase
-        .from('blog_posts')
-        .select('*')
-        .eq('slug', slug)
-        .eq('published', true)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Error fetching post:', error);
-        setNotFound(true);
-      } else if (!data) {
-        setNotFound(true);
-      } else {
-        setPost(data as BlogPost);
-
-        const { data: related } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('published', true)
-          .eq('category', (data as BlogPost).category)
-          .neq('id', (data as BlogPost).id)
-          .limit(2)
-          .order('created_at', { ascending: false });
-
-        if (related) {
-          setRelatedPosts(related as BlogPost[]);
-        }
-      }
-      setLoading(false);
-    }
-
-    fetchPost();
-  }, [slug]);
+  const post = slug ? getPostBySlug(slug) : undefined;
+  const relatedPosts: BlogPost[] = post ? getRelatedPosts(post) : [];
+  const loading = false;
+  const notFound = !post;
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
