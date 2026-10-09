@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getPublishedPosts } from '@/data/blogPosts';
-import { Newspaper, Calendar, ArrowRight, Loader2, Search } from 'lucide-react';
+import { Newspaper, Calendar, ArrowRight, Loader2, Tag, Search } from 'lucide-react';
 
 type BlogPost = {
   id: string;
