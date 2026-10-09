@@ -62,7 +62,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl font-bold text-neutral-800 mb-4">
-              Nguồn tài nguyên phong phú dành cho cha mẹ
+              Khu vườn ươm mầm yêu thương của ba mẹ
             </h2>
             <p className="text-neutral-600">
               Khám phá các hướng dẫn chi tiết và hoạt động thực tế được thiết kế nhằm mang lại khoảnh khắc kết nối chất lượng nhất.
