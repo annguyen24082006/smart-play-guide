@@ -129,6 +129,8 @@ Chọn tên tài khoản của con, tìm đến mục **Screen time (Thời gian
 
 **Cài đặt khung giờ cho phép đăng nhập:** Bạn có thể đặt khoảng thời gian cố định trong ngày mà trẻ được phép đăng nhập sử dụng máy tính (ví dụ: chỉ cho mở máy từ 19:00 đến 20:30). Ngoài khung giờ này, dù chưa dùng hết số giờ quy định, máy tính vẫn sẽ tự động khóa lại để bảo vệ con.
 
+![Giao diện cài đặt giới hạn thời gian màn hình Screen time cho con trên Microsoft Family Safety để quản lý thời gian trên máy tính](https://i.postimg.cc/g0J339tR/Screenshot-2026-10-10-031957.png)
+
 ### 4.2. Quản lý ứng dụng và Trò chơi (App & Game Limits)
 
 Chọn mục **App and game limits (Giới hạn ứng dụng và trò chơi)** trên thanh menu.
@@ -141,11 +143,11 @@ Bạn có thể đặt hạn mức thời gian cho riêng từng ứng dụng c�
 
 Truy cập mục **Content filters (Bộ lọc nội dung)**.
 
-Tại phần **Web and search (Web và tìm kiếm)**, bật tính năng **Filter inappropriate websites (Lọc các trang web không phù hợp)**.
+Tại phần "Web and search (Web và tìm kiếm)", bật tính năng "Filter inappropriate websites" (Lọc các trang web không phù hợp).
 
 Tính năng lọc nội dung trên máy tính này sẽ tự động chặn các nội dung người lớn trên trình duyệt Microsoft Edge và kích hoạt chế độ tìm kiếm an toàn (SafeSearch).
 
-Ngoài ra, nhằm nâng cao hiệu quả lọc nội dung trên máy tính, phụ huynh có thể thêm các đường link cụ thể vào danh sách **Always allowed (Luôn cho phép)** hoặc **Never allowed (Luôn chặn)** theo nhu cầu thực tế.
+Ngoài ra, nhằm nâng cao hiệu quả lọc nội dung trên máy tính, phụ huynh có thể thêm các đường link cụ thể vào danh sách "Always allowed (Luôn cho phép)" hoặc "Never allowed (Luôn chặn)" theo nhu cầu thực tế.
 
 ## 5. Những Nguyên Tắc Vàng Giúp Ba Mẹ Đồng Hành Cùng Con
 
@@ -158,6 +160,8 @@ Công cụ phần mềm dù hiện đại đến đâu cũng chỉ đóng vai tr
 **Khen thưởng hợp lý:** Khi con thực hiện tốt các quy định về quản lý thời gian trên máy tính và tự giác tắt máy đúng giờ, cha mẹ hãy dành những lời khen ngợi động viên hoặc thưởng thêm thời gian giải trí vào dịp cuối tuần.
 
 **Làm gương cho con:** Cha mẹ chính là tấm gương phản chiếu của con cái. Bản thân phụ huynh cũng cần hạn chế việc tập trung quá nhiều vào điện thoại, máy tính khi ở bên cạnh con, tạo dựng thói quen cân bằng giữa thế giới ảo và đời sống thực.
+
+![Phụ huynh đồng hành cùng con trong việc quản lý thời gian trên máy tính và lọc nội dung trên máy tính](https://website-dev.hn.ss.bfcplatform.vn/dong_hanh_cung_con_thumb_8fd12b40cb.jpg)
 
 ## Kết Luận
 
