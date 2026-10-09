@@ -6,7 +6,7 @@ const navItems = [
   { to: '/', label: 'Trang chủ', end: true },
   { to: '/ve-chung-toi', label: 'Về chúng tôi' },
   { to: '/huong-dan-cai-dat', label: 'Thời gian cùng bé' },
-  { to: '/hoat-dong-cung-con', label: 'Hoạt động cùng con' },
+  { to: '/hoat-dong-cung-con', label: 'Hoạt động cùng bé' },
   { to: '/challenge', label: 'Thử thách 14 ngày' },
   { to: '/bang-xep-hang', label: 'Bảng xếp hạng' },
   { to: '/blog', label: 'Blog' },
@@ -142,7 +142,7 @@ export default function Layout() {
               <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Tinh thần chiến dịch</h4>
               <div className="flex items-start gap-2 text-sm text-neutral-400">
                 <Sparkles className="w-4 h-4 text-teal-400 mt-0.5 shrink-0" />
-                <span>Mỗi ngày bên con là một kỷ niệm mới. Không cần hoàn hảo, chỉ cần chân thành.</span>
+                <span>Mỗi ngày bên con là một kỷ niệm mới. Không cần hoàn hảo chỉ cần có sự chân thành gửi trao.</span>
               </div>
             </div>
 
