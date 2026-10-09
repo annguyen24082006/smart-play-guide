@@ -13,11 +13,59 @@ import {
   Star,
   Clock,
   CheckCircle,
-  Sparkles, // ← ĐÃ THÊM IMPORT ICON NÀY
-  FlaskConical, // ← ĐÃ THÊM IMPORT ICON NÀY
+  Sparkles,
+  FlaskConical,
 } from 'lucide-react';
 
 type Level = 'easy' | 'medium' | 'hard';
+
+interface Bullet {
+  text: string;
+  label?: string;
+}
+
+interface StepItem {
+  label: string;
+  text: string;
+}
+
+interface Group {
+  title?: string;
+  steps: StepItem[];
+}
+
+interface Section {
+  heading: string;
+  intro?: string;
+  bullets?: Bullet[];
+  groups?: Group[];
+}
+
+interface VideoItem {
+  id: string;
+  title: string;
+}
+
+interface Activity {
+  id?: string;
+  category?: string;
+  level: Level;
+  duration: string;
+  age: string;
+  title: string;
+  description: string;
+  desc?: string;
+  image: string;
+  icon: any;
+  iconColor?: string;
+  steps?: string[];
+  materials?: string[];
+  sections?: Section[];
+  note?: string;
+  videos?: VideoItem[];
+  videoUrl?: string;
+  videoQuery?: string;
+}
 
 const levels: { id: Level; label: string; note: string; color: string }[] = [
   { id: 'easy', label: 'Dễ', note: 'Khởi động nhẹ nhàng, làm được ngay', color: 'bg-teal-100 text-teal-700' },
@@ -25,22 +73,22 @@ const levels: { id: Level; label: string; note: string; color: string }[] = [
   { id: 'hard', label: 'Khó', note: 'Thử thách sự kiên nhẫn của cả nhà', color: 'bg-orange-100 text-orange-700' },
 ];
 
-// Dán link YouTube thật vào videoUrl của từng hoạt động (watch?v=..., youtu.be/... hoặc embed/...).
-// Khi videoUrl còn trống, trang hiện nút "Tìm video trên YouTube" theo videoQuery.
 const toEmbed = (url: string) => {
+  if (!url) return '';
   const m = url.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);
   return m ? `https://www.youtube.com/embed/${m[1]}` : '';
 };
 
-const activities = [
+const activities: Activity[] = [
   {
     id: 'ban-bi-lac-carton',
-    category: 'Thủ công & Trò chơi', // Hoặc 'Thủ công & Trò chơi' tùy trang
-    level: 'easy', // ← ĐÂY LÀ PHẦN PHÂN LOẠI: 'easy' (Dễ) | 'medium' (Trung bình/Trò Khá) | 'hard' (Khó/Thử thách)
+    category: 'Thủ công & Trò chơi',
+    level: 'easy',
     duration: '30 - 45 phút',
     age: '7-12 tuổi',
     title: 'Tự làm bàn bi lắc từ hộp carton',
     description: 'Biến chiếc hộp giấy cũ thành bàn bi lắc mini cực kỳ thú vị, giúp bé rèn luyện phản xạ và có những giờ phút giải trí sôi động cùng gia đình!',
+    desc: 'Biến chiếc hộp giấy cũ thành bàn bi lắc mini cực kỳ thú vị, giúp bé rèn luyện phản xạ và có những giờ phút giải trí sôi động cùng gia đình!',
     image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=800',
     icon: Scissors,
     iconColor: 'bg-amber-500',
@@ -78,7 +126,7 @@ const activities = [
       },
       {
         heading: 'Độ tuổi & Mức độ phù hợp',
-        intro: 'Hoạt động thuộc Trò Dễ, khởi động nhẹ nhàng, hoàn toàn có thể làm xong nhanh chóng. Phù hợp cho trẻ từ 7–12 tuổi (cần người lớn hỗ trợ bước cắt rọc thùng bằng dao rọc giấy).', // ← LỖI SỬA: XÓA DẤU NHÁY ĐƠN THỪA Ở ĐẦU CHUỖI
+        intro: 'Hoạt động thuộc Trò Dễ, khởi động nhẹ nhàng, hoàn toàn có thể làm xong nhanh chóng. Phù hợp cho trẻ từ 7–12 tuổi (cần người lớn hỗ trợ bước cắt rọc thùng bằng dao rọc giấy).',
         bullets: [
           { label: 'Gợi ý mở rộng', text: 'Ba mẹ và bé có thể chia kẹp gỗ thành 2 màu sơn khác nhau để phân biệt 2 đội bóng, giúp trận đấu thêm phần kịch tính!' },
         ],
@@ -92,12 +140,13 @@ const activities = [
   {
     id: 'lam-long-den-giay',
     category: 'Thủ công & Trò chơi',
-    level: 'easy', // thuộc Trò Dễ
+    level: 'easy',
     duration: '20 - 30 phút',
     age: '6-10 tuổi',
     title: 'Cách làm lồng đèn Trung thu bằng giấy A4',
     description: 'Tự tay làm chiếc lồng đèn giấy xòe xinh xắn có đèn LED lung linh!',
-    image: 'https://img.youtube.com/vi/cLbi6_xFcic/hqdefault.jpg', // Lấy ảnh thumbnail chuẩn của video YouTube
+    desc: 'Tự tay làm chiếc lồng đèn giấy xòe xinh xắn có đèn LED lung linh!',
+    image: 'https://img.youtube.com/vi/cLbi6_xFcic/hqdefault.jpg',
     icon: Sparkles,
     iconColor: 'bg-rose-500',
     steps: [],
@@ -134,7 +183,7 @@ const activities = [
         intro: 'Hoạt động thuộc Trò Dễ, khởi động nhẹ nhàng, hoàn toàn có thể làm xong nhanh chóng. Phù hợp cho trẻ từ 6–10 tuổi.',
       },
     ],
-    note: 'Nên cẩn thận khi dùng keo nến/súng bắn keo nóng cùng trẻ.', // ← LỖI SỬA: SỬA 'Note:' THÀNH 'note:'
+    note: 'Nên cẩn thận khi dùng keo nến/súng bắn keo nóng cùng trẻ.',
     videos: [
       { id: 'cLbi6_xFcic', title: 'Cách Làm Lồng Đèn Trung Thu Bằng Giấy A4 Đơn Giản' },
     ],
@@ -142,12 +191,13 @@ const activities = [
   {
     id: 'nuoc-di-bo-bac-cau-mau-sac',
     category: 'Khoa học & Trò chơi',
-    level: 'easy', // thuộc Trò Dễ
+    level: 'easy',
     duration: '15 - 20 phút',
     age: '3-10 tuổi',
     title: 'Nước đi bộ bắc cầu màu sắc',
     description: 'Thí nghiệm khoa học huyền bí giúp bé quan sát hiện tượng mao dẫn cực kỳ thú vị khi nước màu tự "bò" qua dải giấy!',
-    image: 'https://img.youtube.com/vi/hGwG--GZEfw/hqdefault.jpg', // Thumbnail video YouTube chuẩn
+    desc: 'Thí nghiệm khoa học huyền bí giúp bé quan sát hiện tượng mao dẫn cực kỳ thú vị khi nước màu tự "bò" qua dải giấy!',
+    image: 'https://img.youtube.com/vi/hGwG--GZEfw/hqdefault.jpg',
     icon: FlaskConical,
     iconColor: 'bg-teal-500',
     steps: [],
@@ -190,10 +240,16 @@ const activities = [
   {
     icon: Box,
     title: 'Đồ chơi từ hộp giấy',
-    level: 'medium' as Level,
-    steps: ["Chọn hộp giấy sạch, quyết định làm gì: ô tô, nhà nhỏ hay robot.", "Ba mẹ cắt các chi tiết khó (cửa, bánh xe); con phụ dán và ghép.", "Phủ giấy màu hoặc sơn lên thân hộp, chờ khô.", "Vẽ chi tiết, đặt tên và chơi cùng con."],
+    level: 'medium',
+    steps: [
+      'Chọn hộp giấy sạch, quyết định làm gì: ô tô, nhà nhỏ hay robot.',
+      'Ba mẹ cắt các chi tiết khó (cửa, bánh xe); con phụ dán và ghép.',
+      'Phủ giấy màu hoặc sơn lên thân hộp, chờ khô.',
+      'Vẽ chi tiết, đặt tên và chơi cùng con.',
+    ],
     videoUrl: '',
     videoQuery: 'làm đồ chơi từ hộp giấy carton cho bé',
+    description: 'Biến hộp giấy cũ thành ô tô, nhà nhỏ, hoặc robot. Sáng tạo không giới hạn!',
     desc: 'Biến hộp giấy cũ thành ô tô, nhà nhỏ, hoặc robot. Sáng tạo không giới hạn!',
     materials: ['Hộp giấy', 'Keo dán', 'Màu vẽ', 'Bút chì'],
     duration: '40-60 phút',
@@ -203,10 +259,16 @@ const activities = [
   {
     icon: Flower2,
     title: 'Trồng cây mini',
-    level: 'medium' as Level,
-    steps: ["Cho đất vào chậu, khoảng 3/4 chậu.", "Con tự tay gieo hạt và lấp một lớp đất mỏng.", "Tưới nước nhẹ và đặt chậu nơi có nắng.", "Trang trí chậu bằng sỏi; cùng con tưới và ghi lại sự phát triển mỗi ngày."],
+    level: 'medium',
+    steps: [
+      'Cho đất vào chậu, khoảng 3/4 chậu.',
+      'Con tự tay gieo hạt và lấp một lớp đất mỏng.',
+      'Tưới nước nhẹ và đặt chậu nơi có nắng.',
+      'Trang trí chậu bằng sỏi; cùng con tưới và ghi lại sự phát triển mỗi ngày.',
+    ],
     videoUrl: '',
     videoQuery: 'trồng cây mini trong chậu cho bé',
+    description: 'Cùng con trồng một chậu cây nhỏ, trang trí chậu và học cách chăm sóc cây mỗi ngày.',
     desc: 'Cùng con trồng một chậu cây nhỏ, trang trí chậu và học cách chăm sóc cây mỗi ngày.',
     materials: ['Chậu nhỏ', 'Đất trồng', 'Hạt giống', 'Sỏi trang trí'],
     duration: '30 phút + chăm sóc hàng ngày',
@@ -216,10 +278,16 @@ const activities = [
   {
     icon: Star,
     title: 'Làm vòng tay friendship',
-    level: 'hard' as Level,
-    steps: ["Cắt 6 sợi chỉ dài khoảng 50 cm, buộc nút và dán đầu chỉ lên bàn.", "Xếp thứ tự màu như ý muốn.", "Đan theo kiểu nút thắt xoắn hoặc bện ba, kiên nhẫn từng hàng.", "Đủ độ dài quanh cổ tay thì buộc nút chắc chắn và cắt chỉ thừa."],
+    level: 'hard',
+    steps: [
+      'Cắt 6 sợi chỉ dài khoảng 50 cm, buộc nút và dán đầu chỉ lên bàn.',
+      'Xếp thứ tự màu như ý muốn.',
+      'Đan theo kiểu nút thắt xoắn hoặc bện ba, kiên nhẫn từng hàng.',
+      'Đủ độ dài quanh cổ tay thì buộc nút chắc chắn và cắt chỉ thừa.',
+    ],
     videoUrl: '',
     videoQuery: 'làm vòng tay friendship đan chỉ',
+    description: 'Đan vòng tay bằng chỉ màu — hoạt động rèn luyện khéo tay và sự kiên nhẫn.',
     desc: 'Đan vòng tay bằng chỉ màu — hoạt động rèn luyện khéo tay và sự kiên nhẫn.',
     materials: ['Chỉ thêu nhiều màu', 'Kéo', 'Băng keo'],
     duration: '20-30 phút',
@@ -229,10 +297,16 @@ const activities = [
   {
     icon: Palette,
     title: 'Tranh đóng khung tự nhiên',
-    level: 'hard' as Level,
-    steps: ["Đi dạo, cùng con nhặt lá, hoa, cành nhỏ (không hái hoa nơi công cộng).", "Ép lá, hoa trong sách nặng 1-2 ngày cho phẳng.", "Sắp bố cục lên giấy khung trước khi dán.", "Dán bằng keo mỏng, để khô rồi đóng khung treo tường."],
+    level: 'hard',
+    steps: [
+      'Đi dạo, cùng con nhặt lá, hoa, cành nhỏ (không hái hoa nơi công cộng).',
+      'Ép lá, hoa trong sách nặng 1-2 ngày cho phẳng.',
+      'Sắp bố cục lên giấy khung trước khi dán.',
+      'Dán bằng keo mỏng, để khô rồi đóng khung treo tường.',
+    ],
     videoUrl: '',
     videoQuery: 'làm tranh lá cây khô ép hoa cho bé',
+    description: 'Đi dạo ngoài công viên, nhặt lá cây, hoa khô rồi dán thành bức tranh tự nhiên.',
     desc: 'Đi dạo ngoài công viên, nhặt lá cây, hoa khô rồi dán thành bức tranh tự nhiên.',
     materials: ['Lá cây, hoa khô', 'Giấy khung', 'Keo dán', 'Bút chì'],
     duration: '45-60 phút',
@@ -242,7 +316,7 @@ const activities = [
 ];
 
 export default function DIY() {
-  const [open, setOpen] = useState<(typeof activities)[number] | null>(null);
+  const [open, setOpen] = useState<Activity | null>(null);
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
@@ -268,7 +342,7 @@ export default function DIY() {
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
-              Chẳng cần đồ chơi đắt tiền, chỉ cần ba mẹ cùng con tham gia vào "xưởng đồ chơi ký ức" cùng niềm vui 
+              Chẳng cần đồ chơi đắt tiền, chỉ cần ba mẹ cùng con tham gia vào "xưởng đồ chơi ký ức" cùng niềm vui
               vô ngần vậy là đủ!
             </p>
           </div>
@@ -285,34 +359,42 @@ export default function DIY() {
                 <p className="text-sm text-neutral-500">{lv.note}</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {activities.filter((a) => a.level === lv.id).map((act) => (
-                  <button
-                    key={act.title}
-                    onClick={() => setOpen(act)}
-                    className="group text-left bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100"
-                  >
-                    <div className="aspect-[3/2] overflow-hidden relative">
-                      <img src={act.image} alt={act.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                      <div className="absolute top-3 left-3 bg-white/90 rounded-lg px-3 py-1.5 text-xs font-medium text-neutral-700 flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5 text-teal-500" />
-                        {act.duration}
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center">
-                          <act.icon className="w-5 h-5 text-teal-600" />
+                {activities
+                  .filter((a) => a.level === lv.id)
+                  .map((act) => (
+                    <button
+                      key={act.title}
+                      onClick={() => setOpen(act)}
+                      className="group text-left bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100"
+                    >
+                      <div className="aspect-[3/2] overflow-hidden relative">
+                        <img
+                          src={act.image}
+                          alt={act.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute top-3 left-3 bg-white/90 rounded-lg px-3 py-1.5 text-xs font-medium text-neutral-700 flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-teal-500" />
+                          {act.duration}
                         </div>
-                        <span className="text-xs text-neutral-400 font-medium">{act.age}</span>
                       </div>
-                      <h3 className="text-lg font-bold text-neutral-800 mb-2">{act.title}</h3>
-                      <p className="text-sm text-neutral-600 leading-relaxed mb-4">{act.desc || act.description}</p>
-                      <span className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 group-hover:gap-2.5 transition-all">
-                        Xem hướng dẫn & video <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </button>
-                ))}
+                      <div className="p-6">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center">
+                            <act.icon className="w-5 h-5 text-teal-600" />
+                          </div>
+                          <span className="text-xs text-neutral-400 font-medium">{act.age}</span>
+                        </div>
+                        <h3 className="text-lg font-bold text-neutral-800 mb-2">{act.title}</h3>
+                        <p className="text-sm text-neutral-600 leading-relaxed mb-4">
+                          {act.desc || act.description}
+                        </p>
+                        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 group-hover:gap-2.5 transition-all">
+                          Xem hướng dẫn & video <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
+                    </button>
+                  ))}
               </div>
             </div>
           ))}
@@ -321,25 +403,45 @@ export default function DIY() {
 
       {/* Modal chi tiết */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-neutral-900/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setOpen(null)}>
-          <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="fixed inset-0 z-50 bg-neutral-900/60 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setOpen(null)}
+        >
+          <div
+            className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="sticky top-0 bg-white border-b border-neutral-100 px-6 py-5 flex items-center justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-teal-600">{open.duration} · {open.age}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-teal-600">
+                  {open.duration} · {open.age}
+                </p>
                 <h2 className="text-2xl font-bold text-neutral-800 mt-1">{open.title}</h2>
               </div>
-              <button onClick={() => setOpen(null)} className="p-2 rounded-xl hover:bg-neutral-100" aria-label="Đóng"><X className="w-5 h-5 text-neutral-500" /></button>
+              <button
+                onClick={() => setOpen(null)}
+                className="p-2 rounded-xl hover:bg-neutral-100"
+                aria-label="Đóng"
+              >
+                <X className="w-5 h-5 text-neutral-500" />
+              </button>
             </div>
             <div className="p-6 sm:p-8">
               <p className="text-neutral-600 leading-relaxed mb-6">{open.desc || open.description}</p>
-              
+
               {open.materials && open.materials.length > 0 && (
                 <>
-                  <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2">Dụng cụ cần chuẩn bị</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-2">
+                    Dụng cụ cần chuẩn bị
+                  </p>
                   <div className="flex flex-wrap gap-1.5 mb-7">
                     {open.materials.map((m) => (
-                      <span key={m} className="inline-flex items-center gap-1 text-xs bg-stone-100 text-neutral-600 px-2.5 py-1 rounded-md">
-                        <CheckCircle className="w-3 h-3 text-teal-500" />{m}
+                      <span
+                        key={m}
+                        className="inline-flex items-center gap-1 text-xs bg-stone-100 text-neutral-600 px-2.5 py-1 rounded-md"
+                      >
+                        <CheckCircle className="w-3 h-3 text-teal-500" />
+                        {m}
                       </span>
                     ))}
                   </div>
@@ -348,11 +450,15 @@ export default function DIY() {
 
               {open.steps && open.steps.length > 0 && (
                 <>
-                  <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3">Các bước thực hiện</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3">
+                    Các bước thực hiện
+                  </p>
                   <ol className="space-y-3 mb-8">
                     {open.steps.map((st, i) => (
                       <li key={i} className="flex gap-4 items-start">
-                        <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-sm font-bold shrink-0">{i + 1}</div>
+                        <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-sm font-bold shrink-0">
+                          {i + 1}
+                        </div>
                         <p className="text-neutral-700 leading-relaxed pt-1">{st}</p>
                       </li>
                     ))}
@@ -360,6 +466,7 @@ export default function DIY() {
                 </>
               )}
 
+              {/* Video Hướng Dẫn */}
               <p className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-3">Video hướng dẫn</p>
               {open.videoUrl && toEmbed(open.videoUrl) ? (
                 <div className="aspect-video rounded-2xl overflow-hidden bg-neutral-100">
@@ -367,13 +474,25 @@ export default function DIY() {
                     className="w-full h-full"
                     src={toEmbed(open.videoUrl)}
                     title={open.title}
-                    allow="accelerometer; encrypted-media; picture-in-picture"
+                    allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : open.videos && open.videos[0] ? (
+                <div className="aspect-video rounded-2xl overflow-hidden bg-neutral-100">
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${open.videos[0].id}`}
+                    title={open.videos[0].title}
+                    allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
                     allowFullScreen
                   />
                 </div>
               ) : (
                 <a
-                  href={`https://www.youtube.com/results?search_query=${encodeURIComponent(open.videoQuery || (open.videos && open.videos[0] ? open.videos[0].title : open.title))}`}
+                  href={`https://www.youtube.com/results?search_query=${encodeURIComponent(
+                    open.videoQuery || open.title
+                  )}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 aspect-video rounded-2xl bg-amber-50 border border-amber-200 text-amber-700 font-semibold hover:bg-amber-100 transition-all"
