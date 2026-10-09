@@ -50,7 +50,7 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-neutral-700 font-semibold rounded-xl hover:bg-neutral-50 transition-all border border-neutral-200 hover:-translate-y-0.5"
               >
                 <Palette className="w-5 h-5 text-orange-500" />
-                Hoạt động cùng con
+                Hoạt động cùng bé
               </Link>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center mb-6">
                 <Palette className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-neutral-800 mb-3">Hoạt động cùng con</h3>
+              <h3 className="text-xl font-bold text-neutral-800 mb-3">Hoạt động cùng bé</h3>
               <p className="text-neutral-600 mb-6 text-sm leading-relaxed">
                 Bộ sưu tập các trò chơi, bài tập sáng tạo không màn hình giúp phát triển tư duy cho con.
               </p>
