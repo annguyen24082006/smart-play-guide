@@ -57,12 +57,65 @@ const guides: Guide[] = [
     image: 'https://images.pexels.com/photos/27177478/pexels-photo-27177478.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     icon: Monitor,
     iconColor: 'bg-teal-500',
-    steps: [
-      'Cài Google Family Link trên điện thoại của ba mẹ.',
-      'Tạo hoặc kết nối tài khoản Google của con theo hướng dẫn trên màn hình.',
-      'Mở phần Giới hạn ứng dụng để đặt thời lượng cho từng ứng dụng.',
-      'Thiết lập Lịch nghỉ để máy tự khóa trong giờ ngủ hoặc giờ học.',
-      'Bật phê duyệt ứng dụng để ba mẹ xem trước ứng dụng con muốn cài.',
+    steps: [],
+    sections: [
+      {
+        heading: 'GIAI ĐOẠN 1: Chuẩn bị tài khoản',
+        intro: 'Trước khi bắt đầu, hãy đảm bảo:',
+        bullets: [
+          { text: 'Máy cha mẹ và máy con đều đã kết nối mạng Internet (Wi-Fi hoặc 4G).' },
+          { text: 'Bạn đã biết mật khẩu tài khoản Google (Gmail) của cha mẹ.' },
+        ],
+      },
+      {
+        heading: 'GIAI ĐOẠN 2: Các bước thực hiện chi tiết',
+        groups: [
+          {
+            title: '📱 Trên điện thoại của CHA MẸ',
+            steps: [
+              { label: 'Tải ứng dụng', text: 'Vào App Store (nếu dùng iPhone) hoặc CH Play (nếu dùng Android), tìm và tải ứng dụng Google Family Link.' },
+              { label: 'Đăng nhập', text: 'Mở ứng dụng, đăng nhập bằng tài khoản Google cá nhân của bạn.' },
+              { label: 'Bắt đầu thiết lập', text: 'Hệ thống sẽ hỏi “Ai sẽ dùng tài khoản này?” → Chọn Cha mẹ.' },
+              {
+                label: 'Chuẩn bị liên kết',
+                text: 'Nhấn tiếp tục cho đến khi ứng dụng hỏi “Con bạn có Tài khoản Google chưa?”:',
+                bullets: [
+                  { label: 'Nếu Chưa có', text: 'Chọn Không để tạo ngay một tài khoản Gmail mới cho con dưới sự quản lý của bạn.' },
+                  { label: 'Nếu Đã có', text: 'Chọn Có → Hệ thống sẽ hiển thị một Mã thiết lập gồm 9 chữ số (giữ nguyên màn hình này để nhập sang máy của con).' },
+                ],
+              },
+            ],
+          },
+          {
+            title: '📱 Trên điện thoại của CON (Yêu cầu là máy Android)',
+            steps: [
+              { label: 'Xóa tài khoản thừa (nếu có)', text: 'Vào Cài đặt (Settings) → Tài khoản (Accounts) → Xóa bỏ tất cả các tài khoản Google khác, chỉ để lại duy nhất tài khoản Google của con (hoặc để trống nếu tí nữa tạo mới).' },
+              { label: 'Kích hoạt quản lý', text: 'Vào mục Cài đặt (Settings) trên máy con → Kéo xuống chọn Google → Chọn Quản lý của cha mẹ (Parental Controls) → Nhấn Bắt đầu (Get started).' },
+              { label: 'Chọn đối tượng', text: 'Chọn mục Trẻ em hoặc thanh thiếu niên (Child or teen).' },
+              {
+                label: 'Nhập tài khoản & liên kết',
+                text: '',
+                bullets: [
+                  { text: 'Đăng nhập tài khoản Google của con (hoặc tài khoản vừa tạo ở bước trên).' },
+                  { text: 'Hệ thống sẽ yêu cầu nhập tài khoản Google của cha mẹ để xác nhận quyền lực.' },
+                ],
+              },
+              { label: 'Nhập mã liên kết', text: 'Nhập chính xác Mã thiết lập 9 chữ số đang hiển thị trên màn hình điện thoại của cha mẹ.' },
+              { label: 'Xác nhận mật khẩu', text: 'Nhập mật khẩu tài khoản của con để đồng ý cho cha mẹ giám sát.' },
+              { label: 'Cấp quyền hệ thống', text: 'Nhấn Cho phép (Allow) hoặc Kích hoạt (Activate) khi máy của con hỏi quyền truy cập ứng dụng và vị trí. Chờ vài phút để hai máy đồng bộ.' },
+            ],
+          },
+        ],
+      },
+      {
+        heading: 'GIAI ĐOẠN 3: Thiết lập các tính năng quản lý (Làm trên máy CHA MẸ)',
+        intro: 'Sau khi máy của con báo thiết lập hoàn tất, bạn quay lại điện thoại của mình. Lúc này, tên thiết bị của con đã xuất hiện trong ứng dụng Family Link của bạn. Bạn có thể cài đặt ngay:',
+        bullets: [
+          { label: 'Đặt giờ giới hạn', text: 'Chọn mục Giới hạn hằng ngày để quy định con chỉ được dùng máy tối đa bao nhiêu tiếng/ngày (Ví dụ: 1 giờ 30 phút).' },
+          { label: 'Đặt giờ đi ngủ', text: 'Chọn mục Giờ đi ngủ để máy tự động khóa cứng từ 22h00 đến 6h00 sáng hôm sau.' },
+          { label: 'Chặn/Cho phép ứng dụng', text: 'Vào mục Giới hạn ứng dụng, bạn có thể bấm vào từng app (như TikTok, YouTube, Game) chọn Chặn hoặc Đặt giới hạn thời gian riêng cho app đó.' },
+        ],
+      },
     ],
     note: 'Family Link phù hợp khi ba mẹ muốn quản lý thiết bị từ xa nhưng vẫn trao đổi minh bạch với con.',
   },
