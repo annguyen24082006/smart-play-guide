@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '@/lib/supabase';
-import { Newspaper, Calendar, ArrowRight, Loader2, Tag, Search } from 'lucide-react';
+import { getPublishedPosts } from '@/data/blogPosts';
+import { Newspaper, Calendar, ArrowRight, Loader2, Search } from 'lucide-react';
 
 type BlogPost = {
   id: string;
@@ -22,30 +22,10 @@ const categoryColors: Record<string, string> = {
 };
 
 export default function Blog() {
-  const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const posts: BlogPost[] = getPublishedPosts();
+  const loading = false;
   const [activeCategory, setActiveCategory] = useState<string>('Tất cả');
   const [searchQuery, setSearchQuery] = useState('');
-
-  const fetchPosts = useCallback(async () => {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from('blog_posts')
-      .select('*')
-      .eq('published', true)
-      .order('created_at', { ascending: false });
-
-    if (error) {
-      console.error('Error fetching blog posts:', error);
-    } else if (data) {
-      setPosts(data as BlogPost[]);
-    }
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
 
   // Lọc lấy danh sách category hợp lệ, tránh null/undefined
   const categories = [
