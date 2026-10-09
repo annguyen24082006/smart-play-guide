@@ -15,6 +15,9 @@ import {
   Tv,
   LockKeyhole,
 } from 'lucide-react';
+import screenTimeCardImg from './assets/images/kids_tablet_floor_1791560303123.jpg';
+import youtubeKidsCardImg from './assets/images/boy_youtube_tablet_1791560317137.jpg';
+import netflixCardImg from './assets/images/baby_teddy_tv_1791560335792.jpg';
 
 type GuideBullet = { label?: string; text: string };
 type GuideStep = { label: string; text: string; bullets?: GuideBullet[] };
@@ -25,7 +28,7 @@ type GuideSection = {
   bullets?: GuideBullet[];
   groups?: GuideGroup[];
 };
-type GuideVideo = { id: string; title: string; platform?: 'youtube' | 'tiktok'; url?: string };
+type GuideVideo = { id: string; title: string };
 
 type Guide = {
   id: string;
@@ -56,7 +59,7 @@ const guides: Guide[] = [
     duration: '5 phút',
     title: 'Giới hạn thời gian thật dễ dàng',
     description: 'Cùng đặt “giờ nghỉ” cho iPhone & iPad để con vừa xem vui, vừa không quên giờ nha!',
-    image: '/screen_time.png',
+    image: screenTimeCardImg,
     icon: Apple,
     iconColor: 'bg-neutral-800',
     steps: [],
@@ -254,6 +257,7 @@ const guides: Guide[] = [
     duration: '4 phút',
     title: 'YouTube Kids: 4 phút để yên tâm hơn',
     description: 'Chỉ vài bước nhỏ để bé xem đúng nội dung phù hợp - bố mẹ nhớ kiểm tra tìm kiếm và giới hạn giờ xem nhé!',
+    image: youtubeKidsCardImg,
     icon: Youtube,
     iconColor: 'bg-orange-500',
     steps: [],
@@ -327,6 +331,7 @@ const guides: Guide[] = [
     duration: '4 phút',
     title: 'Góc nhỏ của bé trên không gian Netflix',
     description: 'Tạo hồ sơ và mã PIN để mở ra một thế giới màu sắc, đáng yêu của riêng con.',
+    image: netflixCardImg,
     icon: LockKeyhole,
     iconColor: 'bg-amber-600',
     steps: [],
@@ -492,7 +497,6 @@ const guides: Guide[] = [
                   { label: 'Bộ định giờ tắt (Off Timer)', text: 'Thiết lập mốc giờ tắt cố định chính xác trong ngày (ví dụ: đúng 22h00).' },
                 ],
               },
-              { label: '📲 Xem thêm clip ngắn', text: 'Cách hẹn giờ tắt tivi Samsung trên TikTok (xem ở phần video bên dưới).' },
             ],
           },
           {
@@ -522,12 +526,6 @@ const guides: Guide[] = [
     videos: [
       { id: 'lBE8VXxq6uA', title: 'CÁCH KHÓA TRẺ EM TRÊN TIVI LG' },
       { id: 'lgv4qeyWnT8', title: 'Khóa trẻ em các ứng dụng trên Smart Tivi Android' },
-      {
-        id: '7344220626300816647',
-        platform: 'tiktok',
-        url: 'https://www.tiktok.com/@samnecofficial/video/7344220626300816647',
-        title: 'Cách hẹn giờ tắt tivi Samsung trên TikTok',
-      },
       { id: '9J50rLd-N7c', title: 'Hướng dẫn cách hẹn giờ bật, tắt cho Smart tivi LG trên YouTube' },
       { id: 'Se4wUxHzPfQ', title: 'Hướng dẫn cách hẹn giờ bật, tắt cho tivi Sony trên YouTube' },
     ],
@@ -568,7 +566,7 @@ export default function SetupGuide() {
             </p>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Làm sao để bé tự tắt thiết bị khi đến giờ?
+              Làm sao để bạn bé tự tắt thiết bị khi đến giờ?
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
@@ -737,42 +735,16 @@ export default function SetupGuide() {
                 <div className="mt-8 space-y-6">
                   {getVideos(selectedGuide).map((video) => (
                     <div key={video.id} className="rounded-2xl overflow-hidden border border-amber-200 bg-[#fffaf0]">
-                      {video.platform === 'tiktok' ? (
-                        <div className="bg-black flex flex-col items-center justify-center py-4">
-                          <iframe
-                            className="w-full max-w-[340px] h-[580px] rounded-xl"
-                            src={`https://www.tiktok.com/embed/v2/${video.id}`}
-                            title={video.title || selectedGuide.title}
-                            allow="encrypted-media;"
-                            allowFullScreen
-                          />
-                        </div>
-                      ) : (
-                        <div className="aspect-video bg-black">
-                          <iframe
-                            className="w-full h-full"
-                            src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
-                            title={video.title || selectedGuide.title}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        </div>
-                      )}
-                      {video.title && (
-                        <div className="px-4 py-3 flex items-center justify-between gap-2">
-                          <p className="text-sm font-medium text-neutral-700">{video.title}</p>
-                          {video.url && (
-                            <a
-                              href={video.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs font-semibold text-cyan-600 hover:text-cyan-700 whitespace-nowrap"
-                            >
-                              Mở trên TikTok ↗
-                            </a>
-                          )}
-                        </div>
-                      )}
+                      <div className="aspect-video bg-black">
+                        <iframe
+                          className="w-full h-full"
+                          src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
+                          title={video.title || selectedGuide.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                      {video.title && <p className="px-4 py-3 text-sm font-medium text-neutral-700">{video.title}</p>}
                     </div>
                   ))}
                 </div>
