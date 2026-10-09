@@ -97,16 +97,24 @@ export default function Leaderboard() {
               Smart Play Guide · Bảng xếp hạng
             </div>
             
-            {/* Tiêu đề chính - Đã sửa lỗi đè chữ "ở đâu?" */}
+           {/* Tiêu đề chính - Đã sửa lỗi đè chữ "ở đâu?" */}
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
               Cùng xem nhà mình <br />
               <span className="text-[#E07A5F] inline-block mt-1"> đang ở vị trí nào nhé!</span>
             </h1>
             
-            {/* Mô tả */}
-            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
-              Gửi ảnh thành công là ghi nhận điểm. Mỗi trò được <strong className="text-orange-600 font-bold">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
+           {/* Mô tả - Đã kéo dài nội dung giúp cân bằng kích thước ảnh */}
+            <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6 max-w-xl">
+              Gửi ảnh thành công là ghi nhận điểm. Mỗi trò chơi hoàn thành mang về{' '}
+              <strong className="text-orange-600 font-bold">{POINTS} điểm</strong> cho cả nhà (tính 1 lần cho mỗi gia đình). Hãy tích cực chinh phục thử thách để bứt phá dẫn đầu!
             </p>
+
+            {/* Tag nhỏ phía dưới */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-amber-200 text-xs font-medium text-amber-900 shadow-sm">
+                <span>🎁</span> Tích điểm đổi quà
+              </div>
+            </div>
           </div>
         </div>
       </section>
