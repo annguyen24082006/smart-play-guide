@@ -1,1 +1,51 @@
+export type BlogPost = {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  cover_image: string | null;
+  author: string;
+  category: string;
+  created_at: string;
+  published: boolean;
+};
 
+export const blogPosts: BlogPost[] = [
+  {
+    id: '1',
+    title: 'Hướng dẫn chọn đồ chơi phát triển trí tuệ không dùng màn hình',
+    slug: 'huong-dan-chon-do-choi-phat-trien-tri-tue',
+    excerpt: 'Tổng hợp các tiêu chí chọn đồ chơi vận động và tư duy cho trẻ em giúp giảm thời gian sử dụng thiết bị điện tử.',
+    content: `Giảm thời gian sử dụng thiết bị điện tử là ưu tiên hàng đầu của nhiều phụ huynh hiện nay.
+
+**Tại sao nên chọn đồ chơi không màn hình?**
+
+Đồ chơi thực tế giúp trẻ phát triển giác quan, khả năng tương tác xã hội và tư duy sáng tạo một cách tự nhiên nhất.
+
+**Các tiêu chí lựa chọn:**
+
+- Phù hợp với lứa tuổi của trẻ.
+- Khuyến khích sự tương tác giữa cha mẹ và con cái.
+- Chất liệu an toàn, không độc hại.`,
+    cover_image: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800',
+    author: 'Smart Play Guide',
+    category: 'Kiến thức',
+    created_at: '2026-10-01',
+    published: true,
+  },
+];
+
+export function getPublishedPosts(): BlogPost[] {
+  return blogPosts.filter((post) => post.published);
+}
+
+export function getPostBySlug(slug: string): BlogPost | undefined {
+  return blogPosts.find((post) => post.slug === slug && post.published);
+}
+
+export function getRelatedPosts(currentPost: BlogPost): BlogPost[] {
+  return blogPosts.filter(
+    (post) => post.published && post.id !== currentPost.id && post.category === currentPost.category
+  );
+}
