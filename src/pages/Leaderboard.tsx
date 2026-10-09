@@ -99,13 +99,13 @@ export default function Leaderboard() {
             
             {/* Tiêu đề chính - Đã sửa lỗi đè chữ "ở đâu?" */}
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Gia đình bạn đang <br />
-              <span className="text-[#E07A5F] inline-block mt-1">ở đâu?</span>
+              Cùng xem nhà mình đang <br />
+              <span className="text-[#E07A5F] inline-block mt-1">ở vị trí nào nhé!</span>
             </h1>
             
             {/* Mô tả */}
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
-              Gửi ảnh xong là điểm nhảy ngay. Mỗi trò được <strong className="text-orange-600 font-bold">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
+              Gửi ảnh thành công là ghi nhận điểm. Mỗi trò được <strong className="text-orange-600 font-bold">{POINTS} điểm</strong>, tính 1 lần cho mỗi gia đình.
             </p>
           </div>
         </div>
