@@ -121,7 +121,7 @@ export default function DIY() {
         <div className="absolute inset-0 z-0">
           <img
             src="/DIY.png"
-            alt="Smart Play Guide - DIY Hoạt động cùng con"
+            alt="Smart Play Guide - DIY Hoạt động cùng bé"
             className="w-full h-full object-cover object-right-bottom"
           />
         </div>
@@ -130,7 +130,7 @@ export default function DIY() {
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-teal-700 border border-teal-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
               <Palette className="w-4 h-4 text-teal-600" />
-              Hoạt động cùng con
+              Hoạt động cùng bé
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
