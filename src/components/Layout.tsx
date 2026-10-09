@@ -7,7 +7,7 @@ const navItems = [
   { to: '/ve-chung-toi', label: 'Về chúng tôi' },
   { to: '/huong-dan-cai-dat', label: 'Thời gian cùng bé' },
   { to: '/hoat-dong-cung-con', label: 'Hoạt động cùng con' },
-  { to: '/challenge', label: 'Challenge' },
+  { to: '/challenge', label: 'Thử thách 14 ngày' },
   { to: '/bang-xep-hang', label: 'Bảng xếp hạng' },
   { to: '/blog', label: 'Blog' },
 ];
