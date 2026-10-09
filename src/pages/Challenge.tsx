@@ -255,7 +255,7 @@ export default function Challenge() {
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              14 ngày đồng hành cùng bé,<br /><span className="text-amber-600">thử thách liền tay, quà xinh nhận ngay</span>
+             Thử thách liền tay, <span className="text-amber-600">quà xinh</span> nhận ngay!
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
