@@ -1,5 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getPostBySlug, getRelatedPosts } from '@/data/blogPosts';
+import { TableOfContents } from '@/components/TableOfContents';
 import {
   Calendar,
   ArrowLeft,
@@ -29,6 +30,16 @@ const categoryColors: Record<string, string> = {
   'Thử thách': 'bg-amber-100 text-amber-700',
   'Kiến thức': 'bg-rose-100 text-rose-700',
 };
+
+// Hàm tạo ID slug làm mỏ neo cuộn trang (Anchor ID)
+function createSlug(text: string) {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-');
+}
 
 // Hàm hỗ trợ nhận diện link (Markdown & URL) và chữ in đậm
 function renderTextWithLinksAndBold(text: string) {
@@ -111,17 +122,37 @@ function renderContent(content: string) {
       }
     }
 
-    // 2. Tiêu đề mục lớn (**Tiêu đề**)
-    if (trimmed.startsWith('**') && trimmed.endsWith('**')) {
-      const text = trimmed.slice(2, -2);
+    // 2. Render Sub Heading H3 (###)
+    if (trimmed.startsWith('### ')) {
+      const text = trimmed.replace('### ', '');
       return (
-        <h3 key={i} className="text-xl font-bold text-neutral-800 mt-8 mb-3">
+        <h3 key={i} id={createSlug(text)} className="text-lg font-bold text-neutral-800 mt-6 mb-2 scroll-mt-24">
           {text}
         </h3>
       );
     }
 
-    // 3. Đoạn văn thông thường có chứa link hoặc in đậm
+    // 3. Render Main Heading H2 (##)
+    if (trimmed.startsWith('## ')) {
+      const text = trimmed.replace('## ', '');
+      return (
+        <h2 key={i} id={createSlug(text)} className="text-2xl font-bold text-neutral-900 mt-10 mb-4 scroll-mt-24">
+          {text}
+        </h2>
+      );
+    }
+
+    // 4. Tiêu đề in đậm cũ (**Tiêu đề**)
+    if (trimmed.startsWith('**') && trimmed.endsWith('**')) {
+      const text = trimmed.slice(2, -2);
+      return (
+        <h3 key={i} id={createSlug(text)} className="text-xl font-bold text-neutral-800 mt-8 mb-3 scroll-mt-24">
+          {text}
+        </h3>
+      );
+    }
+
+    // 5. Đoạn văn thông thường có chứa link hoặc in đậm
     return (
       <p key={i} className="text-neutral-700 leading-relaxed mb-4 whitespace-pre-line">
         {renderTextWithLinksAndBold(trimmed)}
@@ -218,6 +249,10 @@ export default function BlogPost() {
       {/* Content */}
       <article className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Hiển thị Bảng Mục Lục tự động ở đây */}
+          <TableOfContents content={post.content} />
+
           <div className="prose prose-lg max-w-none">
             {renderContent(post.content)}
           </div>
