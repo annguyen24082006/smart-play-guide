@@ -5,7 +5,7 @@ import { Menu, X, Heart, Sparkles, MapPin, Phone, Mail, Facebook } from 'lucide-
 const navItems = [
   { to: '/', label: 'Trang chủ', end: true },
   { to: '/ve-chung-toi', label: 'Về chúng tôi' },
-  { to: '/huong-dan-cai-dat', label: 'Hướng dẫn cài đặt' },
+  { to: '/huong-dan-cai-dat', label: 'Thời gian cùng bé' },
   { to: '/hoat-dong-cung-con', label: 'Hoạt động cùng con' },
   { to: '/challenge', label: 'Challenge' },
   { to: '/bang-xep-hang', label: 'Bảng xếp hạng' },
