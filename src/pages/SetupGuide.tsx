@@ -15,9 +15,6 @@ import {
   Tv,
   LockKeyhole,
 } from 'lucide-react';
-import screenTimeCardImg from './assets/images/kids_tablet_floor_1791560303123.jpg';
-import youtubeKidsCardImg from './assets/images/boy_youtube_tablet_1791560317137.jpg';
-import netflixCardImg from './assets/images/baby_teddy_tv_1791560335792.jpg';
 
 type GuideBullet = { label?: string; text: string };
 type GuideStep = { label: string; text: string; bullets?: GuideBullet[] };
@@ -59,7 +56,8 @@ const guides: Guide[] = [
     duration: '5 phút',
     title: 'Giới hạn thời gian thật dễ dàng',
     description: 'Cùng đặt “giờ nghỉ” cho iPhone & iPad để con vừa xem vui, vừa không quên giờ nha!',
-    image: screenTimeCardImg,
+    // Nếu bạn bỏ ảnh vào thư mục public/ thì chỉ cần đổi thành '/ten_anh.jpg'
+    image: 'https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=940',
     icon: Apple,
     iconColor: 'bg-neutral-800',
     steps: [],
@@ -257,7 +255,7 @@ const guides: Guide[] = [
     duration: '4 phút',
     title: 'YouTube Kids: 4 phút để yên tâm hơn',
     description: 'Chỉ vài bước nhỏ để bé xem đúng nội dung phù hợp - bố mẹ nhớ kiểm tra tìm kiếm và giới hạn giờ xem nhé!',
-    image: youtubeKidsCardImg,
+    image: 'https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=940',
     icon: Youtube,
     iconColor: 'bg-orange-500',
     steps: [],
@@ -331,7 +329,7 @@ const guides: Guide[] = [
     duration: '4 phút',
     title: 'Góc nhỏ của bé trên không gian Netflix',
     description: 'Tạo hồ sơ và mã PIN để mở ra một thế giới màu sắc, đáng yêu của riêng con.',
-    image: netflixCardImg,
+    image: 'https://images.pexels.com/photos/3933229/pexels-photo-3933229.jpeg?auto=compress&cs=tinysrgb&w=940',
     icon: LockKeyhole,
     iconColor: 'bg-amber-600',
     steps: [],
@@ -566,7 +564,7 @@ export default function SetupGuide() {
             </p>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Làm sao để bé tự tắt thiết bị khi đến giờ?
+              Làm sao để bạn bé tự tắt thiết bị khi đến giờ?
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
@@ -768,4 +766,3 @@ export default function SetupGuide() {
     </div>
   );
 }
-
