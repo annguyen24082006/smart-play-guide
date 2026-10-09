@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Trophy, Crown, Camera, Gift, Award, BookImage, Backpack, Target, Trash2 } from 'lucide-react';
+import { Trophy, Crown, Camera, Gift, Award, BookImage, Backpack, Target } from 'lucide-react';
 
 export const FAMILY_KEY = 'smart_play_family_name';
 const LOCAL_PHOTOS_KEY = 'challenge_local_photos';
 
-// Cấu hình bảng điểm chuẩn theo 10 thử thách mới
+// Cấu hình bảng điểm chuẩn theo 10 thử thách
 const dayPointsMap: Record<number, number> = {
   1: 10, // Vương quốc côn trùng
   2: 20, // Cá thổi bong bóng
@@ -56,14 +56,6 @@ export default function Leaderboard() {
     return () => window.removeEventListener('focus', load);
   }, [load]);
 
-  // Nút xóa sạch dữ liệu test cũ (Bé Bông...)
-  const handleClearData = () => {
-    if (window.confirm('Bạn có chắc muốn xóa tất cả dữ liệu thử thách cũ trên máy?')) {
-      localStorage.removeItem(LOCAL_PHOTOS_KEY);
-      setRows([]);
-    }
-  };
-
   const rg = ranges.find((r) => r.id === range)!;
 
   // Tính điểm chính xác cho từng gia đình
@@ -85,7 +77,6 @@ export default function Leaderboard() {
 
     return [...map.entries()]
       .map(([key, f]) => {
-        // Tính tổng điểm từng bài đã hoàn thành
         let totalScore = 0;
         f.days.forEach((_, dayNum) => {
           totalScore += dayPointsMap[dayNum] || 10;
@@ -161,18 +152,8 @@ export default function Leaderboard() {
       <section className="py-12 bg-white relative z-10 border-t border-stone-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
           {/* Điểm cá nhân */}
-          <div className="rounded-3xl border border-teal-200 bg-teal-50/60 p-6 relative">
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-xs font-bold uppercase tracking-wider text-teal-700">Điểm của gia đình bạn</p>
-              {rows.length > 0 && (
-                <button
-                  onClick={handleClearData}
-                  className="inline-flex items-center gap-1 text-xs text-rose-600 hover:text-rose-700 font-semibold bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200 transition-all"
-                >
-                  <Trash2 className="w-3.5 h-3.5" /> Xóa dữ liệu chạy thử
-                </button>
-              )}
-            </div>
+          <div className="rounded-3xl border border-teal-200 bg-teal-50/60 p-6">
+            <p className="text-xs font-bold uppercase tracking-wider text-teal-700 mb-2">Điểm của gia đình bạn</p>
             <input
               value={me}
               onChange={(e) => saveMe(e.target.value)}
