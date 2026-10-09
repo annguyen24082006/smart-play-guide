@@ -30,10 +30,88 @@ const categoryColors: Record<string, string> = {
   'Kiến thức': 'bg-rose-100 text-rose-700',
 };
 
+// Hàm hỗ trợ nhận diện link (Markdown & URL) và chữ in đậm
+function renderTextWithLinksAndBold(text: string) {
+  const markdownLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  const rawUrlRegex = /(https?:\/\/[^\s]+)/g;
+
+  if (markdownLinkRegex.test(text)) {
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+    markdownLinkRegex.lastIndex = 0;
+
+    while ((match = markdownLinkRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      parts.push(
+        <a
+          key={match.index}
+          href={match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-amber-600 hover:text-amber-700 underline font-semibold transition-colors"
+        >
+          {match[1]}
+        </a>
+      );
+      lastIndex = markdownLinkRegex.lastIndex;
+    }
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+    return parts;
+  }
+
+  const parts = text.split(rawUrlRegex);
+  return parts.map((part, index) => {
+    if (part.match(rawUrlRegex)) {
+      return (
+        <a
+          key={index}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-amber-600 hover:text-amber-700 underline font-semibold break-all transition-colors"
+        >
+          {part}
+        </a>
+      );
+    }
+
+    const boldParts = part.split('**');
+    return boldParts.map((bPart, bIndex) =>
+      bIndex % 2 === 1 ? <strong key={bIndex} className="font-bold text-neutral-800">{bPart}</strong> : bPart
+    );
+  });
+}
+
 function renderContent(content: string) {
   const paragraphs = content.split('\n\n');
   return paragraphs.map((para, i) => {
     const trimmed = para.trim();
+
+    // 1. Chèn hình ảnh giữa bài: ![Mô tả ảnh](link-anh)
+    if (trimmed.startsWith('![') && trimmed.includes('](') && trimmed.endsWith(')')) {
+      const match = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+      if (match) {
+        return (
+          <div key={i} className="my-8 text-center">
+            <img
+              src={match[2]}
+              alt={match[1]}
+              className="w-full max-h-[450px] object-cover rounded-2xl shadow-md mx-auto"
+            />
+            {match[1] && (
+              <p className="text-xs text-neutral-500 italic mt-2">{match[1]}</p>
+            )}
+          </div>
+        );
+      }
+    }
+
+    // 2. Tiêu đề mục lớn (**Tiêu đề**)
     if (trimmed.startsWith('**') && trimmed.endsWith('**')) {
       const text = trimmed.slice(2, -2);
       return (
@@ -42,19 +120,11 @@ function renderContent(content: string) {
         </h3>
       );
     }
-    if (trimmed.startsWith('**') && trimmed.includes('**')) {
-      const parts = trimmed.split('**');
-      return (
-        <p key={i} className="text-neutral-700 leading-relaxed mb-4">
-          {parts.map((part, j) =>
-            j % 2 === 1 ? <strong key={j} className="font-bold text-neutral-800">{part}</strong> : part
-          )}
-        </p>
-      );
-    }
+
+    // 3. Đoạn văn thông thường có chứa link hoặc in đậm
     return (
-      <p key={i} className="text-neutral-700 leading-relaxed mb-4">
-        {trimmed}
+      <p key={i} className="text-neutral-700 leading-relaxed mb-4 whitespace-pre-line">
+        {renderTextWithLinksAndBold(trimmed)}
       </p>
     );
   });
