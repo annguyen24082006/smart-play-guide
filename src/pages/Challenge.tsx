@@ -255,14 +255,13 @@ export default function Challenge() {
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Tham gia thử thách,
+              14 ngày đồng hành cùng bé,
               <br />
-              <span className="text-amber-600">nhận thưởng liền tay!</span>
+              <span className="text-amber-600">thử thách liền tay, quà xinh nhận ngay</span>
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
-              Cùng con tham gia challenge 14 ngày — mỗi ngày một hoạt động nhỏ, một kỷ niệm mới.
-              Hoàn thành thử thách và nhận giải thưởng độc đáo, mang đậm dấu ấn cá nhân của gia đình bạn.
+              14 ngày - 2 tuần hoạt động nhỏ cùng con. Mỗi ngày trôi qua không chỉ là một kỷ niệm mới, gia đình mình sẽ cùng nhau nhận được giải thưởng gì ta?
             </p>
 
             <div className="flex flex-wrap gap-3">
