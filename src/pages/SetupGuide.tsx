@@ -154,7 +154,7 @@ export default function SetupGuide() {
             </p>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Làm sao để bạn bé tự tắt thiết bị khi đến giờ?
+              Làm sao để bé tự tắt thiết bị khi đến giờ?
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
