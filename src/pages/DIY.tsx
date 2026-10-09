@@ -138,8 +138,8 @@ export default function DIY() {
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
-              Những hoạt động thủ công đơn giản, vui vẻ và đầy ý nghĩa.
-              Không cần dụng cụ phức tạp, chỉ cần ba mẹ, con, và một chút tưởng tượng.
+              Chẳng cần đồ chơi đắt tiền, chỉ cần ba mẹ cùng con tham gia vào "xưởng đồ chơi ký ức" cùng niềm vui 
+              vô ngần vậy là đủ!
             </p>
           </div>
         </div>
