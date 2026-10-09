@@ -1,5 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
-import { supabase } from '@/lib/supabase';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FAMILY_KEY } from '@/pages/Leaderboard';
 import { dayMaterials } from '@/data/materials';
@@ -18,7 +17,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-type ChallengePhoto = {
+type LocalPhoto = {
   id: string;
   day_number: number;
   participant_name: string;
@@ -27,32 +26,35 @@ type ChallengePhoto = {
   created_at: string;
 };
 
+// Cấu hình 10 thử thách mới chuẩn theo điểm số
 const week1 = [
-  { day: 1, title: 'Vẽ tranh gia đình', desc: 'Cùng con vẽ một bức tranh về gia đình mình.' },
-  { day: 2, title: 'Đọc sách cùng con', desc: 'Đọc một cuốn sách yêu thích và thảo luận về câu chuyện.' },
-  { day: 3, title: 'Nấu ăn cùng con', desc: 'Cùng con làm một món ăn đơn giản.' },
-  { day: 4, title: 'Đi dạo ngoài trời', desc: 'Đi dạo và cùng con quan sát thiên nhiên.' },
-  { day: 5, title: 'Làm đồ thủ công', desc: 'Tạo một đồ vật từ vật liệu tái chế.' },
-  { day: 6, title: 'Chơi trò chơi bàn', desc: 'Chơi một trò chơi cùng cả gia đình.' },
-  { day: 7, title: 'Tổng kết tuần 1', desc: 'Cùng con nhìn lại những kỷ niệm của tuần qua.' },
+  { day: 1, title: 'Vương quốc côn trùng', desc: 'Cùng con khám phá thế giới côn trùng phong phú xung quanh.', points: 10 },
+  { day: 2, title: 'Cá thổi bong bóng', desc: 'Sáng tạo chú cá vui nhộn biết thổi bóng bóng độc đáo.', points: 20 },
+  { day: 3, title: 'Làm bó hoa bằng giấy ăn', desc: 'Khéo tay tạo nên bó hoa rực rỡ sắc màu tặng người thân.', points: 30 },
+  { day: 4, title: 'Trồng cây cùng con', desc: 'Gieo mầm một chậu cây nhỏ và quan sát cây lớn mỗi ngày.', points: 10 },
+  { day: 5, title: 'Nấu ăn cùng con', desc: 'Cùng con chuẩn bị một món ăn đơn giản, ấm áp gia đình.', points: 10 },
 ];
 
 const week2 = [
-  { day: 8, title: 'Trồng cây cùng con', desc: 'Cùng con trồng một chậu cây nhỏ.' },
-  { day: 9, title: 'Hát và nhảy múa', desc: 'Cùng con hát bài hát yêu thích và nhảy múa.' },
-  { day: 10, title: 'Viết thư cho nhau', desc: 'Ba mẹ và con viết thư tay gửi nhau.' },
-  { day: 11, title: 'Làm album ảnh', desc: 'In và dán ảnh vào album kỷ niệm gia đình.' },
-  { day: 12, title: 'Thí nghiệm khoa học nhỏ', desc: 'Làm một thí nghiệm an toàn tại nhà.' },
-  { day: 13, title: 'Dọn dẹp cùng con', desc: 'Cùng con dọn dẹp và trang trí lại phòng.' },
-  { day: 14, title: 'Lễ tổng kết — Nhận thưởng!', desc: 'Tổng kết 14 ngày, chia sẻ kỷ niệm và nhận giải thưởng.' },
+  { day: 6, title: 'Nước đi bộ bắc cầu màu sắc', desc: 'Thí nghiệm khoa học đầy phép màu với hiện tượng mao dẫn.', points: 10 },
+  { day: 7, title: 'Mê cung bi lăn', desc: 'Xây dựng đường đi mê cung thử thách sự khéo léo của bé.', points: 20 },
+  { day: 8, title: 'Xe đua tên lửa bằng bóng bay', desc: 'Chế tạo xe đua phản lực bóng bay cực kỳ sôi động.', points: 30 },
+  { day: 9, title: 'Viết thư cho nhau', desc: 'Ba mẹ và con trao gửi những lời yêu thương qua lá thư tay.', points: 10 },
+  { day: 10, title: 'Đọc sách cùng con', desc: 'Đọc cuốn sách yêu thích và cùng trò chuyện về bài học hay.', points: 10 },
 ];
 
 const allDays = [...week1, ...week2];
-const POINTS_PER_UPLOAD = 10;
+const TOTAL_DAYS = allDays.length;
+
+const getPointsByDay = (dayNumber: number): number => {
+  const dayInfo = allDays.find((d) => d.day === dayNumber);
+  return dayInfo ? dayInfo.points : 10;
+};
+
+const LOCAL_PHOTOS_KEY = 'challenge_local_photos';
 
 export default function Challenge() {
-  const [photos, setPhotos] = useState<ChallengePhoto[]>([]);
-  const [loadingPhotos, setLoadingPhotos] = useState(true);
+  const [photos, setPhotos] = useState<LocalPhoto[]>([]);
   const [activeDay, setActiveDay] = useState<number | null>(null);
   const [participantName, setParticipantName] = useState(() => {
     try {
@@ -68,23 +70,16 @@ export default function Challenge() {
   const [uploadError, setUploadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
-  const fetchPhotos = useCallback(async () => {
-    const { data, error } = await supabase
-      .from('challenge_photos')
-      .select('*')
-      .order('day_number', { ascending: true });
-
-    if (error) {
-      console.error('Error fetching photos:', error);
-    } else if (data) {
-      setPhotos(data as ChallengePhoto[]);
-    }
-    setLoadingPhotos(false);
-  }, []);
-
   useEffect(() => {
-    fetchPhotos();
-  }, [fetchPhotos]);
+    try {
+      const saved = localStorage.getItem(LOCAL_PHOTOS_KEY);
+      if (saved) {
+        setPhotos(JSON.parse(saved));
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const myName = participantName.trim().toLowerCase();
   const completedDays = new Set(
@@ -104,59 +99,40 @@ export default function Challenge() {
     setUploadError('');
   };
 
-  const handleUpload = async () => {
-    if (!activeDay || !selectedFile || !participantName.trim()) return;
+  const handleUpload = () => {
+    if (!activeDay || !previewUrl || !participantName.trim()) return;
     setUploading(true);
     setUploadError('');
 
-    const fileExt = selectedFile.name.split('.').pop();
-    const fileName = `challenge-day-${activeDay}-${Date.now()}.${fileExt}`;
-    const filePath = `${fileName}`;
-
-    const { error: uploadErr } = await supabase.storage
-      .from('challenge-photos')
-      .upload(filePath, selectedFile);
-
-    if (uploadErr) {
-      setUploadError('Không thể tải ảnh lên. Vui lòng thử lại.');
-      setUploading(false);
-      return;
-    }
-
-    const { data: urlData } = supabase.storage
-      .from('challenge-photos')
-      .getPublicUrl(filePath);
-
-    const { error: insertErr } = await supabase
-      .from('challenge_photos')
-      .insert({
+    setTimeout(() => {
+      const newPhoto: LocalPhoto = {
+        id: `photo-${Date.now()}`,
         day_number: activeDay,
         participant_name: participantName.trim(),
-        photo_url: urlData.publicUrl,
+        photo_url: previewUrl,
         caption: caption.trim() || null,
-      });
+        created_at: new Date().toISOString(),
+      };
 
-    if (insertErr) {
-      setUploadError('Không thể lưu thông tin. Vui lòng thử lại.');
+      const updatedPhotos = [...photos, newPhoto];
+      setPhotos(updatedPhotos);
+
+      try {
+        localStorage.setItem(LOCAL_PHOTOS_KEY, JSON.stringify(updatedPhotos));
+        localStorage.setItem(FAMILY_KEY, participantName.trim());
+      } catch {
+        /* ignore */
+      }
+
+      setEarned(!completedDays.has(activeDay));
       setUploading(false);
-      return;
-    }
+      setUploadSuccess(true);
 
-    const familyName = participantName.trim();
-    setEarned(!completedDays.has(activeDay));
-    try {
-      localStorage.setItem(FAMILY_KEY, familyName);
-    } catch {
-      /* ignore */
-    }
-
-    setUploading(false);
-    setUploadSuccess(true);
-    setTimeout(() => {
-      setUploadSuccess(false);
-      closeModal();
-      fetchPhotos();
-    }, 1500);
+      setTimeout(() => {
+        setUploadSuccess(false);
+        closeModal();
+      }, 1500);
+    }, 500);
   };
 
   const closeModal = () => {
@@ -168,7 +144,7 @@ export default function Challenge() {
     setUploadSuccess(false);
   };
 
-  const renderDayCard = (dayInfo: { day: number; title: string; desc: string }) => {
+  const renderDayCard = (dayInfo: { day: number; title: string; desc: string; points: number }) => {
     const isCompleted = completedDays.has(dayInfo.day);
     const dayPhotos = photos.filter((p) => p.day_number === dayInfo.day);
 
@@ -192,8 +168,13 @@ export default function Challenge() {
             {dayInfo.day}
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-neutral-800 text-sm leading-snug">{dayInfo.title}</h3>
-            <p className="text-xs text-neutral-500 mt-1 leading-relaxed">{dayInfo.desc}</p>
+            <div className="flex items-center justify-between gap-1 mb-1">
+              <h3 className="font-bold text-neutral-800 text-sm leading-snug">{dayInfo.title}</h3>
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 shrink-0">
+                +{dayInfo.points}đ
+              </span>
+            </div>
+            <p className="text-xs text-neutral-500 leading-relaxed">{dayInfo.desc}</p>
           </div>
         </div>
 
@@ -235,9 +216,8 @@ export default function Challenge() {
 
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
-      {/* Hero Header thiết kế tươi sáng, dùng ảnh challenge.png chuẩn phong cách Blog */}
+      {/* Hero Header */}
       <section className="relative w-full overflow-hidden pt-12 pb-20 sm:pt-16 sm:pb-28">
-        {/* Ảnh nền phủ tự nhiên */}
         <div className="absolute inset-0 z-0">
           <img
             src="/challenge.png"
@@ -246,30 +226,29 @@ export default function Challenge() {
           />
         </div>
 
-        {/* Nội dung chữ trên nền ảnh - Hoàn toàn trong suốt, không dùng thẻ card bao bên ngoài */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl bg-transparent p-0 shadow-none border-none">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-amber-700 border border-amber-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
               <Trophy className="w-4 h-4 text-amber-500" />
-              Thử thách 14 ngày
+              Thử thách 10 ngày đồng hành
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-             Thử thách liền tay, <span className="text-amber-600">quà xinh</span> nhận ngay!
+              Thử thách liền tay, <span className="text-amber-600">quà xinh</span> nhận ngay!
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium mb-6">
-              14 ngày - 2 tuần hoạt động nhỏ cùng con. Mỗi ngày trôi qua không chỉ là một kỷ niệm mới, gia đình mình sẽ cùng nhau nhận được giải thưởng gì ta?
+              10 thử thách nhỏ cùng con trong 2 tuần. Mỗi ngày trôi qua không chỉ là một kỷ niệm mới mà gia đình mình còn tích lũy điểm thưởng hấp dẫn!
             </p>
 
             <div className="flex flex-wrap gap-3">
               <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
                 <Calendar className="w-4 h-4 text-amber-500" />
-                2 tuần — 14 ngày
+                2 tuần — 10 thử thách
               </div>
               <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 border border-amber-200/60 shadow-sm text-xs sm:text-sm font-semibold text-neutral-800">
                 <Gift className="w-4 h-4 text-rose-500" />
-                Giải thưởng độc đáo
+                Điểm thưởng 10đ - 20đ - 30đ
               </div>
             </div>
           </div>
@@ -282,13 +261,13 @@ export default function Challenge() {
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-sm font-semibold text-neutral-700">Tiến độ của gia đình bạn</h2>
             <span className="text-sm font-bold text-teal-600">
-              {completedDays.size} / 14 ngày
+              {completedDays.size} / {TOTAL_DAYS} ngày
             </span>
           </div>
           <div className="h-3 bg-neutral-100 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full transition-all duration-500"
-              style={{ width: `${(completedDays.size / 14) * 100}%` }}
+              style={{ width: `${(completedDays.size / TOTAL_DAYS) * 100}%` }}
             />
           </div>
         </div>
@@ -297,7 +276,7 @@ export default function Challenge() {
       <section className="py-4 bg-amber-50 border-b border-amber-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2 text-sm">
           <p className="text-amber-800">
-            Nhập <strong>tên hộ gia đình</strong> khi đăng ảnh. Mỗi trò được cộng <strong>{POINTS_PER_UPLOAD} điểm</strong> (tính 1 lần / gia đình) ngay khi đăng ảnh thành công.
+            Nhập <strong>tên hộ gia đình</strong> khi đăng ảnh. Tích lũy điểm thưởng theo mức độ thử thách (10đ, 20đ, 30đ).
           </p>
           <Link to="/bang-xep-hang" className="font-bold text-orange-600 hover:text-orange-700 inline-flex items-center gap-1">
             <Trophy className="w-4 h-4" /> Xem bảng xếp hạng
@@ -314,11 +293,11 @@ export default function Challenge() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-neutral-800">Tuần 1</h2>
-              <p className="text-sm text-neutral-500">7 ngày đầu tiên — Khởi đầu kỷ niệm</p>
+              <p className="text-sm text-neutral-500">5 thử thách đầu tiên (Thưởng 10đ - 20đ - 30đ)</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {week1.map(renderDayCard)}
           </div>
         </div>
@@ -333,11 +312,11 @@ export default function Challenge() {
             </div>
             <div>
               <h2 className="text-2xl font-bold text-neutral-800">Tuần 2</h2>
-              <p className="text-sm text-neutral-500">7 ngày tiếp theo — Sáng tạo & tổng kết</p>
+              <p className="text-sm text-neutral-500">5 thử thách tiếp theo (Thưởng 10đ - 20đ - 30đ)</p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
             {week2.map(renderDayCard)}
           </div>
         </div>
@@ -374,7 +353,7 @@ export default function Challenge() {
             <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-5">
               <Trophy className="w-8 h-8 text-white mx-auto mb-3" />
               <p className="text-white font-semibold text-sm">Đáng nhớ</p>
-              <p className="text-amber-50/80 text-xs mt-1">Kỷ niệm 14 ngày</p>
+              <p className="text-amber-50/80 text-xs mt-1">Kỷ niệm 10 thử thách</p>
             </div>
           </div>
         </div>
@@ -389,14 +368,10 @@ export default function Challenge() {
               Kỷ niệm chung
             </div>
             <h2 className="text-3xl font-bold text-neutral-800 mb-3">Bức ảnh từ các gia đình</h2>
-            <p className="text-neutral-500">Những khoảnh khắc tuyệt đẹp từ thử thách 14 ngày</p>
+            <p className="text-neutral-500">Những khoảnh khắc tuyệt đẹp từ các thử thách</p>
           </div>
 
-          {loadingPhotos ? (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 className="w-8 h-8 text-neutral-300 animate-spin" />
-            </div>
-          ) : photos.length === 0 ? (
+          {photos.length === 0 ? (
             <div className="text-center py-20 bg-neutral-50 rounded-3xl">
               <Camera className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
               <p className="text-neutral-400">Chưa có ảnh nào. Hãy là người đầu tiên đăng tải!</p>
@@ -414,7 +389,7 @@ export default function Challenge() {
                   <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="flex items-center gap-1.5 mb-1">
                       <span className="text-xs font-bold text-white bg-amber-500 rounded-md px-2 py-0.5">
-                        Ngày {photo.day_number}
+                        Thử thách {photo.day_number}
                       </span>
                     </div>
                     <p className="text-white text-xs font-medium truncate">{photo.participant_name}</p>
@@ -442,7 +417,7 @@ export default function Challenge() {
                   <span className="font-bold text-amber-600 text-sm">{activeDay}</span>
                 </div>
                 <div>
-                  <p className="font-bold text-neutral-800 text-sm">Ngày {activeDay}</p>
+                  <p className="font-bold text-neutral-800 text-sm">Thử thách {activeDay}</p>
                   <p className="text-xs text-neutral-500">{allDays.find(d => d.day === activeDay)?.title}</p>
                 </div>
               </div>
@@ -457,7 +432,7 @@ export default function Challenge() {
                 <p className="font-semibold text-neutral-800 mb-1">Đăng tải thành công!</p>
                 <p className="text-sm text-neutral-500 mb-3">Kỷ niệm của bạn đã được lưu lại.</p>
                 <p className="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 font-bold text-sm">
-                  {earned ? `+${POINTS_PER_UPLOAD} điểm cho ${participantName.trim()}!` : 'Trò này đã được tính điểm trước đó'}
+                  {earned ? `+${getPointsByDay(activeDay)} điểm cho ${participantName.trim()}!` : 'Trò này đã được tính điểm trước đó'}
                 </p>
               </div>
             ) : (
@@ -519,12 +494,12 @@ export default function Challenge() {
                   {uploading ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      Đăng tải lên...
+                      Đang xử lý...
                     </>
                   ) : (
                     <>
                       <Camera className="w-5 h-5" />
-                      Đăng tải ảnh
+                      Đăng tải ảnh (+{getPointsByDay(activeDay)} điểm)
                     </>
                   )}
                 </button>
