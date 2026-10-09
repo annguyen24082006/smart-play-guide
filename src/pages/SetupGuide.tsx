@@ -16,6 +16,17 @@ import {
   LockKeyhole,
 } from 'lucide-react';
 
+type GuideBullet = { label?: string; text: string };
+type GuideStep = { label: string; text: string; bullets?: GuideBullet[] };
+type GuideGroup = { title: string; steps: GuideStep[] };
+type GuideSection = {
+  heading: string;
+  intro?: string;
+  bullets?: GuideBullet[];
+  groups?: GuideGroup[];
+};
+type GuideVideo = { id: string; title: string };
+
 type Guide = {
   id: string;
   category: string;
@@ -27,7 +38,16 @@ type Guide = {
   iconColor: string;
   steps: string[];
   note: string;
+  sections?: GuideSection[]; // hướng dẫn chia giai đoạn (nếu có thì dùng thay cho steps)
+  videos?: GuideVideo[];     // danh sách video YouTube (id + tiêu đề)
+  youtubeId?: string;        // cách cũ: 1 video duy nhất
 };
+
+function getVideos(guide: Guide): GuideVideo[] {
+  if (guide.videos && guide.videos.length > 0) return guide.videos;
+  if (guide.youtubeId) return [{ id: guide.youtubeId, title: '' }];
+  return [];
+}
 
 const guides: Guide[] = [
   {
@@ -118,6 +138,10 @@ const guides: Guide[] = [
       },
     ],
     note: 'Family Link phù hợp khi ba mẹ muốn quản lý thiết bị từ xa nhưng vẫn trao đổi minh bạch với con.',
+    videos: [
+      { id: 'oqmALsQL73k', title: '[Family Link] Hướng dẫn kết nối thiết bị (Cha,mẹ) - Con' },
+      { id: 'AQRDLBrWr0E', title: 'How To Setup Google Family Link | Google Parental Controls' },
+    ],
   },
   {
     id: 'youtube-kids',
@@ -190,7 +214,7 @@ export default function SetupGuide() {
         <div className="absolute inset-0 z-0">
           <img
             src="/screen_time.png"
-            alt="Smart Play Guide - Hướng dẫn cài đặt"
+            alt="Smart Play Guide - Thời gian cùng bé"
             className="w-full h-full object-cover object-right-bottom"
           />
         </div>
@@ -207,12 +231,11 @@ export default function SetupGuide() {
             </p>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Làm sao để bé tự tắt thiết bị khi đến giờ?
+              Làm sao để bạn bé tự tắt thiết bị khi đến giờ?
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
               Giới hạn thời gian của con cùng với sự chọn lọc nội dung mà cha mẹ muốn bạn bé tiếp cận. Tất tần tật mọi thứ đều có mặt ở đây!
-        
             </p>
           </div>
         </div>
@@ -227,7 +250,7 @@ export default function SetupGuide() {
                 <ListChecks className="w-4 h-4" />
                 Thư viện hướng dẫn
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-800">Bố mẹ đang cần gì SPG lo</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-800">Bố mẹ đang cần gì thế?</h2>
             </div>
             <p className="text-sm text-neutral-500 max-w-xs leading-relaxed">
               Mỗi thẻ gồm hướng dẫn từng bước và phần xem video chi tiết ở cuối.
@@ -312,30 +335,97 @@ export default function SetupGuide() {
 
             <div className="p-6 sm:p-8">
               <p className="text-neutral-600 leading-relaxed mb-7">{selectedGuide.description}</p>
-              <div className="space-y-4">
-                {selectedGuide.steps.map((step, index) => (
-                  <div key={step} className="flex gap-4 items-start">
-                    <div className="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 flex items-center justify-center text-sm font-bold shrink-0">{index + 1}</div>
-                    <p className="text-neutral-700 leading-relaxed pt-1">{step}</p>
-                  </div>
-                ))}
-              </div>
+              {selectedGuide.sections ? (
+                <div className="space-y-8">
+                  {selectedGuide.sections.map((section) => (
+                    <div key={section.heading}>
+                      <h3 className="text-base sm:text-lg font-bold text-cyan-700 bg-cyan-50 border border-cyan-100 rounded-xl px-4 py-2.5 mb-4">{section.heading}</h3>
+                      {section.intro && <p className="text-neutral-700 leading-relaxed mb-3">{section.intro}</p>}
+                      {section.bullets && (
+                        <ul className="space-y-2.5">
+                          {section.bullets.map((b, i) => (
+                            <li key={i} className="flex gap-3 items-start text-neutral-700 leading-relaxed">
+                              <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
+                              <span>{b.label && <strong className="text-neutral-800">{b.label}: </strong>}{b.text}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {section.groups?.map((group) => (
+                        <div key={group.title} className="mt-6 first:mt-0">
+                          <h4 className="font-bold text-neutral-800 mb-4">{group.title}</h4>
+                          <div className="space-y-4">
+                            {group.steps.map((step, index) => (
+                              <div key={step.label} className="flex gap-4 items-start">
+                                <div className="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 flex items-center justify-center text-sm font-bold shrink-0">{index + 1}</div>
+                                <div className="pt-1">
+                                  <p className="text-neutral-700 leading-relaxed">
+                                    <strong className="text-neutral-800">{step.label}{step.text ? ': ' : ''}</strong>{step.text}
+                                  </p>
+                                  {step.bullets && (
+                                    <ul className="mt-2 space-y-2">
+                                      {step.bullets.map((b, i) => (
+                                        <li key={i} className="flex gap-3 items-start text-neutral-700 leading-relaxed">
+                                          <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
+                                          <span>{b.label && <strong className="text-neutral-800">{b.label}: </strong>}{b.text}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {selectedGuide.steps.map((step, index) => (
+                    <div key={step} className="flex gap-4 items-start">
+                      <div className="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 flex items-center justify-center text-sm font-bold shrink-0">{index + 1}</div>
+                      <p className="text-neutral-700 leading-relaxed pt-1">{step}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
               <div className="mt-7 rounded-2xl bg-cyan-50 border border-cyan-100 p-5 flex gap-3">
                 <CheckCircle className="w-5 h-5 text-cyan-600 mt-0.5 shrink-0" />
                 <p className="text-sm text-cyan-900 leading-relaxed">{selectedGuide.note}</p>
               </div>
 
-              <div className="mt-8 rounded-2xl overflow-hidden border border-amber-200 bg-[#fffaf0]">
-                <div className="aspect-video bg-[#fff0c9] flex flex-col items-center justify-center text-center px-6">
-                  <PlayCircle className="w-14 h-14 text-amber-600 mb-3" strokeWidth={1.5} />
-                  <h3 className="text-lg font-bold text-neutral-800">Video hướng dẫn chi tiết</h3>
-                  <p className="text-sm text-neutral-600 mt-2 max-w-md">Video minh họa cho phần {selectedGuide.category} sẽ được hiển thị tại đây.</p>
+              {getVideos(selectedGuide).length > 0 ? (
+                <div className="mt-8 space-y-6">
+                  {getVideos(selectedGuide).map((video) => (
+                    <div key={video.id} className="rounded-2xl overflow-hidden border border-amber-200 bg-[#fffaf0]">
+                      <div className="aspect-video bg-black">
+                        <iframe
+                          className="w-full h-full"
+                          src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
+                          title={video.title || selectedGuide.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
+                      </div>
+                      {video.title && <p className="px-4 py-3 text-sm font-medium text-neutral-700">{video.title}</p>}
+                    </div>
+                  ))}
                 </div>
-                <div className="p-4 flex items-center justify-between gap-4">
-                  <p className="text-xs text-neutral-500">Xem video sau khi đọc các bước hướng dẫn bên trên.</p>
-                  <button disabled className="px-4 py-2 rounded-lg bg-neutral-200 text-neutral-400 text-sm font-semibold cursor-not-allowed whitespace-nowrap">Video sắp cập nhật</button>
+              ) : (
+                <div className="mt-8 rounded-2xl overflow-hidden border border-amber-200 bg-[#fffaf0]">
+                  <div className="aspect-video bg-[#fff0c9] flex flex-col items-center justify-center text-center px-6">
+                    <PlayCircle className="w-14 h-14 text-amber-600 mb-3" strokeWidth={1.5} />
+                    <h3 className="text-lg font-bold text-neutral-800">Video hướng dẫn chi tiết</h3>
+                    <p className="text-sm text-neutral-600 mt-2 max-w-md">Video minh họa cho phần {selectedGuide.category} sẽ được hiển thị tại đây.</p>
+                  </div>
+                  <div className="p-4 flex items-center justify-between gap-4">
+                    <p className="text-xs text-neutral-500">Xem video sau khi đọc các bước hướng dẫn bên trên.</p>
+                    <button disabled className="px-4 py-2 rounded-lg bg-neutral-200 text-neutral-400 text-sm font-semibold cursor-not-allowed whitespace-nowrap">Video sắp cập nhật</button>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
