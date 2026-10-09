@@ -36,7 +36,7 @@ export default function Home() {
                  Cùng bé lớn khôn qua các hoạt động <span className="text-teal-500">sáng tạo</span>
             </h1>
             <p className="text-lg sm:text-xl text-neutral-600 leading-relaxed mb-8 max-w-xl">
-   Cùng SPG làm chủ thời gian sử dụng thiết bị của bé, khám phá vô vàn hoạt động sáng tạo tại nhà và tham gia thử thách 14 ngày để gia đình cùng tạo nên thật nhiều kỷ niệm gắn kết nhé bố mẹ!            </p>
+   Cùng SPG làm chủ thời gian sử dụng thiết bị của bé, khám phá vô vàn hoạt động sáng tạo tại nhà và tham gia thử thách 14 ngày để gia đình cùng tạo nên thật nhiều kỷ niệm gắn kết nhé bố mẹ ơi!            </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/huong-dan-cai-dat"
