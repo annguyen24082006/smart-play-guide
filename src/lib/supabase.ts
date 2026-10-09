@@ -8,4 +8,10 @@ const supabaseAnonKey =
   import.meta.env.VITE_SUPABASE_ANON_KEY ||
   'sb_publishable_myyEWjZZMj7cJZfUiSK2sg_aHlHAhD7';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  global: {
+    headers: {
+      apikey: supabaseAnonKey,
+    },
+  },
+});
