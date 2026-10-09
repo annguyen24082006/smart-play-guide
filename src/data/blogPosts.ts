@@ -38,6 +38,7 @@ const posts: BlogPostData[] = [
    content: `Sở hữu một chiếc máy tính giúp con rèn luyện tư duy và tiếp cận tri thức hiện đại, nhưng cũng mang lại vô vàn mối lo cho cha mẹ: từ thói quen ngồi trước màn hình quá nhiều giờ đến nguy cơ va phải các thông tin độc hại. Thay vì can thiệp thô bạo, cha mẹ hoàn toàn có thể giúp con cân bằng việc sử dụng máy tính một cách nhẹ nhàng. Hãy cùng khám phá giải pháp quản lý thời gian trên máy tính và lọc nội dung trên máy tính cực kỳ dễ dàng thông qua bộ công cụ Microsoft Family Safety ngay trên hệ điều hành Windows qua bài viết dưới đây.
 
 ## 1. Lý Do Ba Mẹ Cần Quản Lý Thời Gian Dùng Máy Tính Của Trẻ
+
 Trước khi bắt tay vào thực hiện các bước cài đặt kỹ thuật, việc hiểu rõ bản chất và tầm quan trọng của việc thiết lập ranh giới công nghệ cho con là điều rất cần thiết vì [tác hại của công nghệ](https://thebookland.vn/blog/10-li-do-nen-gioi-han-thoi-gian-dung-thiet-bi-dien-tu-voi-tre-em-duoi-12-tuoi?srsltid=AU7gw4VZ3yTE0YyQdal48kdYmH-tWD8Idcm8Kez2rnLE2FU-3L1oL135) đối với con rất lớn. Cha mẹ không nên xem việc quản lý thời gian trên máy tính là hành động cấm đoán, mà là giải pháp bảo vệ toàn diện cho sự phát triển của trẻ. Việc định hướng thói quen sử dụng máy tính văn minh sẽ giúp con tận dụng tối đa lợi ích học tập mà không bị sa đà vào mạng xã hội hay game online.
 
 ### 1.1. Bảo vệ sức khỏe thể chất và thị lực
@@ -75,32 +76,32 @@ Hệ điều hành Windows (Windows 10 và Windows 11) được trang bị sẵn
 **Tài khoản Microsoft của Con (Standard User):** Tài khoản dành riêng cho trẻ, được phân quyền người dùng tiêu chuẩn để chịu sự quản lý và áp dụng chế độ lọc nội dung trên máy tính từ tài khoản cha mẹ.
 
 **Lưu ý quan trọng:** Bạn tuyệt đối không cho con dùng chung tài khoản Quản trị viên (Administrator) của cha mẹ khi sử dụng máy tính. Nếu dùng chung tài khoản Administrator, trẻ có thể dễ dàng vô hiệu hóa công cụ quản lý thời gian trên máy tính, tự ý gỡ bỏ bộ lọc nội dung trên máy tính hoặc thay đổi các cài đặt hệ thống.
-
+![Giao diện chuyển đổi tài khoản sang Standard user để quản lý thời gian trên máy tính và lọc nội dung trên máy tính](https://i.postimg.cc/L6qNf17Q/Screenshot-2026-10-10-024601.png)
 ## 3. Hướng Dẫn Các Bước Cài Đặt Chi Tiết Trên Máy Tính
 
 Dưới đây là quy trình từng bước giúp bạn kết nối và thiết lập tính năng quản lý thời gian trên máy tính cho con trên hệ điều hành Windows.
 
 ### Bước 1: Mở giao diện Cài đặt tài khoản trên Windows
 
-Trên bàn phím máy tính, bạn nhấn tổ hợp phím **Win + I** để mở nhanh cửa sổ Settings (Cài đặt).
+Trên bàn phím máy tính, bạn nhấn tổ hợp phím "Win + I" để mở nhanh cửa sổ Settings (Cài đặt).
 
-Tại danh sách menu bên trái, nhấp chọn mục **Accounts (Tài khoản)**.
+Tại danh sách menu bên trái, nhấp chọn mục "Accounts (Tài khoản)".
 
-Tiếp theo, chọn mục **Family & other users (Gia đình & người dùng khác)** ở giao diện bên phải.
+Tiếp theo, chọn mục Family & other users (Gia đình & người dùng khác) ở giao diện bên phải.
 
 ### Bước 2: Thêm tài khoản của con vào Nhóm gia đình
 
-Tại mục **Your family (Gia đình của bạn)**, nhấp chọn nút **Add account** (hoặc **Add a family member**).
+Tại mục Your family (Gia đình của bạn), nhấp chọn nút Add account (hoặc Add a family member).
 
 Cửa sổ thiết lập tài khoản Microsoft sẽ hiện ra:
-- **Nếu con đã có email Microsoft:** Bạn chỉ cần nhập địa chỉ email của con (dạng @outlook.com hoặc @hotmail.com) rồi nhấn **Next**.
-- **Nếu con chưa có email:** Nhấp vào dòng chữ **Create one for a child (Tạo tài khoản cho trẻ)** và làm theo hướng dẫn trên màn hình để đăng ký một địa chỉ email mới dành riêng cho con.
+- **Nếu con đã có email Microsoft:** Bạn chỉ cần nhập địa chỉ email của con (dạng @outlook.com hoặc @hotmail.com) rồi nhấn Next.
+- **Nếu con chưa có email:** Nhấp vào dòng chữ Create one for a child (Tạo tài khoản cho trẻ) và làm theo hướng dẫn trên màn hình để đăng ký một địa chỉ email mới dành riêng cho con.
 
 ### Bước 3: Xác nhận lời mời gia nhập nhóm gia đình
 
 Sau khi nhập email của con, hệ thống Microsoft sẽ gửi một thư mời tham gia Nhóm gia đình.
 
-Bạn mở trình duyệt web, đăng nhập vào hòm thư email của con và nhấn **Accept Invitation (Chấp nhận lời mời)** để hoàn tất việc liên kết tài khoản của con với tài khoản quản lý của cha mẹ.
+Bạn mở trình duyệt web, đăng nhập vào hòm thư email của con và nhấn Accept Invitation (Chấp nhận lời mời) để hoàn tất việc liên kết tài khoản của con với tài khoản quản lý của cha mẹ.
 
 ### Bước 4: Chuyển đổi loại tài khoản trên máy tính sang Standard User
 
@@ -110,7 +111,7 @@ Nhấp vào tên tài khoản của con vừa được thêm vào máy tính.
 
 Chọn **Change account type (Thay đổi loại tài khoản)**.
 
-Tại mục Account type, đảm bảo chọn là **Standard User (Người dùng tiêu chuẩn)** thay vì Administrator, sau đó nhấn **OK**. Bước này đảm bảo con phải tuân thủ mọi cài đặt quản lý thời gian trên máy tính và lọc nội dung trên máy tính mà bạn đặt ra.
+Tại mục Account type, đảm bảo chọn là Standard User (Người dùng tiêu chuẩn) thay vì Administrator, sau đó nhấn **OK**. Bước này đảm bảo con phải tuân thủ mọi cài đặt quản lý thời gian trên máy tính và lọc nội dung trên máy tính mà bạn đặt ra.
 
 ## 4. Cấu Hình Giới Hạn Thời Gian Và Lọc Nội Dung Trên Trang Quản Lý
 
@@ -172,7 +173,7 @@ Xem Video Hướng Dẫn Quản Lý Thời Gian Dùng Máy Tính Cho Con Tại �
 - Xem tiếp: [Hướng dẫn thiết lập an toàn cho trẻ trên kênh YouTube](https://www.youtube.com/watch?v=En9pqC58ZcE)
 
 ✍️ Hãy để lại bình luận bên dưới để cùng chia sẻ kinh nghiệm, thắc mắc hoặc thảo luận cùng các bố mẹ khác nhé! Smart Play Guide luôn sẵn sàng giải đáp và đồng hành cùng bạn!`,
-    cover_image: null,
+    cover_image: 'https://i.postimg.cc/RFRc5MYj/Anh-1.webp',
     author: 'Smart Play Guide',
     category: 'Cài đặt',
     created_at: '2026-10-09',
