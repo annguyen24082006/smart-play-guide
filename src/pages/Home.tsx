@@ -74,7 +74,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center mb-6">
                 <Settings className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-bold text-neutral-800 mb-3">Hướng dẫn cài đặt</h3>
+              <h3 className="text-xl font-bold text-neutral-800 mb-3">Thời gian cùng bé</h3>
               <p className="text-neutral-600 mb-6 text-sm leading-relaxed">
                 Từng bước thiết lập các ứng dụng, thiết bị trực tuyến an toàn và phù hợp với độ tuổi của trẻ.
               </p>
