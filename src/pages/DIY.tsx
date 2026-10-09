@@ -35,7 +35,7 @@ const activities = [
   {
     id: 'ban-bi-lac-carton',
     category: 'Thủ công & Trò chơi',
-    level: 'medium' as Level, // Cần kéo sắc & dao rọc giấy -> Xếp nhóm Khá/Medium
+    level: 'easy' as Level, // 1. ĐÃ ĐỔI THÀNH 'easy' ĐỂ XẾP VÀO TRÒ DỄ
     duration: '30 - 45 phút',
     age: '7-12 tuổi',
     title: 'Tự làm bàn bi lắc từ hộp carton',
@@ -71,7 +71,8 @@ const activities = [
     age: '6-10 tuổi',
     title: 'Cách làm lồng đèn Trung thu bằng giấy A4',
     desc: 'Tự tay làm chiếc lồng đèn giấy xòe xinh xắn có đèn LED lung linh để bé đón Trung thu đầy niềm vui!',
-    image: 'https://img.youtube.com/vi/cLbi6_xFcic/maxresdefault.jpg',
+    // 2. ĐÃ SỬA LINK ẢNH HIỂN THỊ CHUẨN KHÔNG BỊ LỖI
+    image: 'https://img.youtube.com/vi/cLbi6_xFcic/hqdefault.jpg',
     icon: Sparkles,
     iconColor: 'bg-rose-500',
     materials: [
@@ -98,7 +99,8 @@ const activities = [
     age: '3-10 tuổi',
     title: 'Nước đi bộ bắc cầu màu sắc',
     desc: 'Thí nghiệm khoa học huyền bí giúp bé quan sát hiện tượng mao dẫn khi nước màu tự "bò" qua dải giấy!',
-    image: 'https://img.youtube.com/vi/hGwG--GZEfw/maxresdefault.jpg',
+    // 2. ĐÃ SỬA LINK ẢNH HIỂN THỊ CHUẨN KHÔNG BỊ LỖI
+    image: 'https://img.youtube.com/vi/hGwG--GZEfw/hqdefault.jpg',
     icon: FlaskConical,
     iconColor: 'bg-teal-500',
     materials: [
