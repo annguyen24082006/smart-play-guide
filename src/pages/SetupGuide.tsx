@@ -34,8 +34,8 @@ const guides: Guide[] = [
     id: 'screen-time',
     category: 'iPad & iPhone',
     duration: '5 phút',
-    title: 'Thiết lập Screen Time từng bước',
-    description: 'Đặt trần thời gian, lọc nội dung theo độ tuổi và chặn mua hàng bí mật trên iPad và iPhone.',
+    title: 'Giới hạn thời gian thật dễ dàng',
+    description: 'Cùng đặt “giờ nghỉ” cho iPhone & iPad để con vừa xem vui, vừa không quên giờ nha!',
     image: '/screen_time.png',
     icon: Apple,
     iconColor: 'bg-neutral-800',
@@ -52,8 +52,8 @@ const guides: Guide[] = [
     id: 'family-link',
     category: 'Android',
     duration: '8 phút',
-    title: 'Quản lý thiết bị Android bằng Google Family Link',
-    description: 'Tạo môi trường an toàn cho con, phê duyệt ứng dụng và đặt giờ tắt máy tự động.',
+    title: 'Cùng bé dùng Android hiệu quả và an toàn',
+    description: 'Bây giờ, bố mẹ có thể đặt giờ nghỉ, duyệt app mới và quản lý thời gian dùng máy thật dễ dàng.',
     image: 'https://images.pexels.com/photos/27177478/pexels-photo-27177478.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     icon: Monitor,
     iconColor: 'bg-teal-500',
@@ -70,8 +70,8 @@ const guides: Guide[] = [
     id: 'youtube-kids',
     category: 'YouTube Kids',
     duration: '4 phút',
-    title: 'Cài YouTube Kids an toàn trong 4 phút',
-    description: 'Tạo không gian xem video phù hợp cho trẻ. Hai bước quan trọng nhất: tắt tìm kiếm và đặt bộ hẹn giờ.',
+    title: 'YouTube Kids: 4 phút để yên tâm hơn',
+    description: 'Chỉ vài bước nhỏ để bé xem đúng nội dung phù hợp - bố mẹ nhớ kiểm tra tìm kiếm và giới hạn giờ xem nhé!',
     icon: Youtube,
     iconColor: 'bg-orange-500',
     steps: [
@@ -87,8 +87,8 @@ const guides: Guide[] = [
     id: 'netflix',
     category: 'Netflix',
     duration: '4 phút',
-    title: 'Tạo không gian xem an toàn trên Netflix',
-    description: 'Hồ sơ Kids và mã PIN giúp con không lướt được sang nội dung người lớn trên Netflix.',
+    title: 'Góc nhỏ của bé trên không gian Netflix',
+    description: 'Tạo hồ sơ và mã PIN để mở ra một thế giới màu sắc, đáng yêu của riêng con.',
     icon: LockKeyhole,
     iconColor: 'bg-amber-600',
     steps: [
@@ -104,8 +104,8 @@ const guides: Guide[] = [
     id: 'smart-tv',
     category: 'Tivi thông minh',
     duration: '6 phút',
-    title: 'Lọc nội dung trên Tivi thông minh & YouTube',
-    description: 'Tivi là màn hình cả nhà cùng xem nên dễ kiểm soát nhất — nếu biết cài hồ sơ trẻ em và đặt TV đúng chỗ.',
+    title: 'Hãy biến TV thành một góc nhỏ tràn ngập tiếng cười của gia đình mình',
+    description: 'Một vài cài đặt nhỏ giúp bố mẹ chọn nội dung phù hợp hơn và để cả nhà cùng xem TV thật vui.',
     image: 'https://images.pexels.com/photos/20459169/pexels-photo-20459169.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     icon: Tv,
     iconColor: 'bg-teal-600',
@@ -146,7 +146,7 @@ export default function SetupGuide() {
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white/80 text-teal-700 border border-teal-200/60 rounded-full text-xs sm:text-sm font-semibold mb-6 shadow-sm backdrop-blur-sm">
               <Smartphone className="w-4 h-4 text-teal-600" />
-              Hướng dẫn cài đặt
+              Thời gian cùng bé
             </div>
 
             <p className="text-xl sm:text-2xl font-semibold text-teal-700 mb-3">
@@ -154,12 +154,12 @@ export default function SetupGuide() {
             </p>
 
             <h1 className="text-4xl sm:text-6xl font-extrabold text-neutral-900 leading-[1.15] mb-6 tracking-tight">
-              Hướng dẫn cài đặt ứng dụng trực tuyến
+              Làm sao để bạn bé tự tắt thiết bị khi đến giờ?
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-700 leading-relaxed font-medium">
-              Chọn từng chủ đề để xem hướng dẫn bằng lời và video chi tiết. Từ giới hạn thời gian trên điện thoại
-              đến lọc nội dung trên các nền tảng mà con thường sử dụng.
+              Giới hạn thời gian của con cùng với sự chọn lọc nội dung mà cha mẹ muốn bạn bé tiếp cận. Tất tần tật mọi thứ đều có mặt ở đây!
+        
             </p>
           </div>
         </div>
@@ -174,7 +174,7 @@ export default function SetupGuide() {
                 <ListChecks className="w-4 h-4" />
                 Thư viện hướng dẫn
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-800">Chọn chủ đề bạn cần</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-neutral-800">Bố mẹ đang cần gì SPG lo</h2>
             </div>
             <p className="text-sm text-neutral-500 max-w-xs leading-relaxed">
               Mỗi thẻ gồm hướng dẫn từng bước và phần xem video chi tiết ở cuối.
