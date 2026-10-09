@@ -76,7 +76,9 @@ Hệ điều hành Windows (Windows 10 và Windows 11) được trang bị sẵn
 **Tài khoản Microsoft của Con (Standard User):** Tài khoản dành riêng cho trẻ, được phân quyền người dùng tiêu chuẩn để chịu sự quản lý và áp dụng chế độ lọc nội dung trên máy tính từ tài khoản cha mẹ.
 
 **Lưu ý quan trọng:** Bạn tuyệt đối không cho con dùng chung tài khoản Quản trị viên (Administrator) của cha mẹ khi sử dụng máy tính. Nếu dùng chung tài khoản Administrator, trẻ có thể dễ dàng vô hiệu hóa công cụ quản lý thời gian trên máy tính, tự ý gỡ bỏ bộ lọc nội dung trên máy tính hoặc thay đổi các cài đặt hệ thống.
+
 ![Giao diện chuyển đổi tài khoản sang Standard user để quản lý thời gian trên máy tính và lọc nội dung trên máy tính](https://i.postimg.cc/L6qNf17Q/Screenshot-2026-10-10-024601.png)
+
 ## 3. Hướng Dẫn Các Bước Cài Đặt Chi Tiết Trên Máy Tính
 
 Dưới đây là quy trình từng bước giúp bạn kết nối và thiết lập tính năng quản lý thời gian trên máy tính cho con trên hệ điều hành Windows.
