@@ -40,7 +40,7 @@ const posts: BlogPostData[] = [
 
       Làm thế nào để trẻ vừa tận dụng được lợi ích của máy tính, vừa không rơi vào trạng thái "nghiện" thiết bị? Làm sao để cha mẹ kiểm soát được thời gian con dùng máy mà không cần phải can thiệp thô bạo hay tạo ra những xung đột căng thẳng trong gia đình? Bài viết dưới đây sẽ hướng dẫn bạn cách quản lý thời gian sử dụng máy tính cho con một cách khoa học, an toàn và cực kỳ dễ dàng thông qua tính năng Microsoft Family Safety tích hợp sẵn trên hệ điều hành Windows.
 
-      ##1. Lý Do Ba Mẹ Cần Quản Lý Thời Gian Dùng Máy Tính Của Trẻ##
+      ## 1. Lý Do Ba Mẹ Cần Quản Lý Thời Gian Dùng Máy Tính Của Trẻ
 
       Trước khi bắt tay vào thực hiện các bước cài đặt kỹ thuật, việc hiểu rõ bản chất và tầm quan trọng của việc thiết lập ranh giới công nghệ cho con là điều rất cần thiết vì tác hại của công nghệ đối với con rất lớn. Cha mẹ không nên xem đây là hành động cấm đoán, mà là giải pháp bảo vệ toàn diện cho sự phát triển của trẻ.
 
@@ -66,7 +66,7 @@ const posts: BlogPostData[] = [
 
       Khi thời gian sử dụng thiết bị điện tử được kiểm soát ở mức hợp lý, trẻ sẽ có nhiều không gian hơn để giao tiếp trực tiếp với cha mẹ, anh chị em, tham gia các hoạt động thể thao ngoài trời và kết nối với thế giới thực xung quanh.
 
-      ##2. Chuẩn Bị Trước Khi Cài Đặt Microsoft Family Safety##
+      ## 2. Chuẩn Bị Trước Khi Cài Đặt Microsoft Family Safety
 
       Hệ điều hành Windows (Windows 10 và Windows 11) được trang bị sẵn công cụ Microsoft Family Safety (Nhóm gia đình Microsoft). Đây là giải pháp hoàn toàn miễn phí, có độ ổn định cao và cực kỳ mạnh mẽ giúp phụ huynh quản lý thiết bị của con.
 
@@ -78,7 +78,7 @@ const posts: BlogPostData[] = [
 
       Lưu ý quan trọng: Bạn tuyệt đối không cho con dùng chung tài khoản Quản trị viên (Administrator) của cha mẹ trên máy tính. Nếu dùng chung tài khoản Administrator, trẻ có thể dễ dàng tắt các tính năng giám sát hoặc thay đổi cài đặt hệ thống.
 
-      ##3. Hướng Dẫn Các Bước Cài Đặt Chi Tiết Trên Máy Tính##
+      ## 3. Hướng Dẫn Các Bước Cài Đặt Chi Tiết Trên Máy Tính
 
       Dưới đây là quy trình từng bước giúp bạn kết nối và thiết lập tính năng quản lý thời gian cho con trên máy tính Windows.
 
@@ -112,7 +112,7 @@ const posts: BlogPostData[] = [
 
       Tại mục Account type, đảm bảo chọn là Standard User (Người dùng tiêu chuẩn) thay vì Administrator, sau đó nhấn OK.
 
-      ##4. Cấu Hình Giới Hạn Thời Gian Và Lọc Nội Dung Trên Trang Quản Lý##
+      ## 4. Cấu Hình Giới Hạn Thời Gian Và Lọc Nội Dung Trên Trang Quản Lý
 
       Sau khi đã liên kết tài khoản thành công, cha mẹ có thể dùng điện thoại hoặc máy tính cá nhân truy cập vào trang quản lý trung tâm của Microsoft để tiến hành cài đặt các hạn mức.
 
@@ -144,7 +144,7 @@ const posts: BlogPostData[] = [
 
       Ngoài ra, phụ huynh có thể thêm các đường link cụ thể vào danh sách Always allowed (Luôn cho phép) hoặc Never allowed (Luôn chặn) theo nhu cầu thực tế.
 
-      ##**5. Những Nguyên Tắc Vàng Giúp Ba Mẹ Đồng Hành Cùng Con**##
+      ## **5. Những Nguyên Tắc Vàng Giúp Ba Mẹ Đồng Hành Cùng Con**
 
       Công cụ phần mềm dù hiện đại đến đâu cũng chỉ đóng vai trò hỗ trợ. Sự thấu hiểu, tôn trọng và hợp tác chân thành giữa cha mẹ với con cái mới là yếu tố quyết định giúp trẻ sử dụng máy tính hiệu quả.
 
