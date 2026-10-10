@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import { MessageCircle, Send, Loader2 } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
+import { MessageCircle, Send, Loader2, RefreshCw } from 'lucide-react';
 
 // ⚠️ DÁN LINK "Web app" của Google Apps Script vào đây (link kết thúc bằng /exec).
-// Chưa dán thì khung bình luận sẽ tự ẩn, web vẫn chạy bình thường.
 const API_URL = 'https://script.google.com/macros/s/AKfycbwtgcPIl2E6d7DhXyu_xS-zGVt_WMnniaqFrP3Mba5oen-1F4oIzFwvBvBcgBFFl6Ef/exec';
 
 // Các biểu tượng cảm xúc khách có thể thả (phải trùng với danh sách trong Code.gs)
@@ -21,7 +20,7 @@ type Comment = {
   created_at: string;
 };
 
-const MIN_SECONDS_BETWEEN_COMMENTS = 30;
+const MIN_SECONDS_BETWEEN_COMMENTS = 15;
 const norm = (e: string) => e.replace(/\uFE0F/g, '');
 const configured = API_URL.startsWith('https://');
 
@@ -42,16 +41,36 @@ function writeLocal(key: string, value: unknown) {
   }
 }
 
-// Gửi dữ liệu lên Google Apps Script. Dùng text/plain để trình duyệt không chặn (không cần preflight).
-async function postToSheet(payload: object): Promise<boolean> {
+// Gửi dữ liệu lên Google Apps Script an toàn, có cơ chế fallback nếu trình duyệt chặn redirect POST
+async function postToSheet(payload: Record<string, string | number>): Promise<boolean> {
   try {
     const res = await fetch(API_URL, {
       method: 'POST',
+      redirect: 'follow',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload),
     });
-    const data = await res.json();
-    return !!data.ok;
+    const text = await res.text();
+    try {
+      const data = JSON.parse(text);
+      if (data && data.ok) return true;
+    } catch {
+      // Nếu phản hồi bị redirect sang trang HTML, thử gửi qua GET params (nếu đã cập nhật Code.gs mới)
+    }
+  } catch {
+    // Nếu lỗi CORS khi POST redirect, chuyển sang phương án dự phòng bên dưới
+  }
+
+  // Phương án dự phòng (Fallback): Gửi qua query params GET để không bao giờ bị mất gói tin khi 302 Redirect
+  try {
+    const params = new URLSearchParams();
+    Object.entries(payload).forEach(([k, v]) => params.append(k, String(v)));
+    const fallbackRes = await fetch(`${API_URL}?${params.toString()}`, {
+      method: 'GET',
+      redirect: 'follow',
+    });
+    const fallbackData = await fallbackRes.json();
+    return !!fallbackData.ok;
   } catch {
     return false;
   }
@@ -71,30 +90,31 @@ export default function BlogEngagement({ slug }: { slug: string }) {
   const [sending, setSending] = useState(false);
   const [message, setMessage] = useState<{ type: 'ok' | 'error'; text: string } | null>(null);
 
-  useEffect(() => {
+  const fetchEngagement = useCallback(async () => {
     if (!configured) return;
-    let cancelled = false;
-    setMine(readLocal<string[]>(reactedKey, []));
     setLoadingComments(true);
-
-    fetch(`${API_URL}?slug=${encodeURIComponent(slug)}`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (cancelled) return;
-        if (data && data.ok) {
-          setCounts(data.reactions || {});
-          setComments(data.comments || []);
-        }
-        setLoadingComments(false);
-      })
-      .catch(() => {
-        if (!cancelled) setLoadingComments(false);
+    try {
+      // Thêm _t=Date.now() để trình duyệt không lưu cache cũ sau khi bạn vừa duyệt comment trên Sheet
+      const r = await fetch(`${API_URL}?slug=${encodeURIComponent(slug)}&_t=${Date.now()}`, {
+        method: 'GET',
+        redirect: 'follow',
       });
+      const data = await r.json();
+      if (data && data.ok) {
+        setCounts(data.reactions || {});
+        setComments(data.comments || []);
+      }
+    } catch {
+      // ignore
+    } finally {
+      setLoadingComments(false);
+    }
+  }, [slug]);
 
-    return () => {
-      cancelled = true;
-    };
-  }, [slug, reactedKey]);
+  useEffect(() => {
+    setMine(readLocal<string[]>(reactedKey, []));
+    fetchEngagement();
+  }, [slug, reactedKey, fetchEngagement]);
 
   if (!configured) return null;
 
@@ -155,7 +175,10 @@ export default function BlogEngagement({ slug }: { slug: string }) {
       return;
     }
     writeLocal('spg_last_comment_at', Date.now());
-    setMessage({ type: 'ok', text: 'Cảm ơn bạn! Bình luận sẽ hiện sau khi được duyệt.' });
+    setMessage({
+      type: 'ok',
+      text: 'Đã gửi bình luận về Google Sheet! Sau khi Quản trị viên tích duyệt vào cột E (approved), bình luận sẽ hiển thị bên dưới.',
+    });
     setName('');
     setContent('');
   };
@@ -191,10 +214,21 @@ export default function BlogEngagement({ slug }: { slug: string }) {
       </div>
 
       {/* Bình luận */}
-      <h3 className="text-lg font-bold text-neutral-800 mb-1 flex items-center gap-2">
-        <MessageCircle className="w-5 h-5 text-teal-600" />
-        Gửi lời nhắn khích lệ
-      </h3>
+      <div className="flex items-center justify-between gap-2 mb-1">
+        <h3 className="text-lg font-bold text-neutral-800 flex items-center gap-2">
+          <MessageCircle className="w-5 h-5 text-teal-600" />
+          Gửi lời nhắn khích lệ
+        </h3>
+        <button
+          type="button"
+          onClick={fetchEngagement}
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-neutral-500 hover:text-teal-600 transition-colors"
+          title="Tải lại danh sách bình luận đã duyệt"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${loadingComments ? 'animate-spin' : ''}`} />
+          Làm mới bình luận
+        </button>
+      </div>
       <p className="text-sm text-neutral-500 mb-5">
         Mọi lời chia sẻ của bạn là động lực rất lớn với đội ngũ Smart Play Guide. Bình luận sẽ hiện sau khi được duyệt.
       </p>
