@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FAMILY_KEY } from '@/pages/Leaderboard';
+import { FAMILY_KEY, APPS_SCRIPT_URL } from '@/pages/Leaderboard';
 import { dayMaterials } from '@/data/materials';
 import ChallengeSignup from '@/components/ChallengeSignup';
 import {
@@ -17,9 +17,6 @@ import {
   Sparkles,
   Trash2,
 } from 'lucide-react';
-
-// Đường link API SheetDB của bạn
-const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/5mphi3brs5qb6';
 
 type LocalPhoto = {
   id: string;
@@ -105,20 +102,23 @@ export default function Challenge() {
   const [uploadError, setUploadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
-  // Tải danh sách ảnh chung từ SheetDB
+  // Tải danh sách ảnh chung từ Google Sheet thông qua Apps Script
   const fetchPhotos = async () => {
     try {
-      const res = await fetch(SHEETDB_API_URL);
+      const res = await fetch(`${APPS_SCRIPT_URL}?action=list`, {
+        method: 'GET',
+        redirect: 'follow',
+      });
       const data = await res.json();
-      if (Array.isArray(data)) {
-        const formatted = data.map((item: any) => ({
-          ...item,
-          day_number: Number(item.day_number),
-        }));
-        setPhotos(formatted);
-      }
+      const rawList = Array.isArray(data) ? data : Array.isArray(data?.data) ? data.data : [];
+      const formatted = rawList.map((item: any) => ({
+        ...item,
+        day_number: Number(item.day_number),
+        participant_name: String(item.participant_name || ''),
+      }));
+      setPhotos(formatted);
     } catch (err) {
-      console.error('Lỗi tải dữ liệu từ SheetDB:', err);
+      console.error('Lỗi tải dữ liệu từ Google Sheet:', err);
     } finally {
       setLoadingPhotos(false);
     }
@@ -130,7 +130,7 @@ export default function Challenge() {
 
   const myName = participantName.trim().toLowerCase();
   const completedDays = new Set(
-    photos.filter((p) => myName && p.participant_name.trim().toLowerCase() === myName).map((p) => p.day_number)
+    photos.filter((p) => myName && String(p.participant_name).trim().toLowerCase() === myName).map((p) => p.day_number)
   );
   const [earned, setEarned] = useState(false);
 
@@ -152,7 +152,8 @@ export default function Challenge() {
     }
   };
 
-  // Đăng ảnh lên Google Sheet thông qua SheetDB
+  // Đăng ảnh lên Google Sheet thông qua Google Apps Script
+  // Lưu ý: Dùng Content-Type: text/plain;charset=utf-8 để không bị lỗi CORS trên trình duyệt
   const handleUpload = async () => {
     if (!activeDay || !previewUrl || !participantName.trim()) return;
     setUploading(true);
@@ -164,17 +165,24 @@ export default function Challenge() {
       participant_name: participantName.trim(),
       photo_url: previewUrl,
       caption: caption.trim() || '',
+      points: getPointsByDay(activeDay),
       created_at: new Date().toISOString(),
     };
 
     try {
-      const res = await fetch(SHEETDB_API_URL, {
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: [newPhoto] }),
+        redirect: 'follow',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          action: 'create',
+          data: newPhoto,
+        }),
       });
 
-      if (res.ok) {
+      const result = await res.json();
+
+      if (res.ok && result.status !== 'error') {
         setEarned(!completedDays.has(activeDay));
         try {
           localStorage.setItem(FAMILY_KEY, participantName.trim());
@@ -191,20 +199,27 @@ export default function Challenge() {
         setUploadError('Không thể gửi dữ liệu. Vui lòng thử lại!');
       }
     } catch (err) {
-      setUploadError('Lỗi kết nối mạng!');
+      setUploadError('Lỗi kết nối mạng hoặc đường dẫn Apps Script chưa đúng!');
     } finally {
       setUploading(false);
     }
   };
 
-  // Xóa ảnh trực tiếp trên Google Sheet
+  // Xóa ảnh trực tiếp trên Google Sheet thông qua Google Apps Script
   const handleDeletePhoto = async (photoId: string) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa bài đăng này?')) {
       try {
-        const res = await fetch(`${SHEETDB_API_URL}/id/${photoId}`, {
-          method: 'DELETE',
+        const res = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          redirect: 'follow',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'delete',
+            id: photoId,
+          }),
         });
-        if (res.ok) {
+        const result = await res.json();
+        if (res.ok && result.status === 'success') {
           setPhotos(photos.filter((p) => p.id !== photoId));
         } else {
           alert('Không thể xóa bài đăng. Vui lòng thử lại!');
@@ -275,7 +290,7 @@ export default function Challenge() {
                   className="w-14 h-14 rounded-lg object-cover border border-neutral-200"
                 />
                 {/* Chỉ hiển thị nút xóa cho người sở hữu ảnh */}
-                {photo.participant_name.trim().toLowerCase() === myName && (
+                {String(photo.participant_name).trim().toLowerCase() === myName && (
                   <button
                     onClick={() => handleDeletePhoto(photo.id)}
                     title="Xóa bài đăng này"
@@ -477,7 +492,7 @@ export default function Challenge() {
                   />
 
                   {/* Nút xóa bài đăng góc trên ảnh */}
-                  {photo.participant_name.trim().toLowerCase() === myName && (
+                  {String(photo.participant_name).trim().toLowerCase() === myName && (
                     <button
                       onClick={() => handleDeletePhoto(photo.id)}
                       title="Xóa bài đăng"
