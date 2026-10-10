@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Trophy, Crown, Camera, Gift, Award, BookImage, Backpack, Target } from 'lucide-react';
+import { Trophy, Crown, Camera, Gift, Award, BookImage, Backpack, Target, Loader2 } from 'lucide-react';
 
 export const FAMILY_KEY = 'smart_play_family_name';
-const LOCAL_PHOTOS_KEY = 'challenge_local_photos';
+
+// Đường link API SheetDB của bạn
+const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/5mphi3brs5qb6';
 
 // Cấu hình bảng điểm chuẩn theo 10 thử thách
 const dayPointsMap: Record<number, number> = {
@@ -31,34 +33,41 @@ const ranges: { id: Range; label: string; from: number; to: number }[] = [
 
 export default function Leaderboard() {
   const [rows, setRows] = useState<Row[]>([]);
+  const [loading, setLoading] = useState(true);
   const [range, setRange] = useState<Range>('all');
   const [me, setMe] = useState(() => {
     try { return localStorage.getItem(FAMILY_KEY) || ''; } catch { return ''; }
   });
 
-  // Tải dữ liệu ảnh từ localStorage
-  const load = useCallback(() => {
+  // Tải dữ liệu bài đăng trực tuyến từ Google Sheet qua SheetDB
+  const load = useCallback(async () => {
     try {
-      const saved = localStorage.getItem(LOCAL_PHOTOS_KEY);
-      if (saved) {
-        setRows(JSON.parse(saved));
-      } else {
-        setRows([]);
+      const res = await fetch(SHEETDB_API_URL);
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        setRows(data);
       }
-    } catch {
-      setRows([]);
+    } catch (err) {
+      console.error('Lỗi tải dữ liệu bảng xếp hạng:', err);
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     load();
+    // Tự động làm mới dữ liệu sau mỗi 10 giây
+    const interval = setInterval(load, 10000);
     window.addEventListener('focus', load);
-    return () => window.removeEventListener('focus', load);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', load);
+    };
   }, [load]);
 
   const rg = ranges.find((r) => r.id === range)!;
 
-  // Tính điểm chính xác cho từng gia đình
+  // Gom nhóm theo từng hộ gia đình và tính điểm dựa trên 10 thử thách
   const families: Family[] = useMemo(() => {
     const map = new Map<string, { name: string; days: Map<number, string> }>();
 
@@ -66,7 +75,7 @@ export default function Leaderboard() {
       const dayNum = Number(r.day_number);
       if (dayNum < rg.from || dayNum > rg.to) continue;
 
-      const key = r.participant_name.trim().toLowerCase();
+      const key = r.participant_name?.trim().toLowerCase();
       if (!key) continue;
 
       const f = map.get(key) || { name: r.participant_name.trim(), days: new Map() };
@@ -167,7 +176,7 @@ export default function Leaderboard() {
                 <div className="bg-white rounded-2xl p-4"><p className="text-3xl font-bold text-teal-600">{mine.days}/{rg.to - rg.from + 1}</p><p className="text-xs text-neutral-500">Trò đã chơi</p></div>
               </div>
             ) : (
-              me.trim() && <p className="mt-4 text-sm text-neutral-500">Chưa thấy điểm cho "{me.trim()}" trong {rg.label.toLowerCase()}. Hãy kiểm tra đúng tên hoặc <Link to="/challenge" className="text-teal-600 font-semibold underline">gửi ảnh challenge</Link>.</p>
+              me.trim() && !loading && <p className="mt-4 text-sm text-neutral-500">Chưa thấy điểm cho "{me.trim()}" trong {rg.label.toLowerCase()}. Hãy kiểm tra đúng tên hoặc <Link to="/challenge" className="text-teal-600 font-semibold underline">gửi ảnh challenge</Link>.</p>
             )}
             {mine && (
               <div className="mt-4 flex items-start gap-2 text-sm text-neutral-700">
@@ -195,7 +204,11 @@ export default function Leaderboard() {
             ))}
           </div>
 
-          {families.length === 0 ? (
+          {loading ? (
+            <div className="flex justify-center py-16">
+              <Loader2 className="w-8 h-8 text-teal-500 animate-spin" />
+            </div>
+          ) : families.length === 0 ? (
             <div className="text-center py-14 bg-stone-50 rounded-3xl">
               <Camera className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
               <p className="text-neutral-500 mb-4">Chưa có gia đình nào ghi điểm. Hãy là người đầu tiên!</p>
