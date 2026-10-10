@@ -18,6 +18,9 @@ import {
   Trash2,
 } from 'lucide-react';
 
+// Đường link API SheetDB của bạn
+const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/5mphi3brs5qb6';
+
 type LocalPhoto = {
   id: string;
   day_number: number;
@@ -52,10 +55,41 @@ const getPointsByDay = (dayNumber: number): number => {
   return dayInfo ? dayInfo.points : 10;
 };
 
-const LOCAL_PHOTOS_KEY = 'challenge_local_photos';
+// Hàm nén ảnh giảm dung lượng để lưu vào Google Sheet mượt mà
+const compressImage = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event) => {
+      const img = new Image();
+      img.src = event.target?.result as string;
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 600;
+        const scaleFactor = MAX_WIDTH / img.width;
+        
+        if (scaleFactor < 1) {
+          canvas.width = MAX_WIDTH;
+          canvas.height = img.height * scaleFactor;
+        } else {
+          canvas.width = img.width;
+          canvas.height = img.height;
+        }
+
+        const ctx = canvas.getContext('2d');
+        ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+        const base64 = canvas.toDataURL('image/jpeg', 0.6);
+        resolve(base64);
+      };
+      img.onerror = (err) => reject(err);
+    };
+    reader.onerror = (err) => reject(err);
+  });
+};
 
 export default function Challenge() {
   const [photos, setPhotos] = useState<LocalPhoto[]>([]);
+  const [loadingPhotos, setLoadingPhotos] = useState(true);
   const [activeDay, setActiveDay] = useState<number | null>(null);
   const [participantName, setParticipantName] = useState(() => {
     try {
@@ -71,15 +105,27 @@ export default function Challenge() {
   const [uploadError, setUploadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
-  useEffect(() => {
+  // Tải danh sách ảnh chung từ SheetDB
+  const fetchPhotos = async () => {
     try {
-      const saved = localStorage.getItem(LOCAL_PHOTOS_KEY);
-      if (saved) {
-        setPhotos(JSON.parse(saved));
+      const res = await fetch(SHEETDB_API_URL);
+      const data = await res.json();
+      if (Array.isArray(data)) {
+        const formatted = data.map((item: any) => ({
+          ...item,
+          day_number: Number(item.day_number),
+        }));
+        setPhotos(formatted);
       }
-    } catch {
-      /* ignore */
+    } catch (err) {
+      console.error('Lỗi tải dữ liệu từ SheetDB:', err);
+    } finally {
+      setLoadingPhotos(false);
     }
+  };
+
+  useEffect(() => {
+    fetchPhotos();
   }, []);
 
   const myName = participantName.trim().toLowerCase();
@@ -88,69 +134,83 @@ export default function Challenge() {
   );
   const [earned, setEarned] = useState(false);
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 5 * 1024 * 1024) {
-      setUploadError('Ảnh quá lớn. Vui lòng chọn ảnh dưới 5MB.');
+    if (file.size > 8 * 1024 * 1024) {
+      setUploadError('Ảnh quá lớn. Vui lòng chọn ảnh dưới 8MB.');
       return;
     }
     setSelectedFile(file);
 
-    // Đọc ảnh dạng Base64 để lưu vĩnh viễn vào localStorage không bị mất khi F5
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreviewUrl(reader.result as string);
-    };
-    reader.readAsDataURL(file);
-    setUploadError('');
+    try {
+      const compressedBase64 = await compressImage(file);
+      setPreviewUrl(compressedBase64);
+      setUploadError('');
+    } catch (err) {
+      setUploadError('Không thể xử lý ảnh này, vui lòng thử ảnh khác.');
+    }
   };
 
-  const handleUpload = () => {
+  // Đăng ảnh lên Google Sheet thông qua SheetDB
+  const handleUpload = async () => {
     if (!activeDay || !previewUrl || !participantName.trim()) return;
     setUploading(true);
     setUploadError('');
 
-    setTimeout(() => {
-      const newPhoto: LocalPhoto = {
-        id: `photo-${Date.now()}`,
-        day_number: activeDay,
-        participant_name: participantName.trim(),
-        photo_url: previewUrl,
-        caption: caption.trim() || null,
-        created_at: new Date().toISOString(),
-      };
+    const newPhoto = {
+      id: `photo-${Date.now()}`,
+      day_number: activeDay,
+      participant_name: participantName.trim(),
+      photo_url: previewUrl,
+      caption: caption.trim() || '',
+      created_at: new Date().toISOString(),
+    };
 
-      const updatedPhotos = [...photos, newPhoto];
-      setPhotos(updatedPhotos);
+    try {
+      const res = await fetch(SHEETDB_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: [newPhoto] }),
+      });
 
-      try {
-        localStorage.setItem(LOCAL_PHOTOS_KEY, JSON.stringify(updatedPhotos));
-        localStorage.setItem(FAMILY_KEY, participantName.trim());
-      } catch {
-        /* ignore */
+      if (res.ok) {
+        setEarned(!completedDays.has(activeDay));
+        try {
+          localStorage.setItem(FAMILY_KEY, participantName.trim());
+        } catch {}
+        
+        setUploadSuccess(true);
+        await fetchPhotos(); // Tải lại danh sách ảnh mới nhất
+
+        setTimeout(() => {
+          setUploadSuccess(false);
+          closeModal();
+        }, 1500);
+      } else {
+        setUploadError('Không thể gửi dữ liệu. Vui lòng thử lại!');
       }
-
-      setEarned(!completedDays.has(activeDay));
+    } catch (err) {
+      setUploadError('Lỗi kết nối mạng!');
+    } finally {
       setUploading(false);
-      setUploadSuccess(true);
-
-      setTimeout(() => {
-        setUploadSuccess(false);
-        closeModal();
-      }, 1500);
-    }, 400);
+    }
   };
 
-  // Hàm xóa bài đăng / xóa ảnh
-  const handleDeletePhoto = (photoId: string) => {
+  // Xóa ảnh trực tiếp trên Google Sheet
+  const handleDeletePhoto = async (photoId: string) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa bài đăng này?')) {
-      const updated = photos.filter((p) => p.id !== photoId);
-      setPhotos(updated);
       try {
-        localStorage.setItem(LOCAL_PHOTOS_KEY, JSON.stringify(updated));
-      } catch {
-        /* ignore */
+        const res = await fetch(`${SHEETDB_API_URL}/id/${photoId}`, {
+          method: 'DELETE',
+        });
+        if (res.ok) {
+          setPhotos(photos.filter((p) => p.id !== photoId));
+        } else {
+          alert('Không thể xóa bài đăng. Vui lòng thử lại!');
+        }
+      } catch (err) {
+        alert('Lỗi kết nối khi xóa bài đăng.');
       }
     }
   };
@@ -214,14 +274,16 @@ export default function Challenge() {
                   alt={`Day ${dayInfo.day}`}
                   className="w-14 h-14 rounded-lg object-cover border border-neutral-200"
                 />
-                {/* Nút Xóa ảnh góc trên ảnh */}
-                <button
-                  onClick={() => handleDeletePhoto(photo.id)}
-                  title="Xóa bài đăng này"
-                  className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-rose-500 text-white rounded-full flex items-center justify-center shadow hover:bg-rose-600 transition-all opacity-90 sm:opacity-0 sm:group-hover/item:opacity-100"
-                >
-                  <Trash2 className="w-3 h-3" />
-                </button>
+                {/* Chỉ hiển thị nút xóa cho người sở hữu ảnh */}
+                {photo.participant_name.trim().toLowerCase() === myName && (
+                  <button
+                    onClick={() => handleDeletePhoto(photo.id)}
+                    title="Xóa bài đăng này"
+                    className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-rose-500 text-white rounded-full flex items-center justify-center shadow hover:bg-rose-600 transition-all opacity-90 sm:opacity-0 sm:group-hover/item:opacity-100"
+                  >
+                    <Trash2 className="w-3 h-3" />
+                  </button>
+                )}
               </div>
             ))}
           </div>
@@ -395,7 +457,11 @@ export default function Challenge() {
             <p className="text-neutral-500">Những khoảnh khắc tuyệt đẹp từ các thử thách</p>
           </div>
 
-          {photos.length === 0 ? (
+          {loadingPhotos ? (
+            <div className="flex justify-center py-12">
+              <Loader2 className="w-8 h-8 text-teal-500 animate-spin" />
+            </div>
+          ) : photos.length === 0 ? (
             <div className="text-center py-20 bg-neutral-50 rounded-3xl">
               <Camera className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
               <p className="text-neutral-400">Chưa có ảnh nào. Hãy là người đầu tiên đăng tải!</p>
@@ -410,14 +476,16 @@ export default function Challenge() {
                     className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
-                  {/* Nút xóa bài đăng ở góc trên ảnh thư viện */}
-                  <button
-                    onClick={() => handleDeletePhoto(photo.id)}
-                    title="Xóa bài đăng"
-                    className="absolute top-2 right-2 p-2 bg-rose-600/90 text-white rounded-xl shadow hover:bg-rose-700 transition-all z-20 opacity-90 sm:opacity-0 sm:group-hover:opacity-100"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  {/* Nút xóa bài đăng góc trên ảnh */}
+                  {photo.participant_name.trim().toLowerCase() === myName && (
+                    <button
+                      onClick={() => handleDeletePhoto(photo.id)}
+                      title="Xóa bài đăng"
+                      className="absolute top-2 right-2 p-2 bg-rose-600/90 text-white rounded-xl shadow hover:bg-rose-700 transition-all z-20 opacity-90 sm:opacity-0 sm:group-hover:opacity-100"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
 
                   <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -464,7 +532,7 @@ export default function Challenge() {
               <div className="text-center py-10">
                 <CheckCircle className="w-14 h-14 text-teal-500 mx-auto mb-4" />
                 <p className="font-semibold text-neutral-800 mb-1">Đăng tải thành công!</p>
-                <p className="text-sm text-neutral-500 mb-3">Kỷ niệm của bạn đã được lưu lại.</p>
+                <p className="text-sm text-neutral-500 mb-3">Kỷ niệm của bạn đã được ghi nhận trực tuyến.</p>
                 <p className="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 font-bold text-sm">
                   {earned ? `+${getPointsByDay(activeDay)} điểm cho ${participantName.trim()}!` : 'Trò này đã được tính điểm trước đó'}
                 </p>
@@ -498,7 +566,7 @@ export default function Challenge() {
                     <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-neutral-200 rounded-xl cursor-pointer hover:border-teal-400 hover:bg-teal-50/30 transition-all">
                       <div className="flex flex-col items-center gap-2">
                         <Upload className="w-6 h-6 text-neutral-400" />
-                        <span className="text-sm text-neutral-500">Chọn ảnh (tối đa 5MB)</span>
+                        <span className="text-sm text-neutral-500">Chọn ảnh từ thiết bị</span>
                       </div>
                       <input type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
                     </label>
@@ -528,7 +596,7 @@ export default function Challenge() {
                   {uploading ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      Đang xử lý...
+                      Đang lưu lên hệ thống...
                     </>
                   ) : (
                     <>
