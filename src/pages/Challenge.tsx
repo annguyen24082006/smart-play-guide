@@ -16,9 +16,9 @@ import {
   Heart,
   Sparkles,
   Trash2,
+  Filter,
 } from 'lucide-react';
 
-// Đường link API SheetDB của bạn
 const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/5mphi3brs5qb6';
 
 type LocalPhoto = {
@@ -30,21 +30,23 @@ type LocalPhoto = {
   created_at: string;
 };
 
-// Cấu hình 10 thử thách chuẩn theo điểm số
+type LevelType = 'all' | 'easy' | 'medium' | 'hard';
+
+// Cấu hình 10 thử thách chuẩn theo điểm số và phân loại độ khó
 const week1 = [
-  { day: 1, title: 'Vương quốc côn trùng', desc: 'Cùng con khám phá thế giới côn trùng phong phú xung quanh.', points: 10 },
-  { day: 2, title: 'Cá thổi bong bóng', desc: 'Sáng tạo chú cá vui nhộn biết thổi bóng bóng độc đáo.', points: 20 },
-  { day: 3, title: 'Làm bó hoa bằng giấy ăn', desc: 'Khéo tay tạo nên bó hoa rực rỡ sắc màu tặng người thân.', points: 30 },
-  { day: 4, title: 'Trồng cây cùng con', desc: 'Gieo mầm một chậu cây nhỏ và quan sát cây lớn mỗi ngày.', points: 10 },
-  { day: 5, title: 'Nấu ăn cùng con', desc: 'Cùng con chuẩn bị một món ăn đơn giản, ấm áp gia đình.', points: 10 },
+  { day: 1, title: 'Vương quốc côn trùng', desc: 'Cùng con khám phá thế giới côn trùng phong phú xung quanh.', points: 10, level: 'easy' },
+  { day: 2, title: 'Cá thổi bong bóng', desc: 'Sáng tạo chú cá vui nhộn biết thổi bóng bóng độc đáo.', points: 20, level: 'medium' },
+  { day: 3, title: 'Làm bó hoa bằng giấy ăn', desc: 'Khéo tay tạo nên bó hoa rực rỡ sắc màu tặng người thân.', points: 30, level: 'hard' },
+  { day: 4, title: 'Trồng cây cùng con', desc: 'Gieo mầm một chậu cây nhỏ và quan sát cây lớn mỗi ngày.', points: 10, level: 'easy' },
+  { day: 5, title: 'Nấu ăn cùng con', desc: 'Cùng con chuẩn bị một món ăn đơn giản, ấm áp gia đình.', points: 10, level: 'easy' },
 ];
 
 const week2 = [
-  { day: 6, title: 'Nước đi bộ bắc cầu màu sắc', desc: 'Thí nghiệm khoa học đầy phép màu với hiện tượng mao dẫn.', points: 10 },
-  { day: 7, title: 'Mê cung bi lăn', desc: 'Xây dựng đường đi mê cung thử thách sự khéo léo của bé.', points: 20 },
-  { day: 8, title: 'Xe đua tên lửa bằng bóng bay', desc: 'Chế tạo xe đua phản lực bóng bay cực kỳ sôi động.', points: 30 },
-  { day: 9, title: 'Viết thư cho nhau', desc: 'Ba mẹ và con trao gửi những lời yêu thương qua lá thư tay.', points: 10 },
-  { day: 10, title: 'Đọc sách cùng con', desc: 'Đọc cuốn sách yêu thích và cùng trò chuyện về bài học hay.', points: 10 },
+  { day: 6, title: 'Nước đi bộ bắc cầu màu sắc', desc: 'Thí nghiệm khoa học đầy phép màu với hiện tượng mao dẫn.', points: 10, level: 'easy' },
+  { day: 7, title: 'Mê cung bi lăn', desc: 'Xây dựng đường đi mê cung thử thách sự khéo léo của bé.', points: 20, level: 'medium' },
+  { day: 8, title: 'Xe đua tên lửa bằng bóng bay', desc: 'Chế tạo xe đua phản lực bóng bay cực kỳ sôi động.', points: 30, level: 'hard' },
+  { day: 9, title: 'Viết thư cho nhau', desc: 'Ba mẹ và con trao gửi những lời yêu thương qua lá thư tay.', points: 10, level: 'easy' },
+  { day: 10, title: 'Đọc sách cùng con', desc: 'Đọc cuốn sách yêu thích và cùng trò chuyện về bài học hay.', points: 10, level: 'easy' },
 ];
 
 const allDays = [...week1, ...week2];
@@ -55,7 +57,6 @@ const getPointsByDay = (dayNumber: number): number => {
   return dayInfo ? dayInfo.points : 10;
 };
 
-// Hàm nén ảnh giảm dung lượng để lưu vào Google Sheet mượt mà
 const compressImage = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -67,7 +68,7 @@ const compressImage = (file: File): Promise<string> => {
         const canvas = document.createElement('canvas');
         const MAX_WIDTH = 600;
         const scaleFactor = MAX_WIDTH / img.width;
-        
+
         if (scaleFactor < 1) {
           canvas.width = MAX_WIDTH;
           canvas.height = img.height * scaleFactor;
@@ -91,6 +92,7 @@ export default function Challenge() {
   const [photos, setPhotos] = useState<LocalPhoto[]>([]);
   const [loadingPhotos, setLoadingPhotos] = useState(true);
   const [activeDay, setActiveDay] = useState<number | null>(null);
+  const [filterLevel, setFilterLevel] = useState<LevelType>('all'); // State bộ lọc độ khó
   const [participantName, setParticipantName] = useState(() => {
     try {
       return localStorage.getItem(FAMILY_KEY) || '';
@@ -105,7 +107,6 @@ export default function Challenge() {
   const [uploadError, setUploadError] = useState('');
   const [uploadSuccess, setUploadSuccess] = useState(false);
 
-  // Tải danh sách ảnh chung từ SheetDB
   const fetchPhotos = async () => {
     try {
       const res = await fetch(SHEETDB_API_URL);
@@ -134,6 +135,15 @@ export default function Challenge() {
   );
   const [earned, setEarned] = useState(false);
 
+  // Lọc mảng theo độ khó được chọn
+  const filterDays = (daysArray: typeof week1) => {
+    if (filterLevel === 'all') return daysArray;
+    return daysArray.filter((d) => d.level === filterLevel);
+  };
+
+  const filteredWeek1 = filterDays(week1);
+  const filteredWeek2 = filterDays(week2);
+
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -152,7 +162,6 @@ export default function Challenge() {
     }
   };
 
-  // Đăng ảnh lên Google Sheet thông qua SheetDB
   const handleUpload = async () => {
     if (!activeDay || !previewUrl || !participantName.trim()) return;
     setUploading(true);
@@ -179,9 +188,9 @@ export default function Challenge() {
         try {
           localStorage.setItem(FAMILY_KEY, participantName.trim());
         } catch {}
-        
+
         setUploadSuccess(true);
-        await fetchPhotos(); // Tải lại danh sách ảnh mới nhất
+        await fetchPhotos();
 
         setTimeout(() => {
           setUploadSuccess(false);
@@ -197,7 +206,6 @@ export default function Challenge() {
     }
   };
 
-  // Xóa ảnh trực tiếp trên Google Sheet
   const handleDeletePhoto = async (photoId: string) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa bài đăng này?')) {
       try {
@@ -224,7 +232,7 @@ export default function Challenge() {
     setUploadSuccess(false);
   };
 
-  const renderDayCard = (dayInfo: { day: number; title: string; desc: string; points: number }) => {
+  const renderDayCard = (dayInfo: { day: number; title: string; desc: string; points: number; level: string }) => {
     const isCompleted = completedDays.has(dayInfo.day);
     const dayPhotos = photos.filter((p) => p.day_number === dayInfo.day);
 
@@ -274,7 +282,6 @@ export default function Challenge() {
                   alt={`Day ${dayInfo.day}`}
                   className="w-14 h-14 rounded-lg object-cover border border-neutral-200"
                 />
-                {/* Chỉ hiển thị nút xóa cho người sở hữu ảnh */}
                 {photo.participant_name.trim().toLowerCase() === myName && (
                   <button
                     onClick={() => handleDeletePhoto(photo.id)}
@@ -359,54 +366,99 @@ export default function Challenge() {
         </div>
       </section>
 
-      <section className="py-4 bg-amber-50 border-b border-amber-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2 text-sm">
-          <p className="text-amber-800">
-            Nhập <strong>tên hộ gia đình</strong> khi đăng ảnh. Tích lũy điểm thưởng theo mức độ thử thách (10đ, 20đ, 30đ).
-          </p>
-          <Link to="/bang-xep-hang" className="font-bold text-orange-600 hover:text-orange-700 inline-flex items-center gap-1">
+      {/* Bộ Lọc Độ Khó (Phong cách Pill Button giống trang Blog) */}
+      <section className="py-6 bg-white border-b border-neutral-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
+            <button
+              onClick={() => setFilterLevel('all')}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                filterLevel === 'all'
+                  ? 'bg-neutral-800 text-white shadow-sm'
+                  : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+              }`}
+            >
+              Tất cả (10 trò)
+            </button>
+            <button
+              onClick={() => setFilterLevel('easy')}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                filterLevel === 'easy'
+                  ? 'bg-teal-600 text-white shadow-sm'
+                  : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+              }`}
+            >
+              Trò Dễ (10đ)
+            </button>
+            <button
+              onClick={() => setFilterLevel('medium')}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                filterLevel === 'medium'
+                  ? 'bg-amber-500 text-white shadow-sm'
+                  : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+              }`}
+            >
+              Trò Khá (20đ)
+            </button>
+            <button
+              onClick={() => setFilterLevel('hard')}
+              className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                filterLevel === 'hard'
+                  ? 'bg-orange-600 text-white shadow-sm'
+                  : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+              }`}
+            >
+              Trò Khó (30đ)
+            </button>
+          </div>
+
+          <Link to="/bang-xep-hang" className="font-bold text-orange-600 hover:text-orange-700 inline-flex items-center gap-1 text-sm">
             <Trophy className="w-4 h-4" /> Xem bảng xếp hạng
           </Link>
         </div>
       </section>
 
       {/* Week 1 */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
-              <span className="font-bold text-amber-600">1</span>
+      {filteredWeek1.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+                <span className="font-bold text-amber-600">1</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-neutral-800">Tuần 1</h2>
+                <p className="text-sm text-neutral-500">Các thử thách tuần đầu tiên</p>
+              </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-neutral-800">Tuần 1</h2>
-              <p className="text-sm text-neutral-500">5 thử thách đầu tiên (Thưởng 10đ - 20đ - 30đ)</p>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-            {week1.map(renderDayCard)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+              {filteredWeek1.map(renderDayCard)}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Week 2 */}
-      <section className="py-16 bg-stone-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
-              <span className="font-bold text-teal-600">2</span>
+      {filteredWeek2.length > 0 && (
+        <section className="py-16 bg-stone-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                <span className="font-bold text-teal-600">2</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-neutral-800">Tuần 2</h2>
+                <p className="text-sm text-neutral-500">Các thử thách tiếp theo</p>
+              </div>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-neutral-800">Tuần 2</h2>
-              <p className="text-sm text-neutral-500">5 thử thách tiếp theo (Thưởng 10đ - 20đ - 30đ)</p>
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-            {week2.map(renderDayCard)}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+              {filteredWeek2.map(renderDayCard)}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <ChallengeSignup />
 
@@ -445,7 +497,7 @@ export default function Challenge() {
         </div>
       </section>
 
-      {/* Gallery - Bức ảnh từ các gia đình */}
+      {/* Gallery */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -476,7 +528,6 @@ export default function Challenge() {
                     className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
-                  {/* Nút xóa bài đăng góc trên ảnh */}
                   {photo.participant_name.trim().toLowerCase() === myName && (
                     <button
                       onClick={() => handleDeletePhoto(photo.id)}
