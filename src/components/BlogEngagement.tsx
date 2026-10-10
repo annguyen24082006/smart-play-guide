@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { MessageCircle, Send, Loader2, RefreshCw } from 'lucide-react';
+import { MessageCircle, Send, Loader2, RefreshCw, CornerDownRight, Sparkles } from 'lucide-react';
 
 // ⚠️ DÁN LINK "Web app" của Google Apps Script vào đây (link kết thúc bằng /exec).
 const API_URL = 'https://script.google.com/macros/s/AKfycbwtgcPIl2E6d7DhXyu_xS-zGVt_WMnniaqFrP3Mba5oen-1F4oIzFwvBvBcgBFFl6Ef/exec';
@@ -18,6 +18,7 @@ type Comment = {
   author_name: string;
   content: string;
   created_at: string;
+  admin_reply?: string; // Câu trả lời từ nhóm Smart Play Guide (Cột F trên Sheet)
 };
 
 const MIN_SECONDS_BETWEEN_COMMENTS = 15;
@@ -55,13 +56,13 @@ async function postToSheet(payload: Record<string, string | number>): Promise<bo
       const data = JSON.parse(text);
       if (data && data.ok) return true;
     } catch {
-      // Nếu phản hồi bị redirect sang trang HTML, thử gửi qua GET params (nếu đã cập nhật Code.gs mới)
+      // Nếu phản hồi bị redirect sang trang HTML, chuyển sang phương án dự phòng bên dưới
     }
   } catch {
     // Nếu lỗi CORS khi POST redirect, chuyển sang phương án dự phòng bên dưới
   }
 
-  // Phương án dự phòng (Fallback): Gửi qua query params GET để không bao giờ bị mất gói tin khi 302 Redirect
+  // Phương án dự phòng (Fallback): Gửi qua query params GET
   try {
     const params = new URLSearchParams();
     Object.entries(payload).forEach(([k, v]) => params.append(k, String(v)));
@@ -94,7 +95,6 @@ export default function BlogEngagement({ slug }: { slug: string }) {
     if (!configured) return;
     setLoadingComments(true);
     try {
-      // Thêm _t=Date.now() để trình duyệt không lưu cache cũ sau khi bạn vừa duyệt comment trên Sheet
       const r = await fetch(`${API_URL}?slug=${encodeURIComponent(slug)}&_t=${Date.now()}`, {
         method: 'GET',
         redirect: 'follow',
@@ -131,7 +131,6 @@ export default function BlogEngagement({ slug }: { slug: string }) {
 
     const ok = await postToSheet({ action: 'react', slug, emoji, delta: change });
     if (!ok) {
-      // gửi lỗi thì hoàn tác lại giao diện
       setMine(prevMine);
       writeLocal(reactedKey, prevMine);
       setCounts((prev) => ({ ...prev, [key]: Math.max((prev[key] || 0) - change, 0) }));
@@ -144,7 +143,6 @@ export default function BlogEngagement({ slug }: { slug: string }) {
     const cleanContent = content.trim();
 
     if (trap) {
-      // bot điền ô ẩn: giả vờ thành công, không gửi gì
       setMessage({ type: 'ok', text: 'Cảm ơn bạn! Bình luận sẽ hiện sau khi được duyệt.' });
       setName('');
       setContent('');
@@ -177,7 +175,7 @@ export default function BlogEngagement({ slug }: { slug: string }) {
     writeLocal('spg_last_comment_at', Date.now());
     setMessage({
       type: 'ok',
-      text: 'Đã gửi bình luận về Google Sheet! Sau khi Quản trị viên tích duyệt vào cột E (approved), bình luận sẽ hiển thị bên dưới.',
+      text: 'Cảm ơn bạn! Bình luận đã được gửi và sẽ hiển thị sau khi được duyệt.',
     });
     setName('');
     setContent('');
@@ -217,7 +215,7 @@ export default function BlogEngagement({ slug }: { slug: string }) {
       <div className="flex items-center justify-between gap-2 mb-1">
         <h3 className="text-lg font-bold text-neutral-800 flex items-center gap-2">
           <MessageCircle className="w-5 h-5 text-teal-600" />
-          Gửi lời nhắn khích lệ
+          Gửi lời nhắn hoặc câu hỏi cho nhóm
         </h3>
         <button
           type="button"
@@ -230,7 +228,7 @@ export default function BlogEngagement({ slug }: { slug: string }) {
         </button>
       </div>
       <p className="text-sm text-neutral-500 mb-5">
-        Mọi lời chia sẻ của bạn là động lực rất lớn với đội ngũ Smart Play Guide. Bình luận sẽ hiện sau khi được duyệt.
+        Mọi lời chia sẻ và thắc mắc của bạn sẽ được đội ngũ Smart Play Guide giải đáp ngay tại đây sau khi duyệt.
       </p>
 
       <div className="bg-stone-50 border border-neutral-100 rounded-2xl p-5 space-y-3 mb-8">
@@ -247,7 +245,7 @@ export default function BlogEngagement({ slug }: { slug: string }) {
           onChange={(e) => setContent(e.target.value)}
           maxLength={1000}
           rows={4}
-          placeholder="Viết bình luận hoặc lời nhắn gửi đến Smart Play Guide..."
+          placeholder="Viết bình luận, chia sẻ hoặc đặt câu hỏi cho Smart Play Guide..."
           className="w-full rounded-xl border border-neutral-200 bg-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-300 resize-y"
         />
         {/* Ô ẩn chặn bot: người thật không thấy */}
@@ -278,25 +276,47 @@ export default function BlogEngagement({ slug }: { slug: string }) {
         )}
       </div>
 
-      {/* Danh sách bình luận đã duyệt */}
+      {/* Danh sách bình luận đã duyệt + Câu trả lời từ nhóm */}
       {loadingComments ? (
         <p className="text-sm text-neutral-400">Đang tải bình luận...</p>
       ) : comments.length === 0 ? (
         <p className="text-sm text-neutral-400">Chưa có bình luận nào. Hãy là người đầu tiên nhé!</p>
       ) : (
-        <ul className="space-y-4">
+        <ul className="space-y-5">
           {comments.map((c) => (
-            <li key={c.id} className="flex gap-3">
-              <div className="w-9 h-9 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-sm font-bold shrink-0">
-                {c.author_name.trim().charAt(0).toUpperCase()}
-              </div>
-              <div className="bg-white border border-neutral-100 rounded-2xl px-4 py-3 flex-1">
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="font-semibold text-sm text-neutral-800">{c.author_name}</span>
-                  <span className="text-xs text-neutral-400">{formatDate(c.created_at)}</span>
+            <li key={c.id} className="space-y-2.5">
+              {/* Bình luận của người đọc */}
+              <div className="flex gap-3">
+                <div className="w-9 h-9 rounded-full bg-teal-100 text-teal-700 flex items-center justify-center text-sm font-bold shrink-0">
+                  {c.author_name.trim().charAt(0).toUpperCase()}
                 </div>
-                <p className="text-sm text-neutral-700 leading-relaxed whitespace-pre-line">{c.content}</p>
+                <div className="bg-white border border-neutral-100 rounded-2xl px-4 py-3 flex-1 shadow-xs">
+                  <div className="flex items-baseline gap-2 mb-1">
+                    <span className="font-semibold text-sm text-neutral-800">{c.author_name}</span>
+                    <span className="text-xs text-neutral-400">{formatDate(c.created_at)}</span>
+                  </div>
+                  <p className="text-sm text-neutral-700 leading-relaxed whitespace-pre-line">{c.content}</p>
+                </div>
               </div>
+
+              {/* Câu trả lời của nhóm Smart Play Guide (nếu Cột F trên Sheet có nội dung) */}
+              {c.admin_reply && c.admin_reply.trim() !== '' && (
+                <div className="pl-9 sm:pl-12 flex gap-2.5 items-start">
+                  <CornerDownRight className="w-4 h-4 text-teal-500 mt-3 shrink-0" />
+                  <div className="bg-teal-50/70 border border-teal-200/80 rounded-2xl px-4 py-3 flex-1">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className="inline-flex items-center gap-1 text-xs font-bold text-teal-800 bg-teal-100/90 px-2.5 py-0.5 rounded-full">
+                        <Sparkles className="w-3 h-3 text-teal-600" />
+                        Smart Play Guide
+                      </span>
+                      <span className="text-xs text-teal-600/80 font-medium">· Phản hồi từ nhóm</span>
+                    </div>
+                    <p className="text-sm text-neutral-700 leading-relaxed whitespace-pre-line">
+                      {c.admin_reply}
+                    </p>
+                  </div>
+                </div>
+              )}
             </li>
           ))}
         </ul>
