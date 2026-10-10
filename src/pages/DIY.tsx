@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   X,
@@ -14,9 +14,16 @@ import {
   CheckCircle,
   Sparkles,
   FlaskConical,
+  Filter,
+  RotateCcw,
+  Users,
+  Gauge,
 } from 'lucide-react';
 
 type Level = 'easy' | 'medium' | 'hard';
+type AgeFilter = 'all' | '3-5' | '6-8' | '9-12';
+type DurationFilter = 'all' | 'short' | 'medium' | 'long';
+type LevelFilter = 'all' | Level;
 
 interface Bullet {
   text: string;
@@ -71,6 +78,56 @@ const levels: { id: Level; label: string; note: string; color: string }[] = [
   { id: 'medium', label: 'Khá', note: 'Cần chuẩn bị một chút, vui hơn', color: 'bg-amber-100 text-amber-700' },
   { id: 'hard', label: 'Khó', note: 'Thử thách sự kiên nhẫn của cả nhà', color: 'bg-orange-100 text-orange-700' },
 ];
+
+const ageOptions: { id: AgeFilter; label: string }[] = [
+  { id: 'all', label: 'Tất cả độ tuổi' },
+  { id: '3-5', label: '3 – 5 tuổi' },
+  { id: '6-8', label: '6 – 8 tuổi' },
+  { id: '9-12', label: '9 – 12 tuổi' },
+];
+
+const durationOptions: { id: DurationFilter; label: string }[] = [
+  { id: 'all', label: 'Mọi thời lượng' },
+  { id: 'short', label: 'Nhanh (≤ 20 phút)' },
+  { id: 'medium', label: 'Vừa (20 – 35 phút)' },
+  { id: 'long', label: 'Thong thả (> 35 phút)' },
+];
+
+const levelFilterOptions: { id: LevelFilter; label: string }[] = [
+  { id: 'all', label: 'Tất cả mức độ' },
+  { id: 'easy', label: 'Trò Dễ' },
+  { id: 'medium', label: 'Trò Khá' },
+  { id: 'hard', label: 'Trò Khó' },
+];
+
+// Kiểm tra độ tuổi của trò chơi (VD: "4-10 tuổi") có giao với nhóm tuổi phụ huynh chọn hay không
+const matchAgeFilter = (ageStr: string, filter: AgeFilter): boolean => {
+  if (filter === 'all') return true;
+  const nums = ageStr.match(/\d+/g)?.map(Number);
+  if (!nums || nums.length < 2) return true;
+  const [minAge, maxAge] = nums;
+
+  const ranges: Record<Exclude<AgeFilter, 'all'>, [number, number]> = {
+    '3-5': [3, 5],
+    '6-8': [6, 8],
+    '9-12': [9, 12],
+  };
+  const [targetMin, targetMax] = ranges[filter];
+  return minAge <= targetMax && maxAge >= targetMin;
+};
+
+// Kiểm tra thời gian trải nghiệm (VD: "15 - 20 phút") có khớp với thời lượng phụ huynh chọn hay không
+const matchDurationFilter = (durationStr: string, filter: DurationFilter): boolean => {
+  if (filter === 'all') return true;
+  const nums = durationStr.match(/\d+/g)?.map(Number);
+  if (!nums || nums.length === 0) return true;
+  const maxMinutes = nums[nums.length - 1];
+
+  if (filter === 'short') return maxMinutes <= 20;
+  if (filter === 'medium') return maxMinutes > 20 && maxMinutes <= 35;
+  if (filter === 'long') return maxMinutes > 35;
+  return true;
+};
 
 const toEmbed = (url: string) => {
   if (!url) return '';
@@ -623,6 +680,37 @@ const activities: Activity[] = [
 export default function DIY() {
   const [open, setOpen] = useState<Activity | null>(null);
 
+  // State cho thanh lọc 3 tiêu chí: Độ tuổi, Thời gian, Độ khó
+  const [selectedAge, setSelectedAge] = useState<AgeFilter>('all');
+  const [selectedDuration, setSelectedDuration] = useState<DurationFilter>('all');
+  const [selectedLevel, setSelectedLevel] = useState<LevelFilter>('all');
+
+  const isFiltered = selectedAge !== 'all' || selectedDuration !== 'all' || selectedLevel !== 'all';
+
+  const resetFilters = () => {
+    setSelectedAge('all');
+    setSelectedDuration('all');
+    setSelectedLevel('all');
+  };
+
+  // Lọc danh sách hoạt động theo các tiêu chí phụ huynh đã chọn
+  const filteredActivities = useMemo(() => {
+    return activities.filter((act) => {
+      if (selectedLevel !== 'all' && act.level !== selectedLevel) return false;
+      if (!matchAgeFilter(act.age, selectedAge)) return false;
+      if (!matchDurationFilter(act.duration, selectedDuration)) return false;
+      return true;
+    });
+  }, [selectedAge, selectedDuration, selectedLevel]);
+
+  // Chỉ hiển thị các nhóm mức độ khó có ít nhất 1 trò chơi khớp bộ lọc
+  const visibleLevels = useMemo(() => {
+    return levels.filter((lv) => {
+      if (selectedLevel !== 'all' && lv.id !== selectedLevel) return false;
+      return filteredActivities.some((a) => a.level === lv.id);
+    });
+  }, [filteredActivities, selectedLevel]);
+
   return (
     <div className="bg-[#FAF8F5] min-h-screen">
       {/* Hero với ảnh nền DIY.png */}
@@ -654,55 +742,200 @@ export default function DIY() {
         </div>
       </section>
 
-      {/* Activities by level */}
-      <section className="py-16 bg-white relative z-10 border-t border-stone-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {levels.map((lv) => (
-            <div key={lv.id}>
-              <div className="flex items-center gap-3 mb-6">
-                <span className={`px-4 py-1.5 rounded-full text-sm font-bold ${lv.color}`}>Trò {lv.label}</span>
-                <p className="text-sm text-neutral-500">{lv.note}</p>
+      {/* Thanh lọc hoạt động cho phụ huynh */}
+      <section className="pt-10 pb-2 bg-white relative z-10 border-t border-stone-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl bg-[#FAF8F5] border border-stone-200/80 p-5 sm:p-7 shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-stone-200/70">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-teal-500/10 text-teal-600 flex items-center justify-center">
+                  <Filter className="w-4 h-4" />
+                </div>
+                <div>
+                  <h2 className="text-base sm:text-lg font-bold text-neutral-800">
+                    Chọn hoạt động phù hợp với gia đình bạn
+                  </h2>
+                  <p className="text-xs text-neutral-500">
+                    Lọc nhanh theo độ tuổi của bé, quỹ thời gian của bố mẹ và mức độ thử thách
+                  </p>
+                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {activities
-                  .filter((a) => a.level === lv.id)
-                  .map((act) => (
-                    <button
-                      key={act.title}
-                      onClick={() => setOpen(act)}
-                      className="group text-left bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100"
-                    >
-                      <div className="aspect-[3/2] overflow-hidden relative">
-                        <img
-                          src={act.image}
-                          alt={act.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                        <div className="absolute top-3 left-3 bg-white/90 rounded-lg px-3 py-1.5 text-xs font-medium text-neutral-700 flex items-center gap-1.5">
-                          <Clock className="w-3.5 h-3.5 text-teal-500" />
-                          {act.duration}
-                        </div>
-                      </div>
-                      <div className="p-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          <div className="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center">
-                            <act.icon className="w-5 h-5 text-teal-600" />
-                          </div>
-                          <span className="text-xs text-neutral-400 font-medium">{act.age}</span>
-                        </div>
-                        <h3 className="text-lg font-bold text-neutral-800 mb-2">{act.title}</h3>
-                        <p className="text-sm text-neutral-600 leading-relaxed mb-4">
-                          {act.desc || act.description}
-                        </p>
-                        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 group-hover:gap-2.5 transition-all">
-                          Xem hướng dẫn & video <ArrowRight className="w-4 h-4" />
-                        </span>
-                      </div>
-                    </button>
-                  ))}
+
+              <div className="flex items-center gap-3">
+                <span className="text-xs sm:text-sm font-semibold text-teal-700 bg-teal-50 border border-teal-200/60 px-3.5 py-1.5 rounded-full">
+                  Tìm thấy {filteredActivities.length} / {activities.length} trò chơi
+                </span>
+                {isFiltered && (
+                  <button
+                    type="button"
+                    onClick={resetFilters}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 transition-colors"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5" />
+                    Xóa bộ lọc
+                  </button>
+                )}
               </div>
             </div>
-          ))}
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* 1. Chọn độ tuổi của con */}
+              <div>
+                <label className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2.5">
+                  <Users className="w-3.5 h-3.5 text-teal-600" />
+                  1. Độ tuổi của bé
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {ageOptions.map((opt) => {
+                    const active = selectedAge === opt.id;
+                    return (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        onClick={() => setSelectedAge(opt.id)}
+                        className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                          active
+                            ? 'bg-teal-500 text-white shadow-sm'
+                            : 'bg-white text-neutral-600 border border-stone-200 hover:border-teal-300 hover:text-teal-600'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* 2. Chọn thời gian trải nghiệm */}
+              <div>
+                <label className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2.5">
+                  <Clock className="w-3.5 h-3.5 text-amber-500" />
+                  2. Thời gian trải nghiệm
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {durationOptions.map((opt) => {
+                    const active = selectedDuration === opt.id;
+                    return (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        onClick={() => setSelectedDuration(opt.id)}
+                        className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                          active
+                            ? 'bg-amber-500 text-white shadow-sm'
+                            : 'bg-white text-neutral-600 border border-stone-200 hover:border-amber-300 hover:text-amber-600'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* 3. Chọn mức độ khó */}
+              <div>
+                <label className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-neutral-500 mb-2.5">
+                  <Gauge className="w-3.5 h-3.5 text-orange-500" />
+                  3. Mức độ khó
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {levelFilterOptions.map((opt) => {
+                    const active = selectedLevel === opt.id;
+                    return (
+                      <button
+                        key={opt.id}
+                        type="button"
+                        onClick={() => setSelectedLevel(opt.id)}
+                        className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
+                          active
+                            ? 'bg-orange-500 text-white shadow-sm'
+                            : 'bg-white text-neutral-600 border border-stone-200 hover:border-orange-300 hover:text-orange-600'
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Activities by level */}
+      <section className="py-12 sm:py-16 bg-white relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          {visibleLevels.length === 0 ? (
+            <div className="text-center py-16 bg-stone-50 rounded-3xl border border-stone-200/60">
+              <Sparkles className="w-12 h-12 text-amber-400 mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-neutral-800 mb-1">
+                Chưa có trò chơi nào khớp với cả 3 bộ lọc này
+              </h3>
+              <p className="text-sm text-neutral-500 mb-5">
+                Ba mẹ thử nới rộng thời gian hoặc chọn mức độ khó khác xem sao nhé!
+              </p>
+              <button
+                type="button"
+                onClick={resetFilters}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-teal-500 text-white text-sm font-semibold hover:bg-teal-600 transition-all"
+              >
+                <RotateCcw className="w-4 h-4" />
+                Xem tất cả 19 trò chơi
+              </button>
+            </div>
+          ) : (
+            visibleLevels.map((lv) => {
+              const items = filteredActivities.filter((a) => a.level === lv.id);
+              return (
+                <div key={lv.id}>
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className={`px-4 py-1.5 rounded-full text-sm font-bold ${lv.color}`}>
+                      Trò {lv.label} ({items.length})
+                    </span>
+                    <p className="text-sm text-neutral-500">{lv.note}</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {items.map((act) => (
+                      <button
+                        key={act.title}
+                        onClick={() => setOpen(act)}
+                        className="group text-left bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-neutral-100"
+                      >
+                        <div className="aspect-[3/2] overflow-hidden relative">
+                          <img
+                            src={act.image}
+                            alt={act.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                          />
+                          <div className="absolute top-3 left-3 bg-white/90 rounded-lg px-3 py-1.5 text-xs font-medium text-neutral-700 flex items-center gap-1.5">
+                            <Clock className="w-3.5 h-3.5 text-teal-500" />
+                            {act.duration}
+                          </div>
+                        </div>
+                        <div className="p-6">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="w-9 h-9 rounded-lg bg-teal-50 flex items-center justify-center">
+                              <act.icon className="w-5 h-5 text-teal-600" />
+                            </div>
+                            <span className="text-xs text-neutral-400 font-medium">{act.age}</span>
+                          </div>
+                          <h3 className="text-lg font-bold text-neutral-800 mb-2">{act.title}</h3>
+                          <p className="text-sm text-neutral-600 leading-relaxed mb-4">
+                            {act.desc || act.description}
+                          </p>
+                          <span className="inline-flex items-center gap-1.5 text-sm font-bold text-orange-600 group-hover:gap-2.5 transition-all">
+                            Xem hướng dẫn & video <ArrowRight className="w-4 h-4" />
+                          </span>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
       </section>
 
