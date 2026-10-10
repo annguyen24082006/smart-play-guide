@@ -3,7 +3,7 @@ import { MessageCircle, Send, Loader2 } from 'lucide-react';
 
 // ⚠️ DÁN LINK "Web app" của Google Apps Script vào đây (link kết thúc bằng /exec).
 // Chưa dán thì khung bình luận sẽ tự ẩn, web vẫn chạy bình thường.
-const API_URL = 'DAN_LINK_APPS_SCRIPT_VAO_DAY';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwtgcPIl2E6d7DhXyu_xS-zGVt_WMnniaqFrP3Mba5oen-1F4oIzFwvBvBcgBFFl6Ef/exec';
 
 // Các biểu tượng cảm xúc khách có thể thả (phải trùng với danh sách trong Code.gs)
 const REACTIONS = [
