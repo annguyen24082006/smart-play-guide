@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getPostBySlug, getRelatedPosts } from '@/data/blogPosts';
 import { TableOfContents } from '@/components/TableOfContents';
+import BlogEngagement from '@/components/BlogEngagement';
 import {
   Calendar,
   ArrowLeft,
@@ -277,6 +278,8 @@ export default function BlogPost() {
               Chia sẻ
             </button>
           </div>
+                    {/* Thả cảm xúc & bình luận */}
+          <BlogEngagement slug={post.slug} />
         </div>
       </article>
 
