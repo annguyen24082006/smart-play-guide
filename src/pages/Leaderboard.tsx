@@ -4,8 +4,8 @@ import { Trophy, Crown, Camera, Gift, Award, BookImage, Backpack, Target, Loader
 
 export const FAMILY_KEY = 'smart_play_family_name';
 
-// Đường link API SheetDB của bạn
-const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/5mphi3brs5qb6';
+// DÁN ĐƯỜNG LINK WEB APP GOOGLE APPS SCRIPT (CÓ ĐUÔI /exec) CỦA EM VÀO ĐÂY:
+export const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwujW7nBiZPTA7lX0H5u632Ce_2W6FuI2cHixt-D6wgnpaWFtFM-BJr8qaG9VcHHoI/exec';
 
 // Cấu hình bảng điểm chuẩn theo 10 thử thách
 const dayPointsMap: Record<number, number> = {
@@ -39,16 +39,21 @@ export default function Leaderboard() {
     try { return localStorage.getItem(FAMILY_KEY) || ''; } catch { return ''; }
   });
 
-  // Tải dữ liệu bài đăng trực tuyến từ Google Sheet qua SheetDB
+  // Tải dữ liệu bài đăng trực tuyến từ Google Sheet qua Google Apps Script
   const load = useCallback(async () => {
     try {
-      const res = await fetch(SHEETDB_API_URL);
+      const res = await fetch(`${APPS_SCRIPT_URL}?action=list`, {
+        method: 'GET',
+        redirect: 'follow',
+      });
       const data = await res.json();
       if (Array.isArray(data)) {
         setRows(data);
+      } else if (Array.isArray(data?.data)) {
+        setRows(data.data);
       }
     } catch (err) {
-      console.error('Lỗi tải dữ liệu bảng xếp hạng:', err);
+      console.error('Lỗi tải dữ liệu bảng xếp hạng từ Google Sheet:', err);
     } finally {
       setLoading(false);
     }
@@ -75,12 +80,12 @@ export default function Leaderboard() {
       const dayNum = Number(r.day_number);
       if (dayNum < rg.from || dayNum > rg.to) continue;
 
-      const key = r.participant_name?.trim().toLowerCase();
+      const key = String(r.participant_name || '').trim().toLowerCase();
       if (!key) continue;
 
-      const f = map.get(key) || { name: r.participant_name.trim(), days: new Map() };
+      const f = map.get(key) || { name: String(r.participant_name).trim(), days: new Map() };
       const prev = f.days.get(dayNum);
-      if (!prev || r.created_at < prev) f.days.set(dayNum, r.created_at);
+      if (!prev || String(r.created_at) < prev) f.days.set(dayNum, String(r.created_at));
       map.set(key, f);
     }
 
