@@ -1,6 +1,6 @@
 export const dayMaterials: Record<number, string[]> = {
-  1: ['Giấy vẽ / Giấy A4', 'Bút màu', 'Khung tranh (tùy chọn)'],
-  2: ['Giấy màu', 'Bút lông (bút dạ)', 'Một quả bóng cao su (thổi được) nhỏ','băng keo trong'],
+  1: ['Giấy trắng / Giấy A4', 'Lá cây hình dáng và kích thước khác nhau', 'Băng keo', 'Bút màu / Bút dạ đen'],
+  2: ['Giấy màu', 'Bút lông (bút dạ)', 'Một quả bóng cao su (thổi được) nhỏ','Băng keo trong'],
   3: ['Giấy ăn màu trắng hoặc nhiều màu', 'Kẽm nhung / Dây buộc', 'Băng keo xanh', 'Kéo'],
   4: ['Chậu nhỏ', 'Đất trồng', 'Hạt giống hoặc cây mầm', 'Bình xịt nước'],
   5: ['Nguyên liệu món ăn đơn giản', 'Tạp dề nhỏ cho bé', 'Dụng cụ bếp an toàn'],
