@@ -422,7 +422,7 @@ Bài viết này sẽ chia sẻ toàn diện về tầm quan trọng của việ
 
 Nhiều phụ huynh thường lầm tưởng rằng chỉ cần mua cho con những món đồ chơi đắt tiền, hiện đại là đủ. Thế nhưng, đối với sự phát triển của trẻ, không món quà vật chất nào có thể thay thế được sự hiện diện và tham gia trực tiếp của bố mẹ. Dưới đây là những lợi ích thiết thực đã được chứng minh khoa học khi trẻ được chơi cùng bố mẹ.
 
-### 1.1. Thúc đẩy phát triển cảm xúc và [sự tự tin](https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931) ở trẻ
+### 1.1. Thúc đẩy phát triển cảm xúc và [sự tự tin](https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931)ở trẻ
 
 Khi bố mẹ dành thời gian chơi đùa cùng con, thông điệp ngầm được gửi gắm đến trẻ chính là: "Con rất quan trọng và con được yêu thương".
 
@@ -455,6 +455,7 @@ Khi chơi cùng con trong các hoạt động thủ công hoặc trò chơi khá
 Để biến những khoảng thời gian rảnh rỗi hoặc ngày cuối tuần thành những kỷ niệm đáng nhớ, bố mẹ có thể áp dụng ngay các hoạt động thủ công đơn giản nhưng cực kỳ lôi cuốn dưới đây. Tất cả các ý tưởng này đều được tổng hợp và hướng dẫn chi tiết từ chiến dịch [Smart Play Guide](https://smartplayguide.com.vn) – nguồn tài nguyên hữu ích cho các gia đình hiện đại.
 
 ### 2.1. Làm tranh bình hoa bằng hoa thật: Hoạt động thủ công gắn kết thiên nhiên
+
 Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật liệu tự nhiên độc đáo nhất mà bố mẹ có thể cùng con thực hiện tại nhà chính là làm bức tranh tán cây từ hoa dại. Đây là một dạng **đồ chơi DIY** vừa tiết kiệm, vừa giúp trẻ rèn luyện sự khéo léo và tình yêu thiên nhiên.
 
 #### Dụng cụ cần chuẩn bị:
@@ -469,13 +470,12 @@ Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật l
 1. **Vẽ khung và thân cây:** Dùng bút dạ đen vẽ một ô khung hình vuông hoặc chữ nhật lên tấm bìa carton, ở giữa vẽ hình một thân cây với các cành chẻ ra[cite: 1].
 2. **Cắt tạo khung rỗng:** Dùng dao rọc giấy cắt bỏ phần nền giấy carton xung quanh thân cây, chỉ giữ lại phần viền khung bên ngoài và hình thân cây nối liền ở giữa[cite: 1].
 3. **Tạo lớp nền dính:** Dán các dải băng keo trong bản to phủ kín toàn bộ khoảng trống của khung hình (dán từ mặt sau để mặt dính hướng ra phía trước)[cite: 1].
-4. **Trang trí tán cây bằng hoa tươi:** Hái các bông hoa dại nhỏ và lá cây tươi, sau đó đính trực tiếp lên lớp băng keo dính ở phần cành cây để tạo thành tán lá hoặc hoa nở rộ rực rỡ. Bạn cũng có thể dán thêm hoa và lá ở dưới gốc cây để làm thảm cỏ[cite: 1].
+4. **Trang trí tán cây bằng hoa tươi:** Hái các bông hoa dại nhỏ và lá cây tươi, sau đó đính trực tiếp lên lớp băng keo dính ở phần cành cây để tạo thành tán lá hoặc hoa nở rộ rực rỡ. Bạn cũng có thể dán thêm hoa và lá ở dưới gốc cây để làm thảm cỏ[cite: 1]. 
+Xem ngay quy trình thực hiện trực quan [tại đây](https://www.youtube.com/shorts/Y0HrZ31eRzE).
 
  **Mẹo nhỏ:** Việc tận dụng **đồ chơi bằng bìa carton** kết hợp cùng thiên nhiên không chỉ giúp bố mẹ **làm đồ chơi đơn giản tại nhà** một cách dễ dàng mà còn là cơ hội tuyệt vời để phát triển thị giác và tư duy thẩm mỹ cho trẻ.
 
 ![Làm tranh bình hoa bằng hoa thật cùng con tại nhà](https://i.postimg.cc/rmSLNVG3/Screenshot-2026-10-24-195824.png)
-
- **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan tại [tại đây](https://www.youtube.com/shorts/Y0HrZ31eRzE).
 
 ### 2.2. Biến những chiếc lá khô thành cả một "Vương quốc côn trùng"
 
@@ -492,10 +492,9 @@ Sáng tạo thế giới côn trùng ngộ nghĩnh từ những chiếc lá cây
 2. **Bước 2 - Cố định lá lên giấy:** Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
 3. **Bước 3 - Vẽ đầu và chân côn trùng:** Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
 4. **Bước 4 - Trang trí hoa văn (tùy chọn):** Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
+Xem ngay quy trình thực hiện trực quan[Tại đây](https://www.youtube.com/shorts/OrZtXms0i2E).
 
 ![Sáng tạo vương quốc côn trùng từ lá khô cùng con tại nhà](https://i.postimg.cc/rFwvKCHZ/Screenshot-2026-10-24-200331.png)
-
-🎬 **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan[Tại đây](https://www.youtube.com/shorts/OrZtXms0i2E).
 
 ### 2.3. Nước Đi Bộ Bắc Cầu Màu Sắc: Thí nghiệm khoa học thú vị cuối tuần
 
@@ -515,14 +514,13 @@ Cuối tuần là khoảng thời gian lý tưởng để gia đình gác lại 
 3. **Pha màu:** Nhỏ vài giọt màu thực phẩm vào 3 ly có nước (ví dụ: ly 1 màu đỏ, ly 3 màu vàng, ly 5 màu xanh dương) rồi khuấy đều.
 4. **Làm cầu dải giấy:** Gấp khăn giấy thành dải dài, uốn hình chữ U ngược. Bắc một đầu dải giấy vào ly có nước, đầu kia thả vào ly trống bên cạnh.
 5. **Quan sát phép màu:** Nước màu sẽ tự động "bò" ngược lên dải khăn giấy, chảy dần sang ly trống và hòa trộn thành các màu mới rực rỡ!
+Xem ngay quy trình thực hiện trực quan tại [YouTube - Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc](https://www.youtube.com/watch?v=hGwG--GZEfw).
 
 ![Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc cùng con tại nhà](https://i.postimg.cc/xT840jJQ/Screenshot-2026-10-24-200436.png)
 
-🎬 **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan tại [YouTube - Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc](https://www.youtube.com/watch?v=hGwG--GZEfw).
-
 ## Kết Luận
 
-Hành trình cùng con khôn lớn không đòi hỏi bố mẹ phải quá hoàn hảo hay tốn kém nhiều chi phí, điều mà con trẻ thực sự cần chính là ánh mắt quan tâm, đôi bàn tay cùng làm và những tiếng cười giòn giã mỗi ngày. Hãy bắt đầu thay đổi thói quen ngay hôm nay bằng cách áp dụng **cách làm đồ chơi bằng giấy** hay **làm đồ chơi đơn giản tại nhà**, đồng thời ghé thăm [Smart Play Guide](https://smartplayguide.com.vn) để khám phá trọn bộ cẩm nang nuôi dạy con khoa học, sáng tạo và **gắn kết gia đình** bền chặt!
+Hành trình cùng con khôn lớn không đòi hỏi bố mẹ phải quá hoàn hảo hay tốn kém nhiều chi phí, điều mà con trẻ thực sự cần chính là ánh mắt quan tâm, đôi bàn tay cùng làm và những tiếng cười giòn giã mỗi ngày. Hãy bắt đầu thay đổi thói quen ngay hôm nay bằng cách áp dụng**cách làm đồ chơi bằng giấy** hay **làm đồ chơi đơn giản tại nhà**, đồng thời ghé thăm [Smart Play Guide](https://smartplayguide.com.vn) để khám phá trọn bộ cẩm nang nuôi dạy con khoa học, sáng tạo và **gắn kết gia đình** bền chặt!
 
 Khám phá thêm các trò chơi thú vị và đơn giản cùng bé tại [Smart Play Guide](https://smartplayguide.com.vn). Đây chính là hoạt động cuối tuần cho bé tại nhà vô cùng bổ ích, giúp thúc đẩy quá trình **gắn kết gia đình** thêm bền chặt, tạo cho con những ký ức tuổi thơ tuyệt đẹp bên cha mẹ.
 
