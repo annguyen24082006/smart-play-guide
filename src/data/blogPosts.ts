@@ -474,6 +474,7 @@ Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật l
 **3. Tạo lớp nền dính:** Dán các dải băng keo trong bản to phủ kín toàn bộ khoảng trống của khung hình (dán từ mặt sau để mặt dính hướng ra phía trước).
 
 **4. Trang trí tán cây bằng hoa tươi:** Hái các bông hoa dại nhỏ và lá cây tươi, sau đó đính trực tiếp lên lớp băng keo dính ở phần cành cây để tạo thành tán lá hoặc hoa nở rộ rực rỡ. Bạn cũng có thể dán thêm hoa và lá ở dưới gốc cây để làm thảm cỏ. 
+
 Xem ngay quy trình thực hiện trực quan [tại đây](https://www.youtube.com/shorts/Y0HrZ31eRzE).
 
 
@@ -491,10 +492,14 @@ Sáng tạo thế giới côn trùng ngộ nghĩnh từ những chiếc lá cây
 
 **Các bước thực hiện:**
 
-Bước 1 - Thu thập lá cây: Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
-Bước 2 - Cố định lá lên giấy: Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
-Bước 3 - Vẽ đầu và chân côn trùng: Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
-Bước 4 - Trang trí hoa văn (tùy chọn): Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
+**Bước 1 - Thu thập lá cây:** Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
+
+**Bước 2 - Cố định lá lên giấy:** Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
+
+**Bước 3 - Vẽ đầu và chân côn trùng:** Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
+
+**Bước 4 - Trang trí hoa văn (tùy chọn):** Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
+
 Xem ngay quy trình thực hiện trực quan[Tại đây](https://www.youtube.com/shorts/OrZtXms0i2E).
 
 ![Sáng tạo vương quốc côn trùng từ lá khô cùng con tại nhà](https://i.postimg.cc/rFwvKCHZ/Screenshot-2026-10-24-200331.png)
@@ -512,11 +517,16 @@ Cuối tuần là khoảng thời gian lý tưởng để gia đình gác lại 
 
  **Các bước thực hiện:**
 
-1. Xếp hàng ly: Xếp 5 chiếc ly nhựa thành một hàng ngang sát nhau.
-2. Đổ nước xen kẽ: Rót nước vào ly số 1, ly số 3 và ly số 5 (khoảng 2/3 ly). Giữ ly số 2 và ly số 4 hoàn toàn trống.
-3. Pha màu: Nhỏ vài giọt màu thực phẩm vào 3 ly có nước (ví dụ: ly 1 màu đỏ, ly 3 màu vàng, ly 5 màu xanh dương) rồi khuấy đều.
-4. Làm cầu dải giấy: Gấp khăn giấy thành dải dài, uốn hình chữ U ngược. Bắc một đầu dải giấy vào ly có nước, đầu kia thả vào ly trống bên cạnh.
-5. Quan sát phép màu: Nước màu sẽ tự động "bò" ngược lên dải khăn giấy, chảy dần sang ly trống và hòa trộn thành các màu mới rực rỡ!
+**Bước 1 - Xếp hàng ly:** Xếp 5 chiếc ly nhựa thành một hàng ngang sát nhau.
+
+**Bước 2 - Đổ nước xen kẽ:** Rót nước vào ly số 1, ly số 3 và ly số 5 (khoảng 2/3 ly). Giữ ly số 2 và ly số 4 hoàn toàn trống.
+
+**Bước 3 - Pha màu:** Nhỏ vài giọt màu thực phẩm vào 3 ly có nước (ví dụ: ly 1 màu đỏ, ly 3 màu vàng, ly 5 màu xanh dương) rồi khuấy đều.
+
+**Bước 4 - Làm cầu dải giấy:** Gấp khăn giấy thành dải dài, uốn hình chữ U ngược. Bắc một đầu dải giấy vào ly có nước, đầu kia thả vào ly trống bên cạnh.
+
+**Bước 5 - Quan sát phép màu:** Nước màu sẽ tự động "bò" ngược lên dải khăn giấy, chảy dần sang ly trống và hòa trộn thành các màu mới rực rỡ!
+
 Xem ngay quy trình thực hiện trực quan tại [YouTube - Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc](https://www.youtube.com/watch?v=hGwG--GZEfw).
 
 ![Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc cùng con tại nhà](https://i.postimg.cc/xT840jJQ/Screenshot-2026-10-24-200436.png)
