@@ -467,13 +467,13 @@ Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật l
 
  **Các bước thực hiện:**
 
-1. Vẽ khung và thân cây: Dùng bút dạ đen vẽ một ô khung hình vuông hoặc chữ nhật lên tấm bìa carton, ở giữa vẽ hình một thân cây với các cành chẻ ra.
+**Vẽ khung và thân cây:** Dùng bút dạ đen vẽ một ô khung hình vuông hoặc chữ nhật lên tấm bìa carton, ở giữa vẽ hình một thân cây với các cành chẻ ra.
+
 2. Cắt tạo khung rỗng: Dùng dao rọc giấy cắt bỏ phần nền giấy carton xung quanh thân cây, chỉ giữ lại phần viền khung bên ngoài và hình thân cây nối liền ở giữa.
 3. Tạo lớp nền dính: Dán các dải băng keo trong bản to phủ kín toàn bộ khoảng trống của khung hình (dán từ mặt sau để mặt dính hướng ra phía trước).
 4. Trang trí tán cây bằng hoa tươi: Hái các bông hoa dại nhỏ và lá cây tươi, sau đó đính trực tiếp lên lớp băng keo dính ở phần cành cây để tạo thành tán lá hoặc hoa nở rộ rực rỡ. Bạn cũng có thể dán thêm hoa và lá ở dưới gốc cây để làm thảm cỏ. 
 Xem ngay quy trình thực hiện trực quan [tại đây](https://www.youtube.com/shorts/Y0HrZ31eRzE).
 
- **Mẹo nhỏ:** Việc tận dụng **đồ chơi bằng bìa carton** kết hợp cùng thiên nhiên không chỉ giúp bố mẹ **làm đồ chơi đơn giản tại nhà** một cách dễ dàng mà còn là cơ hội tuyệt vời để phát triển thị giác và tư duy thẩm mỹ cho trẻ.
 
 ![Làm tranh bình hoa bằng hoa thật cùng con tại nhà](https://i.postimg.cc/rmSLNVG3/Screenshot-2026-10-24-195824.png)
 
@@ -488,10 +488,11 @@ Sáng tạo thế giới côn trùng ngộ nghĩnh từ những chiếc lá cây
 - Bút màu / Bút dạ đen / Bút sơn
 
 **Các bước thực hiện:**
-- **Bước 1 - Thu thập lá cây:** Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
-- Bước 2 - Cố định lá lên giấy: Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
-- Bước 3 - Vẽ đầu và chân côn trùng: Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
-- Bước 4 - Trang trí hoa văn (tùy chọn): Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
+
+Bước 1 - Thu thập lá cây: Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
+Bước 2 - Cố định lá lên giấy: Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
+Bước 3 - Vẽ đầu và chân côn trùng: Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
+Bước 4 - Trang trí hoa văn (tùy chọn): Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
 Xem ngay quy trình thực hiện trực quan[Tại đây](https://www.youtube.com/shorts/OrZtXms0i2E).
 
 ![Sáng tạo vương quốc côn trùng từ lá khô cùng con tại nhà](https://i.postimg.cc/rFwvKCHZ/Screenshot-2026-10-24-200331.png)
@@ -520,9 +521,9 @@ Xem ngay quy trình thực hiện trực quan tại [YouTube - Thí nghiệm Nư
 
 ## Kết Luận
 
-Hành trình cùng con khôn lớn không đòi hỏi bố mẹ phải quá hoàn hảo hay tốn kém nhiều chi phí, điều mà con trẻ thực sự cần chính là ánh mắt quan tâm, đôi bàn tay cùng làm và những tiếng cười giòn giã mỗi ngày. Hãy bắt đầu thay đổi thói quen ngay hôm nay bằng cách áp dụng cách làm đồ chơi bằng giấy hay làm đồ chơi đơn giản tại nhà, đồng thời ghé thăm [Smart Play Guide](https://smartplayguide.com.vn) để khám phá trọn bộ cẩm nang nuôi dạy con khoa học, sáng tạo và **gắn kết gia đình** bền chặt!
+Hành trình cùng con khôn lớn không đòi hỏi bố mẹ phải quá hoàn hảo hay tốn kém nhiều chi phí, điều mà con trẻ thực sự cần chính là ánh mắt quan tâm, đôi bàn tay cùng làm và những tiếng cười giòn giã mỗi ngày. Hãy bắt đầu thay đổi thói quen ngay hôm nay bằng cách áp dụng cách làm đồ chơi bằng giấy hay làm đồ chơi đơn giản tại nhà, đồng thời ghé thăm [Smart Play Guide](https://smartplayguide.com.vn) để khám phá trọn bộ cẩm nang nuôi dạy con khoa học, sáng tạo và gắn kết gia đình bền chặt!
 
-Khám phá thêm các trò chơi thú vị và đơn giản cùng bé tại [Smart Play Guide](https://smartplayguide.com.vn). Đây chính là hoạt động cuối tuần cho bé tại nhà vô cùng bổ ích, giúp thúc đẩy quá trình **gắn kết gia đình** thêm bền chặt, tạo cho con những ký ức tuổi thơ tuyệt đẹp bên cha mẹ.
+Khám phá thêm các trò chơi thú vị và đơn giản cùng bé tại [Smart Play Guide](https://smartplayguide.com.vn). Đây chính là hoạt động cuối tuần cho bé tại nhà vô cùng bổ ích, giúp thúc đẩy quá trình gắn kết gia đình thêm bền chặt, tạo cho con những ký ức tuổi thơ tuyệt đẹp bên cha mẹ.
 
 ## Khám Phá Thêm Các Hướng Dẫn An Toàn Khác Trong Dự Án Smart Play Guide:
 
