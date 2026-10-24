@@ -411,7 +411,7 @@ Thiết lập các tính năng an toàn, kiểm soát nội dung và giới hạ
   },
 {
 id: 'bai-4',
-  title: 'Cùng Con Khôn Lớn Qua Các Hoạt Động Sáng Tạo Đơn Giản Nhất Tại Nhà',
+  title: 'Các Hoạt Động Sáng Tạo Đơn Giản Nhất Tại Nhà',
   slug: 'cung-con-khon-lon-qua-cac-hoat-dong-sang-tao',
   excerpt: 'Khám phá bí quyết kết nối gia đình và cùng con phát triển toàn diện thông qua cách làm đồ chơi bằng giấy và làm đồ chơi đơn giản tại nhà.',
   content: `Trong nhịp sống hiện đại hối hả, áp lực công việc đôi khi khiến bố mẹ cuốn đi, để rồi khoảng cách giữa các thế hệ trong gia đình vô tình lớn dần. Trẻ nhỏ ngày nay dễ dàng tìm đến màn hình điện thoại, máy tính bảng như một người bạn đồng hành quen thuộc. Tuy nhiên, đằng sau sự tiện lợi ấy là nỗi lo về tình trạng nghiện thiết bị số và sự thiếu hụt những khoảng thời gian tương tác chất lượng. Làm thế nào để kéo con trẻ rời xa màn hình ảo một cách tự nhiên nhất? Câu trả lời nằm ngay trong chính ngôi nhà của bạn: Hoạt động cùng con.
@@ -422,12 +422,12 @@ Bài viết này sẽ chia sẻ toàn diện về tầm quan trọng của việ
 
 Nhiều phụ huynh thường lầm tưởng rằng chỉ cần mua cho con những món đồ chơi đắt tiền, hiện đại là đủ. Thế nhưng, đối với sự phát triển của trẻ, không món quà vật chất nào có thể thay thế được sự hiện diện và tham gia trực tiếp của bố mẹ. Dưới đây là những lợi ích thiết thực đã được chứng minh khoa học khi trẻ được chơi cùng bố mẹ.
 
-### 1.1. Thúc đẩy phát triển cảm xúc và <a href="https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931">sự tự tin</a> ở trẻ
+### 1.1. Thúc đẩy phát triển cảm xúc và sự tự tin ở trẻ
 
 Khi bố mẹ dành thời gian chơi đùa cùng con, thông điệp ngầm được gửi gắm đến trẻ chính là: "Con rất quan trọng và con được yêu thương".
 
 - Trẻ cảm thấy an toàn về mặt cảm xúc, từ đó xây dựng nền tảng nhân cách vững chắc.
-- Những lời động viên, khen ngợi kịp thời của bố mẹ trong lúc chơi giúp con phát triển lòng tự trọng, sự tự tin khi đối mặt với thử thách mới.
+- Những lời động viên, khen ngợi kịp thời của bố mẹ trong lúc chơi giúp con phát triển lòng tự trọng, <a href="https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931">sự tự tin</a> khi đối mặt với thử thách mới.
 - Giảm thiểu tình trạng căng thẳng, lo âu thường gặp ở trẻ nhỏ khi phải tiếp xúc quá nhiều với các nội dung trên không gian mạng.
 
 ![Bố mẹ đồng hành cùng con qua các hoạt động thủ công giúp kích thích tư duy và tăng sự tự tin](https://i.postimg.cc/YSZPP52P/cach-giup-tre-tu-tin.jpg)
@@ -459,11 +459,11 @@ Khi chơi cùng con trong các hoạt động thủ công hoặc trò chơi khá
 Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật liệu tự nhiên độc đáo nhất mà bố mẹ có thể cùng con thực hiện tại nhà chính là làm bức tranh tán cây từ hoa dại. Đây là một dạng **đồ chơi DIY** vừa tiết kiệm, vừa giúp trẻ rèn luyện sự khéo léo và tình yêu thiên nhiên.
 
  **Dụng cụ cần chuẩn bị:**
-- Bìa carton (bìa cứng)[cite: 1]
-- Bút dạ / Bút lông đen (để vẽ nét)[cite: 1]
-- Dao rọc giấy[cite: 1]
-- Băng dính / Băng keo trong bản to (Băng keo dán thùng)[cite: 1]
-- Các loại hoa dại & lá cây tươi (như hoa xuyến chi, hoa ngũ sắc/trâm ổi...)[cite: 1]
+- Bìa carton (bìa cứng)
+- Bút dạ / Bút lông đen (để vẽ nét)
+- Dao rọc giấy
+- Băng dính / Băng keo trong bản to (Băng keo dán thùng)
+- Các loại hoa dại & lá cây tươi (như hoa xuyến chi, hoa ngũ sắc/trâm ổi...)
 
  **Các bước thực hiện:**
 
