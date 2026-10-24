@@ -422,7 +422,7 @@ Bài viết này sẽ chia sẻ toàn diện về tầm quan trọng của việ
 
 Nhiều phụ huynh thường lầm tưởng rằng chỉ cần mua cho con những món đồ chơi đắt tiền, hiện đại là đủ. Thế nhưng, đối với sự phát triển của trẻ, không món quà vật chất nào có thể thay thế được sự hiện diện và tham gia trực tiếp của bố mẹ. Dưới đây là những lợi ích thiết thực đã được chứng minh khoa học khi trẻ được chơi cùng bố mẹ.
 
-### 1.1. Thúc đẩy phát triển cảm xúc và [sự tự tin](https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931)ở trẻ
+### 1.1. Thúc đẩy phát triển cảm xúc và <a href="https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931">sự tự tin</a> ở trẻ
 
 Khi bố mẹ dành thời gian chơi đùa cùng con, thông điệp ngầm được gửi gắm đến trẻ chính là: "Con rất quan trọng và con được yêu thương".
 
@@ -458,14 +458,14 @@ Khi chơi cùng con trong các hoạt động thủ công hoặc trò chơi khá
 
 Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật liệu tự nhiên độc đáo nhất mà bố mẹ có thể cùng con thực hiện tại nhà chính là làm bức tranh tán cây từ hoa dại. Đây là một dạng **đồ chơi DIY** vừa tiết kiệm, vừa giúp trẻ rèn luyện sự khéo léo và tình yêu thiên nhiên.
 
-#### Dụng cụ cần chuẩn bị:
+ **Dụng cụ cần chuẩn bị:**
 - Bìa carton (bìa cứng)[cite: 1]
 - Bút dạ / Bút lông đen (để vẽ nét)[cite: 1]
 - Dao rọc giấy[cite: 1]
 - Băng dính / Băng keo trong bản to (Băng keo dán thùng)[cite: 1]
 - Các loại hoa dại & lá cây tươi (như hoa xuyến chi, hoa ngũ sắc/trâm ổi...)[cite: 1]
 
-#### Các bước thực hiện:
+ **Các bước thực hiện:**
 
 1. **Vẽ khung và thân cây:** Dùng bút dạ đen vẽ một ô khung hình vuông hoặc chữ nhật lên tấm bìa carton, ở giữa vẽ hình một thân cây với các cành chẻ ra[cite: 1].
 2. **Cắt tạo khung rỗng:** Dùng dao rọc giấy cắt bỏ phần nền giấy carton xung quanh thân cây, chỉ giữ lại phần viền khung bên ngoài và hình thân cây nối liền ở giữa[cite: 1].
@@ -481,13 +481,13 @@ Xem ngay quy trình thực hiện trực quan [tại đây](https://www.youtube.
 
 Sáng tạo thế giới côn trùng ngộ nghĩnh từ những chiếc lá cây với đủ hình dáng và màu sắc khác nhau là một hình thức **đồ chơi DIY** và tận dụng vật liệu tái chế tuyệt vời giúp gắn kết gia đình.
 
-#### Dụng cụ cần chuẩn bị:
+**Dụng cụ cần chuẩn bị:**
 - Giấy trắng (hoặc bìa carton)
 - Lá cây hình dáng và kích thước khác nhau
 - Keo dán hoặc băng keo
 - Bút màu / Bút dạ đen / Bút sơn
 
-#### Các bước thực hiện:
+ **Các bước thực hiện:**
 1. **Bước 1 - Thu thập lá cây:** Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
 2. **Bước 2 - Cố định lá lên giấy:** Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
 3. **Bước 3 - Vẽ đầu và chân côn trùng:** Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
@@ -500,14 +500,14 @@ Xem ngay quy trình thực hiện trực quan[Tại đây](https://www.youtube.c
 
 Cuối tuần là khoảng thời gian lý tưởng để gia đình gác lại những bộn bề công việc. Thay vì để con ôm điện thoại hay ipad, bố mẹ hoàn toàn có thể cùng con thực hiện **làm đồ chơi đơn giản tại nhà** kết hợp thí nghiệm khoa học thú vị giúp bé quan sát hiện tượng nước màu tự "bò" qua dải khăn giấy và pha trộn màu sắc!
 
-#### Dụng cụ cần chuẩn bị:
+ **Dụng cụ cần chuẩn bị:**
 
 - 5 hoặc 7 chiếc ly nhựa/thủy tinh trong suốt
 - Khăn giấy ăn loại dai
 - Màu thực phẩm (đỏ, vàng, xanh dương...)
 - Nước lọc
 
-#### Các bước thực hiện:
+ **Các bước thực hiện:**
 
 1. **Xếp hàng ly:** Xếp 5 chiếc ly nhựa thành một hàng ngang sát nhau.
 2. **Đổ nước xen kẽ:** Rót nước vào ly số 1, ly số 3 và ly số 5 (khoảng 2/3 ly). Giữ ly số 2 và ly số 4 hoàn toàn trống.
