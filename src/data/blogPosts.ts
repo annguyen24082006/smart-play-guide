@@ -467,11 +467,13 @@ Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật l
 
  **Các bước thực hiện:**
 
-**Vẽ khung và thân cây:** Dùng bút dạ đen vẽ một ô khung hình vuông hoặc chữ nhật lên tấm bìa carton, ở giữa vẽ hình một thân cây với các cành chẻ ra.
+**1.Vẽ khung và thân cây:** Dùng bút dạ đen vẽ một ô khung hình vuông hoặc chữ nhật lên tấm bìa carton, ở giữa vẽ hình một thân cây với các cành chẻ ra.
 
-2. Cắt tạo khung rỗng: Dùng dao rọc giấy cắt bỏ phần nền giấy carton xung quanh thân cây, chỉ giữ lại phần viền khung bên ngoài và hình thân cây nối liền ở giữa.
-3. Tạo lớp nền dính: Dán các dải băng keo trong bản to phủ kín toàn bộ khoảng trống của khung hình (dán từ mặt sau để mặt dính hướng ra phía trước).
-4. Trang trí tán cây bằng hoa tươi: Hái các bông hoa dại nhỏ và lá cây tươi, sau đó đính trực tiếp lên lớp băng keo dính ở phần cành cây để tạo thành tán lá hoặc hoa nở rộ rực rỡ. Bạn cũng có thể dán thêm hoa và lá ở dưới gốc cây để làm thảm cỏ. 
+**2. Cắt tạo khung rỗng:** Dùng dao rọc giấy cắt bỏ phần nền giấy carton xung quanh thân cây, chỉ giữ lại phần viền khung bên ngoài và hình thân cây nối liền ở giữa.
+
+**3. Tạo lớp nền dính:** Dán các dải băng keo trong bản to phủ kín toàn bộ khoảng trống của khung hình (dán từ mặt sau để mặt dính hướng ra phía trước).
+
+**4. Trang trí tán cây bằng hoa tươi:** Hái các bông hoa dại nhỏ và lá cây tươi, sau đó đính trực tiếp lên lớp băng keo dính ở phần cành cây để tạo thành tán lá hoặc hoa nở rộ rực rỡ. Bạn cũng có thể dán thêm hoa và lá ở dưới gốc cây để làm thảm cỏ. 
 Xem ngay quy trình thực hiện trực quan [tại đây](https://www.youtube.com/shorts/Y0HrZ31eRzE).
 
 
