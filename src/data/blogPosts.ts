@@ -427,7 +427,7 @@ Nhiều phụ huynh thường lầm tưởng rằng chỉ cần mua cho con nh�
 Khi bố mẹ dành thời gian chơi đùa cùng con, thông điệp ngầm được gửi gắm đến trẻ chính là: "Con rất quan trọng và con được yêu thương".
 
 - Trẻ cảm thấy an toàn về mặt cảm xúc, từ đó xây dựng nền tảng nhân cách vững chắc.
-- Những lời động viên, khen ngợi kịp thời của bố mẹ trong lúc chơi giúp con phát triển lòng tự trọng, <a href="https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931">sự tự tin</a> khi đối mặt với thử thách mới.
+- Những lời động viên, khen ngợi kịp thời của bố mẹ trong lúc chơi giúp con phát triển lòng tự trọng, [sự tự tin](https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931) khi đối mặt với thử thách mới. 
 - Giảm thiểu tình trạng căng thẳng, lo âu thường gặp ở trẻ nhỏ khi phải tiếp xúc quá nhiều với các nội dung trên không gian mạng.
 
 ![Bố mẹ đồng hành cùng con qua các hoạt động thủ công giúp kích thích tư duy và tăng sự tự tin](https://i.postimg.cc/YSZPP52P/cach-giup-tre-tu-tin.jpg)
@@ -530,7 +530,7 @@ Khám phá thêm các trò chơi thú vị và đơn giản cùng bé tại [Sma
 - Xem tiếp: [Hướng Dẫn Cài Đặt YouTube Kids An Toàn Cho Trẻ](https://www.smartplayguide.com.vn/blog/cai-dat-youtube-kids-an-toan) 
 
 ✍️ Hãy để lại bình luận bên dưới để cùng chia sẻ kinh nghiệm cùng con sáng tạo và **gắn kết gia đình** cùng Smart Play Guide nhé!`,
-  cover_image: 'https://i.postimg.cc/qqf9N99K/choi.jpg',
+  cover_image: 'https://i.postimg.cc/5NN2brMF/Gia-dinh-chau-A-vui-choi-lap-ghep-ben-nhau.png',
   author: 'Smart Play Guide',
   category: 'Hoạt động',
   created_at: '2026-10-24',
