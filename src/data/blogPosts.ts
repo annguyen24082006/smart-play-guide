@@ -411,8 +411,8 @@ Thiết lập các tính năng an toàn, kiểm soát nội dung và giới hạ
   },
 {
 id: 'bai-4',
-  title: 'Bí Quyết Kết Nối Và Cùng Con Khôn Lớn Qua Các Hoạt Động Sáng Tạo Tại Nhà',
-  slug: 'bi-quyet-ket-noi-va-cung-con-khon-lon-qua-cac-hoat-dong-sang-tao',
+  title: 'Cùng Con Khôn Lớn Qua Các Hoạt Động Sáng Tạo Đơn Giản Nhất Tại Nhà',
+  slug: 'cung-con-khon-lon-qua-cac-hoat-dong-sang-tao',
   excerpt: 'Khám phá bí quyết kết nối gia đình và cùng con phát triển toàn diện thông qua cách làm đồ chơi bằng giấy và làm đồ chơi đơn giản tại nhà.',
   content: `Trong nhịp sống hiện đại hối hả, áp lực công việc đôi khi khiến bố mẹ cuốn đi, để rồi khoảng cách giữa các thế hệ trong gia đình vô tình lớn dần. Trẻ nhỏ ngày nay dễ dàng tìm đến màn hình điện thoại, máy tính bảng như một người bạn đồng hành quen thuộc. Tuy nhiên, đằng sau sự tiện lợi ấy là nỗi lo về tình trạng nghiện thiết bị số và sự thiếu hụt những khoảng thời gian tương tác chất lượng. Làm thế nào để kéo con trẻ rời xa màn hình ảo một cách tự nhiên nhất? Câu trả lời nằm ngay trong chính ngôi nhà của bạn: Hoạt động cùng con.
 
@@ -422,32 +422,33 @@ Bài viết này sẽ chia sẻ toàn diện về tầm quan trọng của việ
 
 Nhiều phụ huynh thường lầm tưởng rằng chỉ cần mua cho con những món đồ chơi đắt tiền, hiện đại là đủ. Thế nhưng, đối với sự phát triển của trẻ, không món quà vật chất nào có thể thay thế được sự hiện diện và tham gia trực tiếp của bố mẹ. Dưới đây là những lợi ích thiết thực đã được chứng minh khoa học khi trẻ được chơi cùng bố mẹ.
 
-### 1.1. Thúc đẩy phát triển cảm xúc và sự tự tin ở trẻ
+### 1.1. Thúc đẩy phát triển cảm xúc và [sự tự tin](https://www.avakids.com/me-va-be/cha-me-xay-dung-su-tu-tin-o-tre-1441931) ở trẻ
+
 Khi bố mẹ dành thời gian chơi đùa cùng con, thông điệp ngầm được gửi gắm đến trẻ chính là: "Con rất quan trọng và con được yêu thương".
+
 - Trẻ cảm thấy an toàn về mặt cảm xúc, từ đó xây dựng nền tảng nhân cách vững chắc.
 - Những lời động viên, khen ngợi kịp thời của bố mẹ trong lúc chơi giúp con phát triển lòng tự trọng, sự tự tin khi đối mặt với thử thách mới.
 - Giảm thiểu tình trạng căng thẳng, lo âu thường gặp ở trẻ nhỏ khi phải tiếp xúc quá nhiều với các nội dung trên không gian mạng.
 
 ![Bố mẹ đồng hành cùng con qua các hoạt động thủ công giúp kích thích tư duy và tăng sự tự tin](https://i.postimg.cc/YSZPP52P/cach-giup-tre-tu-tin.jpg)
-*Bố mẹ đồng hành cùng con qua các hoạt động thủ công giúp kích thích tư duy và tăng sự tự tin.*
 
 ### 1.2. Mở rộng kỹ năng ngôn ngữ và giao tiếp xã hội
+
 Thời gian chơi chung là "thời điểm vàng" để phát triển ngôn ngữ cho trẻ. Thông qua các trò chơi tương tác hai chiều, con sẽ học được cách lắng nghe, biết cách bày tỏ quan điểm cá nhân và mở rộng vốn từ vựng phong phú.
 - Bố mẹ đóng vai trò là hình mẫu ngôn ngữ trực quan nhất.
 - Trẻ học được các kỹ năng xã hội cơ bản như: biết chia sẻ, biết chờ đến lượt, hợp tác và thấu hiểu cảm xúc của người khác.
 - Đây cũng là cơ hội tuyệt vời để thu hẹp khoảng cách thế hệ, giúp các thành viên trong gia đình hiểu nhau hơn qua lăng kính của sự sẻ chia.
 
 ![Tương tác và trò chuyện cùng con mỗi ngày là chìa khóa vàng giúp mở rộng vốn từ vựng và phát triển kỹ năng giao tiếp](https://i.postimg.cc/d0bW6G41/phat-trien-ngon-ngu-cho-tre.jpg)
-*Tương tác và trò chuyện cùng con mỗi ngày là chìa khóa vàng giúp mở rộng vốn từ vựng và phát triển kỹ năng giao tiếp.*
 
 ### 1.3. Kích thích tư duy sáng tạo và khả năng giải quyết vấn đề
+
 Khi chơi cùng con trong các hoạt động thủ công hoặc trò chơi khám phá, bố mẹ không nên làm thay mà hãy đóng vai trò là người định hướng.
 - Trẻ được tự do tưởng tượng, thử nghiệm những ý tưởng mới lạ mà không sợ sai sót.
 - Đối mặt với những vướng mắc nhỏ trong trò chơi (ví dụ: làm sao để khối hình không bị đổ, cách dán giấy sao cho khít), trẻ sẽ học được tư duy logic và cách tìm ra giải pháp tối ưu.
 - Sự kết hợp giữa tư duy của người lớn và sự hồn nhiên của trẻ thường tạo ra những kết quả vô cùng bất ngờ và thú vị.
 
 ![Cùng con giải quyết các thử thách thủ công giúp kích thích tư duy logic và khả năng sáng tạo vượt trội](https://i.postimg.cc/wvYVLgj7/toan-phat-trien-tu-duy-1.jpg)
-*Cùng con giải quyết các thử thách thủ công giúp kích thích tư duy logic và khả năng sáng tạo vượt trội.*
 
 ## 2. Gợi Ý Các Hoạt Động Sáng Tạo Giúp Bố Mẹ Và Con Kết Nối Tại Nhà
 
@@ -456,77 +457,79 @@ Khi chơi cùng con trong các hoạt động thủ công hoặc trò chơi khá
 ### 2.1. Làm tranh bình hoa bằng hoa thật: Hoạt động thủ công gắn kết thiên nhiên
 Một trong những **cách làm đồ chơi bằng giấy** kết hợp vật liệu tự nhiên độc đáo nhất mà bố mẹ có thể cùng con thực hiện tại nhà chính là làm bức tranh tán cây từ hoa dại. Đây là một dạng **đồ chơi DIY** vừa tiết kiệm, vừa giúp trẻ rèn luyện sự khéo léo và tình yêu thiên nhiên.
 
-![Minh họa các bước làm tranh bình hoa bằng hoa thật cùng con tại nhà](https://i.postimg.cc/rmSLNVG3/Screenshot-2026-10-24-195824.png)
-*Minh họa các bước làm tranh bình hoa bằng hoa thật cùng con tại nhà.*
-
-#### **Dụng cụ cần chuẩn bị:**
+#### Dụng cụ cần chuẩn bị:
 - Bìa carton (bìa cứng)[cite: 1]
 - Bút dạ / Bút lông đen (để vẽ nét)[cite: 1]
 - Dao rọc giấy[cite: 1]
 - Băng dính / Băng keo trong bản to (Băng keo dán thùng)[cite: 1]
 - Các loại hoa dại & lá cây tươi (như hoa xuyến chi, hoa ngũ sắc/trâm ổi...)[cite: 1]
 
-#### **Các bước thực hiện:**
+#### Các bước thực hiện:
+
 1. **Vẽ khung và thân cây:** Dùng bút dạ đen vẽ một ô khung hình vuông hoặc chữ nhật lên tấm bìa carton, ở giữa vẽ hình một thân cây với các cành chẻ ra[cite: 1].
 2. **Cắt tạo khung rỗng:** Dùng dao rọc giấy cắt bỏ phần nền giấy carton xung quanh thân cây, chỉ giữ lại phần viền khung bên ngoài và hình thân cây nối liền ở giữa[cite: 1].
 3. **Tạo lớp nền dính:** Dán các dải băng keo trong bản to phủ kín toàn bộ khoảng trống của khung hình (dán từ mặt sau để mặt dính hướng ra phía trước)[cite: 1].
 4. **Trang trí tán cây bằng hoa tươi:** Hái các bông hoa dại nhỏ và lá cây tươi, sau đó đính trực tiếp lên lớp băng keo dính ở phần cành cây để tạo thành tán lá hoặc hoa nở rộ rực rỡ. Bạn cũng có thể dán thêm hoa và lá ở dưới gốc cây để làm thảm cỏ[cite: 1].
 
-> 💡 **Mẹo nhỏ:** Việc tận dụng **đồ chơi bằng bìa carton** kết hợp cùng thiên nhiên không chỉ giúp bố mẹ **làm đồ chơi đơn giản tại nhà** một cách dễ dàng mà còn là cơ hội tuyệt vời để phát triển thị giác và tư duy thẩm mỹ cho trẻ.
+ **Mẹo nhỏ:** Việc tận dụng **đồ chơi bằng bìa carton** kết hợp cùng thiên nhiên không chỉ giúp bố mẹ **làm đồ chơi đơn giản tại nhà** một cách dễ dàng mà còn là cơ hội tuyệt vời để phát triển thị giác và tư duy thẩm mỹ cho trẻ.
 
-*🎬 **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan tại [YouTube Shorts - Hướng dẫn làm tranh hoa thật](https://www.youtube.com/shorts/Y0HrZ31eRzE).*
+![Làm tranh bình hoa bằng hoa thật cùng con tại nhà](https://i.postimg.cc/rmSLNVG3/Screenshot-2026-10-24-195824.png)
+
+ **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan tại [tại đây](https://www.youtube.com/shorts/Y0HrZ31eRzE).
 
 ### 2.2. Biến những chiếc lá khô thành cả một "Vương quốc côn trùng"
+
 Sáng tạo thế giới côn trùng ngộ nghĩnh từ những chiếc lá cây với đủ hình dáng và màu sắc khác nhau là một hình thức **đồ chơi DIY** và tận dụng vật liệu tái chế tuyệt vời giúp gắn kết gia đình.
 
-![Minh họa các bước sáng tạo vương quốc côn trùng từ lá khô cùng con tại nhà](https://i.postimg.cc/rFwvKCHZ/Screenshot-2026-10-24-200331.png)
-*Minh họa các bước sáng tạo vương quốc côn trùng từ lá khô cùng con tại nhà.*
-
-#### **Dụng cụ cần chuẩn bị:**
+#### Dụng cụ cần chuẩn bị:
 - Giấy trắng (hoặc bìa carton)
 - Lá cây hình dáng và kích thước khác nhau
 - Keo dán hoặc băng keo
 - Bút màu / Bút dạ đen / Bút sơn
 
-#### **Các bước thực hiện:**
+#### Các bước thực hiện:
 1. **Bước 1 - Thu thập lá cây:** Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
 2. **Bước 2 - Cố định lá lên giấy:** Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
 3. **Bước 3 - Vẽ đầu và chân côn trùng:** Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
 4. **Bước 4 - Trang trí hoa văn (tùy chọn):** Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
 
-*🎬 **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan tại [YouTube Shorts - Vương quốc côn trùng từ lá khô](https://www.youtube.com/shorts/OrZtXms0i2E).*
+![Sáng tạo vương quốc côn trùng từ lá khô cùng con tại nhà](https://i.postimg.cc/rFwvKCHZ/Screenshot-2026-10-24-200331.png)
+
+🎬 **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan[Tại đây](https://www.youtube.com/shorts/OrZtXms0i2E).
 
 ### 2.3. Nước Đi Bộ Bắc Cầu Màu Sắc: Thí nghiệm khoa học thú vị cuối tuần
+
 Cuối tuần là khoảng thời gian lý tưởng để gia đình gác lại những bộn bề công việc. Thay vì để con ôm điện thoại hay ipad, bố mẹ hoàn toàn có thể cùng con thực hiện **làm đồ chơi đơn giản tại nhà** kết hợp thí nghiệm khoa học thú vị giúp bé quan sát hiện tượng nước màu tự "bò" qua dải khăn giấy và pha trộn màu sắc!
 
-![Minh họa thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc cùng con tại nhà](https://i.postimg.cc/xT840jJQ/Screenshot-2026-10-24-200436.png)
-*Minh họa thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc cùng con tại nhà.*
+#### Dụng cụ cần chuẩn bị:
 
-#### **Dụng cụ cần chuẩn bị:**
 - 5 hoặc 7 chiếc ly nhựa/thủy tinh trong suốt
 - Khăn giấy ăn loại dai
 - Màu thực phẩm (đỏ, vàng, xanh dương...)
 - Nước lọc
 
-#### **Các bước thực hiện:**
+#### Các bước thực hiện:
+
 1. **Xếp hàng ly:** Xếp 5 chiếc ly nhựa thành một hàng ngang sát nhau.
 2. **Đổ nước xen kẽ:** Rót nước vào ly số 1, ly số 3 và ly số 5 (khoảng 2/3 ly). Giữ ly số 2 và ly số 4 hoàn toàn trống.
 3. **Pha màu:** Nhỏ vài giọt màu thực phẩm vào 3 ly có nước (ví dụ: ly 1 màu đỏ, ly 3 màu vàng, ly 5 màu xanh dương) rồi khuấy đều.
 4. **Làm cầu dải giấy:** Gấp khăn giấy thành dải dài, uốn hình chữ U ngược. Bắc một đầu dải giấy vào ly có nước, đầu kia thả vào ly trống bên cạnh.
 5. **Quan sát phép màu:** Nước màu sẽ tự động "bò" ngược lên dải khăn giấy, chảy dần sang ly trống và hòa trộn thành các màu mới rực rỡ!
 
-*🎬 **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan tại [YouTube - Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc](https://www.youtube.com/watch?v=hGwG--GZEfw).*
+![Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc cùng con tại nhà](https://i.postimg.cc/xT840jJQ/Screenshot-2026-10-24-200436.png)
 
-Đây chính là hoạt động cuối tuần cho bé tại nhà vô cùng bổ ích, giúp thúc đẩy quá trình **gắn kết gia đình** thêm bền chặt, tạo cho con những ký ức tuổi thơ tuyệt đẹp bên cha mẹ.
+🎬 **Video hướng dẫn chi tiết:** Xem ngay quy trình thực hiện trực quan tại [YouTube - Thí nghiệm Nước Đi Bộ Bắc Cầu Màu Sắc](https://www.youtube.com/watch?v=hGwG--GZEfw).
 
 ## Kết Luận
 
 Hành trình cùng con khôn lớn không đòi hỏi bố mẹ phải quá hoàn hảo hay tốn kém nhiều chi phí, điều mà con trẻ thực sự cần chính là ánh mắt quan tâm, đôi bàn tay cùng làm và những tiếng cười giòn giã mỗi ngày. Hãy bắt đầu thay đổi thói quen ngay hôm nay bằng cách áp dụng **cách làm đồ chơi bằng giấy** hay **làm đồ chơi đơn giản tại nhà**, đồng thời ghé thăm [Smart Play Guide](https://smartplayguide.com.vn) để khám phá trọn bộ cẩm nang nuôi dạy con khoa học, sáng tạo và **gắn kết gia đình** bền chặt!
 
+Khám phá thêm các trò chơi thú vị và đơn giản cùng bé tại [Smart Play Guide](https://smartplayguide.com.vn). Đây chính là hoạt động cuối tuần cho bé tại nhà vô cùng bổ ích, giúp thúc đẩy quá trình **gắn kết gia đình** thêm bền chặt, tạo cho con những ký ức tuổi thơ tuyệt đẹp bên cha mẹ.
+
 ## Khám Phá Thêm Các Hướng Dẫn An Toàn Khác Trong Dự Án Smart Play Guide:
 
-- Xem tiếp: [5 Bước Quản Lý Thời Gian Và Lọc Nội Dung Trên Máy Tính Hiệu Quả Cho Con](https://smartplayguide.com.vn/blog/loc-noi-dung-tren-may-tinh)
 - Xem tiếp: [Hướng Dẫn Cài Đặt Khóa Trẻ Em Và Hẹn Giờ Trên Smart TV](https://smartplayguide.com.vn/blog/huong-dan-cai-dat-bao-ve-tre-em-tren-smart-tv)
+- Xem tiếp: [Hướng Dẫn Cài Đặt YouTube Kids An Toàn Cho Trẻ](https://www.smartplayguide.com.vn/blog/cai-dat-youtube-kids-an-toan) 
 
 ✍️ Hãy để lại bình luận bên dưới để cùng chia sẻ kinh nghiệm cùng con sáng tạo và **gắn kết gia đình** cùng Smart Play Guide nhé!`,
   cover_image: 'https://i.postimg.cc/qqf9N99K/choi.jpg',
