@@ -487,11 +487,11 @@ Sáng tạo thế giới côn trùng ngộ nghĩnh từ những chiếc lá cây
 - Keo dán hoặc băng keo
 - Bút màu / Bút dạ đen / Bút sơn
 
- **Các bước thực hiện:**
-1. Bước 1 - Thu thập lá cây: Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
-2. Bước 2 - Cố định lá lên giấy: Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
-3. Bước 3 - Vẽ đầu và chân côn trùng: Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
-4. Bước 4 - Trang trí hoa văn (tùy chọn): Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
+**Các bước thực hiện:**
+- **Bước 1 - Thu thập lá cây:** Tìm và chọn các loại lá cây có hình dáng phù hợp với các loại côn trùng (ví dụ: lá dài làm thân con bọ/gián, lá ngân hạnh xòe đôi làm cánh bươm bướm, lá tròn làm bọ dừa...).
+- Bước 2 - Cố định lá lên giấy: Dùng keo dán hoặc băng keo dán các chiếc lá lên vị trí mong muốn trên tờ giấy trắng.
+- Bước 3 - Vẽ đầu và chân côn trùng: Dùng bút kim/bút dạ đen vẽ thêm các chi tiết như đầu, râu (mắt) và các cặp chân xung quanh mép lá để biến chiếc lá thành hình dáng con côn trùng hoàn chỉnh.
+- Bước 4 - Trang trí hoa văn (tùy chọn): Dùng bút dạ màu/bút sơn vẽ thêm các đường nét, chấm đốm rực rỡ lên mặt lá (đặc biệt là các lá làm cánh bướm) để bức tranh thêm phần sinh động và nhiều màu sắc.
 Xem ngay quy trình thực hiện trực quan[Tại đây](https://www.youtube.com/shorts/OrZtXms0i2E).
 
 ![Sáng tạo vương quốc côn trùng từ lá khô cùng con tại nhà](https://i.postimg.cc/rFwvKCHZ/Screenshot-2026-10-24-200331.png)
