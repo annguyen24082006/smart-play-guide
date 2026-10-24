@@ -403,12 +403,13 @@ Thiết lập các tính năng an toàn, kiểm soát nội dung và giới hạ
 - Xem tiếp: [Hướng Dẫn Cài Đặt Khóa Trẻ Em Và Hẹn Giờ Trên Smart TV (Samsung, LG, Sony)](https://smartplayguide.com.vn/blog/huong-dan-cai-dat-bao-ve-tre-em-tren-smart-tv)
 
 ✍️ Hãy để lại bình luận bên dưới để cùng chia sẻ kinh nghiệm **cài đặt YouTube Kids an toàn**, thắc mắc hoặc thảo luận cùng các bố mẹ khác nhé! Smart Play Guide luôn sẵn sàng giải đáp và đồng hành cùng bạn!`,
-    cover_image: 'https://i.postimg.cc/RFRc5MYj/Anh-1.webp',
+    cover_image: 'https://i.postimg.cc/fTM9G5Ld/1758879795-can-kiem-soat-noi-dung-kenh-youtube-cua-tre-em.jpg',
     author: 'Smart Play Guide',
     category: 'Cài đặt',
-    created_at: '2026-10-10',
+    created_at: '2026-10-11',
     published: true,
   },
+{
 id: 'bai-4',
   title: 'Bí Quyết Kết Nối Và Cùng Con Khôn Lớn Qua Các Hoạt Động Sáng Tạo Tại Nhà',
   slug: 'bi-quyet-ket-noi-va-cung-con-khon-lon-qua-cac-hoat-dong-sang-tao',
